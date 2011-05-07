@@ -1,0 +1,19 @@
+<br /><br />
+<div id="view-content">
+	<p>View script for controller <b>Jobs</b> and script/action name <b>index</b></p>
+        <table>
+            <tr>
+                <td>Search Jobs by Category</td>
+            </tr>
+        <?php
+            foreach($this->joblist as $job)
+            {
+                echo "<tr>";
+                echo "<td>";
+                echo "<a href=''>" . $job['jobcategory']. "(" . $job['jobcount']. ") </a>";
+                echo "</td>";
+                echo "</tr>";
+            }
+        ?>
+        </table>
+</div>
