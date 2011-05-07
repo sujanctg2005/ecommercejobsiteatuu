@@ -2,7 +2,7 @@
 
 class IndexController extends Zend_Controller_Action
 {
-
+    public $db;
     public function init()
     {
         /* Initialize action controller here */
@@ -10,9 +10,16 @@ class IndexController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        // action body
+        $jobCategories = new Application_Model_DbTable_JobCategory();
+        $this->view->jobCategories = $jobCategories->fetchAll();
     }
 
+    public function addAction()
+    {
+        $form = new Application_Form_CreateJobCategory();
 
+        $this->view->form = $form;
+    }
 }
+
 
