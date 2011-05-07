@@ -14,6 +14,11 @@ class AuthenticationController extends Zend_Controller_Action
 
     public function loginAction()
     {
+        if(Zend_Auth::getInstance()->hasIdentity())
+        {
+            $this->_redirect(array('controller'=>'index','action'=>'index'));
+        }
+
           $form = new Application_Form_Login();
 
           $form -> setAction($this->view->url(array('controller'=>'authentication','action'=>'login')));
@@ -43,8 +48,9 @@ class AuthenticationController extends Zend_Controller_Action
 
                  if($authenticate->isValid())
                  {
-                     $userInfo = $authAdapter->getResultRowObject(null, 'password');
-                     $authStorage = $auth->getStorage();
+                     $userInfo = $authAdapter->getResultRowObject(null,'password');
+                     print_r($userInfo);
+                     $authStorage = Zend_Auth::getInstance()-> getStorage();
                      $authStorage->write($userInfo);
                      $this->_redirect(array('controller'=>'index','action'=>'index'));
                  }
