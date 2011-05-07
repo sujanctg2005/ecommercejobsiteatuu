@@ -3,8 +3,7 @@
 class AuthenticationController extends Zend_Controller_Action
 {
     public function init()
-    {
-        //$this->_forward('login', 'authentication');
+    {        
     }
 
     public function indexAction()
@@ -13,11 +12,11 @@ class AuthenticationController extends Zend_Controller_Action
     }
 
     public function loginAction()
-    {
-        if(Zend_Auth::getInstance()->hasIdentity())
-        {
-            $this->_redirect(array('controller'=>'index','action'=>'index'));
-        }
+    {        
+//        if(Zend_Auth::getInstance()->hasIdentity())
+//        {
+//            $this->_redirect(array('controller'=>'index','action'=>'index'));
+//        }
 
           $form = new Application_Form_Login();
 

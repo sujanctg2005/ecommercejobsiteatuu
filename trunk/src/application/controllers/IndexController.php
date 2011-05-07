@@ -10,7 +10,16 @@ class IndexController extends Zend_Controller_Action
 
     public function indexAction()
     {
+        $auth = Zend_Auth::getInstance();
+
+        if($auth->hasIdentity())
+        {
+            //$this->_redirect($this->url(array('authentication','logout')));
+            //print_r($auth->getStorage());
+        }
+
         $jobCategories = new Application_Model_DbTable_JobCategory();
+
         $this->view->jobCategories = $jobCategories->fetchAll();
     }
 
