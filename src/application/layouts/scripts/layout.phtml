@@ -1,0 +1,57 @@
+<?php
+$this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
+$this->headTitle()->setSeparator(' - ');
+$this->headTitle('Lazy Job Portal');
+echo $this->doctype();
+?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <?php echo $this->headMeta(); ?>
+        <?php echo $this->headTitle(); ?>
+        <?php echo $this->headLink()->prependStylesheet($this->baseUrl() . '/css/jopPortalLook.css'); ?>
+        
+    </head>
+    <body>
+       <?php
+       $basepath= $this->baseUrl();
+        echo "<p><a href ='". $this->url(array('controller' => 'index',
+            'action'=>'index')) . "'>
+        <img src= '$basepath/images/Lazy_Portal_Logo.jpg'/></a></p>";
+        echo "<p><img src= '$basepath/images/mylazyjob.jpg'/></p>";
+       ?>
+<div id="leftpanel">
+<table width="100%">
+    <tr>
+        <td>
+            <table width ="100%">
+                <tr><td><table width="100%">
+                    <tr><td width="15%" valign="top">
+                        <table width="100%" border="0" cellpadding="1" cellspacing="1">
+                             <?php
+                                $format = "<tr><td><a href='%s'>%s</a></td></tr>";
+                                $basepath = Zend_Controller_Front::getInstance()->getBaseUrl();
+
+                                printf($format, $basepath . "/resume/edit", "Edit Resume");
+                                printf($format, $basepath . "/resume/view", "View Resume");
+                                printf($format, $basepath . "/resume/email", "Email Resume");
+                                printf($format, $basepath . "/resume/delete", "Delete Resume");
+                                printf($format, $basepath . "/employer/block", "Block Employer");
+                                printf($format, $basepath . "/view/stats", "View Stats");
+                                printf($format, $basepath . "/notification/email", "Email Notification");
+                                printf($format, $basepath . "/change/password", "Change Password");
+                                ?>
+                                    </table>
+                                </td></tr>
+                        </table></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</div>
+        <div id="content">
+            <h1><?php echo $this->escape($this->title); ?></h1>
+            <?php echo $this->layout()->content; ?>
+</div>
+    </body>
+</html>
