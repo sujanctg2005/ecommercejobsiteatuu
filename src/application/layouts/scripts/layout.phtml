@@ -17,7 +17,15 @@ echo $this->doctype();
         echo "<p><a href ='". $this->url(array('controller' => 'index',
             'action'=>'index')) . "'>
         <img src= '$basepath/images/Lazy_Portal_Logo.jpg'/></a></p>";
-        echo "<p><img src= '$basepath/images/mylazyjob.jpg'/></p>";
+         echo "<table border = \"0\"><tr><td>
+        <p><img src= '$basepath/images/mylazyjob.jpg'/>
+        <td>&nbsp;&nbsp;&nbsp;</td>
+        <td>Home</td>
+        <td>My Lazy Jobs</td>
+        <td>Companies Offering Jobs</td>
+        <td>FAQ</td>
+        </p>
+            </tr></td></table>"
        ?>
 <div id="leftpanel">
 <table width="100%">
@@ -31,6 +39,7 @@ echo $this->doctype();
                                 $format = "<tr><td><a href='%s'>%s</a></td></tr>";
                                 $basepath = Zend_Controller_Front::getInstance()->getBaseUrl();
 
+                                printf($format, $basepath . "/profile/create", "Crete Profile");
                                 printf($format, $basepath . "/resume/edit", "Edit Resume");
                                 printf($format, $basepath . "/resume/view", "View Resume");
                                 printf($format, $basepath . "/resume/email", "Email Resume");
