@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 08, 2011 at 12:58 AM
+-- Generation Time: May 08, 2011 at 07:26 PM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -26,11 +26,11 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_business_type` (
-  `BusinessTypeID` int(10) NOT NULL AUTO_INCREMENT,
+  `BusinessTypeID` int(10) NOT NULL,
   `BusinessType` varchar(20) NOT NULL,
   PRIMARY KEY (`BusinessTypeID`),
   KEY `BusinessTypeID` (`BusinessTypeID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_business_type`
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `tbl_country` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_employee` (
-  `UserID` int(20) NOT NULL AUTO_INCREMENT,
+  `UserID` int(20) NOT NULL,
   `Name` varchar(50) NOT NULL,
   `DateOfBirth` date NOT NULL,
   `Gender` varchar(5) NOT NULL,
@@ -97,12 +97,14 @@ CREATE TABLE IF NOT EXISTS `tbl_employee` (
   `ImagePath` varchar(100) NOT NULL,
   PRIMARY KEY (`UserID`),
   KEY `UserID` (`UserID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_employee`
 --
 
+INSERT INTO `tbl_employee` (`UserID`, `Name`, `DateOfBirth`, `Gender`, `MaritialStatus`, `Nationality`, `Religion`, `CurrentAddress`, `PermanentAddress`, `HomePhone`, `Mobile`, `OfficePhone`, `Email`, `AlternativeEmail`, `ImagePath`) VALUES
+(1, 'Amendra', '1985-07-09', 'Male', 'Unmar', 'Nepal', 'Hindu', 'Uppsala', 'Nepal', '3454', '0700257845', '34534534534', 'aminshrestha@gmail.com', '', 'lajsdfk');
 
 -- --------------------------------------------------------
 
@@ -111,7 +113,7 @@ CREATE TABLE IF NOT EXISTS `tbl_employee` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_employer` (
-  `UserID` int(10) NOT NULL AUTO_INCREMENT,
+  `UserID` int(10) NOT NULL,
   `CompanyName` varchar(30) NOT NULL,
   `AlternativeCompanyName` varchar(30) NOT NULL,
   `CompanyAddress` varchar(30) NOT NULL,
@@ -129,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `tbl_employer` (
   KEY `UserID` (`UserID`),
   KEY `CountryID` (`CountryID`),
   KEY `CityID` (`CityID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_employer`
@@ -274,11 +276,11 @@ CREATE TABLE IF NOT EXISTS `tbl_job_requirement_detail` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_login_detail` (
-  `UserID` int(20) NOT NULL AUTO_INCREMENT,
+  `UserID` int(20) NOT NULL,
   `LastLogonDateTime` datetime NOT NULL,
   PRIMARY KEY (`UserID`,`LastLogonDateTime`),
   KEY `UserID` (`UserID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_login_detail`
