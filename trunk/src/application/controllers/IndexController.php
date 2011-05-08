@@ -2,7 +2,9 @@
 
 class IndexController extends Zend_Controller_Action
 {
-    public $db;
+
+    public $db = null;
+
     public function init()
     {
         /* Initialize action controller here */
@@ -27,9 +29,10 @@ $this->_helper->layout->setLayout('layout');
     public function addAction()
     {
         $form = new Application_Form_CreateJobCategory();
-
         $this->view->form = $form;
     }
 }
+
+
 
 

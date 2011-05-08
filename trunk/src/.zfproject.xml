@@ -11,6 +11,7 @@
         <controllerFile controllerName="Index">
           <actionMethod actionName="index"/>
           <actionMethod actionName="addAction"/>
+          <actionMethod actionName="addEmployee"/>
         </controllerFile>
         <controllerFile controllerName="Error"/>
         <controllerFile controllerName="Profile">
@@ -80,6 +81,9 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Jobs">
             <viewScriptFile forActionName="jobdetail"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="addEmployee"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
