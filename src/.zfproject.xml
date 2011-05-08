@@ -32,6 +32,7 @@
         <formFile formName="CreateJobCategory"/>
         <formFile formName="Login"/>
         <formFile formName="JobDetail"/>
+        <formFile formName="EmployeeProfile"/>
       </formsDirectory>
       <layoutsDirectory enabled="false"/>
       <modelsDirectory>
