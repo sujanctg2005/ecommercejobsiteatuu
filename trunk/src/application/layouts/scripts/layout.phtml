@@ -9,58 +9,69 @@ echo $this->doctype();
         <?php echo $this->headMeta(); ?>
         <?php echo $this->headTitle(); ?>
         <?php echo $this->headLink()->prependStylesheet($this->baseUrl() . '/css/jopPortalLook.css'); ?>
-        
+
     </head>
     <body>
-       <?php
-       $basepath= $this->baseUrl();
-        echo "<p><a href ='". $this->url(array('controller' => 'index',
-            'action'=>'index')) . "'>
+        <table width="70%" border="1" align="center">
+            <tr><td>
+                <?php
+        $basepath = $this->baseUrl();
+        echo "<p><a href ='" . $this->url(array('controller' => 'index',
+            'action' => 'index')) . "'>
         <img src= '$basepath/images/Lazy_Portal_Logo.jpg'/></a></p>";
-         echo "<table border = \"0\"><tr><td>
-        <p><img src= '$basepath/images/mylazyjob.jpg'/>
-        <td>&nbsp;&nbsp;&nbsp;</td>
-        <td>Home</td>
-        <td>My Lazy Jobs</td>
-        <td>Companies Offering Jobs</td>
-        <td>FAQ</td>
-        </p>
-            </tr></td></table>"
-       ?>
-<div id="leftpanel">
-<table width="100%">
-    <tr>
-        <td>
-            <table width ="100%">
-                <tr><td><table width="100%">
-                    <tr><td width="15%" valign="top">
-                        <table width="100%" border="0" cellpadding="1" cellspacing="1">
-                             <?php
-                                $format = "<tr><td><a href='%s'>%s</a></td></tr>";
-                                $basepath = Zend_Controller_Front::getInstance()->getBaseUrl();
+        ?>
+            </td></tr>
+            <tr><td>
+             	<table width="80%" border="0">
+                	<tr><td>
+                        <?php
+                        $basepath = $this->baseUrl();
+                        echo "<img src= '$basepath/images/mylazyjob.jpg'/>" ?>
+                        </td>
+                        <td> HOME | MY LAZY JOBS | COMPANIES OFFERING JOBS |  FAQ | CONTACT</td></tr>
+                </table>
+            </td></tr>
+            <tr><td>
+            	<table width="100%" border="0">
+                	<tr>
+                    	<td width="25%" valign="top">
+                        <table width="100%" border="0">
+                        <?php
+                            $format = "<tr><td><a href='%s'>%s</a></td></tr>";
+                            $basepath = Zend_Controller_Front::getInstance()->getBaseUrl();
 
-                                printf($format, $basepath . "/profile/create", "Crete Profile");
-                                printf($format, $basepath . "/resume/edit", "Edit Resume");
-                                printf($format, $basepath . "/resume/view", "View Resume");
-                                printf($format, $basepath . "/resume/email", "Email Resume");
-                                printf($format, $basepath . "/resume/delete", "Delete Resume");
-                                printf($format, $basepath . "/employer/block", "Block Employer");
-                                printf($format, $basepath . "/view/stats", "View Stats");
-                                printf($format, $basepath . "/notification/email", "Email Notification");
-                                printf($format, $basepath . "/change/password", "Change Password");
-                                ?>
-                                    </table>
-                                </td></tr>
-                        </table></td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
-</div>
-        <div id="content">
-            <h1><?php echo $this->escape($this->title); ?></h1>
-            <?php echo $this->layout()->content; ?>
-</div>
-    </body>
+                            printf($format, $basepath . "/profile/create", "Crete Profile");
+                            printf($format, $basepath . "/resume/edit", "Edit Resume");
+                            printf($format, $basepath . "/resume/view", "View Resume");
+                            printf($format, $basepath . "/resume/email", "Email Resume");
+                            printf($format, $basepath . "/resume/delete", "Delete Resume");
+                            printf($format, $basepath . "/employer/block", "Block Employer");
+                            printf($format, $basepath . "/view/stats", "View Stats");
+                            printf($format, $basepath . "/notification/email", "Email Notification");
+                            printf($format, $basepath . "/change/password", "Change Password");
+                            ?>
+                        </table>
+                        </td>
+                        <td width="100%" valign="top">
+                            <div id="content" class="toptable" align="justify">
+                            <h1><?php echo $this->escape($this->title); ?></h1>
+                            <?php echo $this->layout()->content; ?>
+                        </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+        	<td>
+            	<table width="100%">
+                	<tr>
+                    	<td>last rows </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+    </table>
+</body>
 </html>
