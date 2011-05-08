@@ -41,6 +41,7 @@
           <dbTableFile dbTableName="JobCategory"/>
           <dbTableFile dbTableName="Job"/>
           <dbTableFile dbTableName="UserInfo"/>
+          <dbTableFile dbTableName="EmployeeProfile"/>
         </dbTableDirectory>
         <modelFile modelName="JobsList"/>
       </modelsDirectory>

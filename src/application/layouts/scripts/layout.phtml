@@ -28,7 +28,7 @@ echo $this->doctype();
                         $basepath = $this->baseUrl();
                         echo "<img src= '$basepath/images/mylazyjob.jpg'/>" ?>
                         </td>
-                        <td> HOME | MY LAZY JOBS | COMPANIES OFFERING JOBS |  FAQ | CONTACT</td></tr>
+                        <td> HOME | MY LAZY JOBS | COMPANIES OFFERING JOBS |  <a href="#" style="cursor:help">FAQ</a> | CONTACT</td></tr>
                 </table>
             </td></tr>
             <tr><td>
@@ -40,7 +40,7 @@ echo $this->doctype();
                             $format = "<tr><td><a href='%s'>%s</a></td></tr>";
                             $basepath = Zend_Controller_Front::getInstance()->getBaseUrl();
 
-                            printf($format, $basepath . "/profile/create", "Crete Profile");
+                            printf($format, $basepath . "/profile/create", "Create Profile");
                             printf($format, $basepath . "/resume/edit", "Edit Resume");
                             printf($format, $basepath . "/resume/view", "View Resume");
                             printf($format, $basepath . "/resume/email", "Email Resume");
