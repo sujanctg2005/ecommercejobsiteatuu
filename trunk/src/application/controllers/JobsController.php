@@ -28,8 +28,10 @@ class JobsController extends Zend_Controller_Action
         $jobid = $this->getRequest()->getParam('jobid');
 
         $tbl = new Application_Model_JobsList();
+
+        $this->view->jobdetail = $tbl->getJobDetail($jobid);
         // action body
-        print_r($tbl->getJobDetail($jobid));
+        //print_r($tbl->getJobDetail($jobid));
     }
 
 

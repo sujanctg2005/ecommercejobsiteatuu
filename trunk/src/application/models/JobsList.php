@@ -39,8 +39,11 @@ class Application_Model_JobsList
         $select->from(array('j'=>'tbl_job'))
                 ->join(
                         array('jc'=>'tbl_job_category'),
-                        'j.jobcategoryid=jc.jobcategoryid'
+                        'j.jobcategoryid=jc.jobcategoryid',
+                        array('Job Category :)'=>'JobCategory')
                        )
+                ->join(array('emp'=>'tbl_employer'),
+                        'j.employeerid = emp.userid')
                 ->where('jobid='.$jobid)
                 ->order('jobpostdate');
 

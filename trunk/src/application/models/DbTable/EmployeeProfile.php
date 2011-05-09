@@ -26,7 +26,5 @@ class Application_Model_DbTable_EmployeeProfile extends Zend_Db_Table_Abstract
         );
         $this->insert($data);
     }
-
-
 }
 

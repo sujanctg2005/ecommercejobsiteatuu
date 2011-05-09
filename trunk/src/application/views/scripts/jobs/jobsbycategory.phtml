@@ -1,0 +1,26 @@
+<br /><br />
+<div id="view-content">
+    <table>
+        <tr>
+            <td>Job Title</td>
+            <td>No of Vacancy</td>
+            <td>Application Deadline</td>
+        </tr>
+        <?php
+         $basepath = Zend_Controller_Front::getInstance()->getBaseUrl();
+        $format ="<tr>
+                    <td><a href='$basepath/jobs/jobdetail?jobid=%d'>%s</a></td>
+                    <td>%s</td>
+                    <td>%s</td>
+               </tr>";
+        if (count($this->jobslist) == 0)
+            echo 'Sorry no jobs in the selected category';
+        else {
+
+            foreach ($this->jobslist as $job) {
+                printf($format, $job->JobID, $job->JobTitle, $job->NoOfVacancy, $job->ApplicationDeadline );
+            }
+        }
+        ?>
+    </table>
+</div>
