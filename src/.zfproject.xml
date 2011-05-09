@@ -34,6 +34,7 @@
         <formFile formName="Login"/>
         <formFile formName="JobDetail"/>
         <formFile formName="EmployeeProfile"/>
+        <formFile formName="Applyjob"/>
       </formsDirectory>
       <layoutsDirectory enabled="false"/>
       <modelsDirectory>

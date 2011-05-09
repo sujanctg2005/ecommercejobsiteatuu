@@ -1,0 +1,39 @@
+
+
+<?php
+echo "
+                    	<table width='100%' border='0'>
+                	<tr>
+                    	<td width='25%' valign='top'>
+                        <table width='100%' border='0'>
+        ";
+                            $format = "<tr><td><a href='%s'>%s</a></td></tr>";
+                            $basepath = Zend_Controller_Front::getInstance()->getBaseUrl();
+
+                            printf($format, $basepath . "/profile/create", "Create Profile");
+                            printf($format, $basepath . "/resume/edit", "Edit Resume");
+                            printf($format, $basepath . "/resume/view", "View Resume");
+                            printf($format, $basepath . "/resume/email", "Email Resume");
+                            printf($format, $basepath . "/resume/delete", "Delete Resume");
+                            printf($format, $basepath . "/employer/block", "Block Employer");
+                            printf($format, $basepath . "/view/stats", "View Stats");
+                            printf($format, $basepath . "/notification/email", "Email Notification");
+                            printf($format, $basepath . "/change/password", "Change Password");
+
+                            echo "
+                        </table>
+                        </td>
+                        <td width='100%' valign='top'>
+                            <div id='content' class='toptable' align='justify'>
+                            ";
+
+                            echo '<h1>'. $this->escape($this->title) . '</h1>';
+
+                         // echo $this->layout()->content;
+
+                            echo '
+                        </div>
+                        </td>
+                    </tr>
+                </table>';
+?>

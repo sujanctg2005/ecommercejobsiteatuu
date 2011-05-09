@@ -3,75 +3,100 @@ $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
 $this->headTitle()->setSeparator(' - ');
 $this->headTitle('Lazy Job Portal');
 echo $this->doctype();
+
+
+$basepath = Zend_Controller_Front::getInstance()->getBaseUrl();
+
+function getLinks($controller, $action, $label) {
+    $link = gethref($controller, $action);
+    $format = "<a href='$link'>$label</a>";
+    return $format;
+}
+
+function gethref($controller, $action) {
+    $link = Zend_Controller_Front::getInstance()->getBaseUrl() . '/' .
+            $controller . '/' . $action;
+    return $link;
+}
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
-        <?php echo $this->headMeta(); ?>
-        <?php echo $this->headTitle(); ?>
-        <?php echo $this->headLink()->prependStylesheet($this->baseUrl() . '/css/jopPortalLook.css'); ?>
+<?php echo $this->headMeta(); ?>
+<?php echo $this->headTitle(); ?>
+<?php echo $this->headLink()->prependStylesheet($this->baseUrl() . '/css/jopPortalLook.css'); ?>
 
     </head>
     <body>
-        <table width="70%" border="1" align="center">
+        <table width="90%" border="1" align="center">
             <tr><td>
-                <?php
-        $basepath = $this->baseUrl();
-        echo "<p><a href ='" . $this->url(array('controller' => 'index',
-            'action' => 'index')) . "'>
+<?php
+$basepath = $this->baseUrl();
+echo "<p><a href ='" . $this->url(array('controller' => 'index',
+    'action' => 'index')) . "'>
         <img src= '$basepath/images/Lazy_Portal_Logo.jpg'/></a></p>";
-        ?>
-            </td></tr>
-            <tr><td>
-             	<table width="80%" border="0">
-                	<tr><td>
-                        <?php
-                        $basepath = $this->baseUrl();
-                        echo "<img src= '$basepath/images/mylazyjob.jpg'/>" ?>
-                        </td>
-                        <td> HOME | MY LAZY JOBS | COMPANIES OFFERING JOBS |  <a href="#" style="cursor:help">FAQ</a> | CONTACT</td></tr>
-                </table>
-            </td></tr>
-            <tr><td>
-            	<table width="100%" border="0">
-                	<tr>
-                    	<td width="25%" valign="top">
-                        <table width="100%" border="0">
-                        <?php
-                            $format = "<tr><td><a href='%s'>%s</a></td></tr>";
-                            $basepath = Zend_Controller_Front::getInstance()->getBaseUrl();
 
-                            printf($format, $basepath . "/profile/create", "Create Profile");
-                            printf($format, $basepath . "/resume/edit", "Edit Resume");
-                            printf($format, $basepath . "/resume/view", "View Resume");
-                            printf($format, $basepath . "/resume/email", "Email Resume");
-                            printf($format, $basepath . "/resume/delete", "Delete Resume");
-                            printf($format, $basepath . "/employer/block", "Block Employer");
-                            printf($format, $basepath . "/view/stats", "View Stats");
-                            printf($format, $basepath . "/notification/email", "Email Notification");
-                            printf($format, $basepath . "/change/password", "Change Password");
-                            ?>
-                        </table>
-                        </td>
-                        <td width="100%" valign="top">
-                            <div id="content" class="toptable" align="justify">
-                            <h1><?php echo $this->escape($this->title); ?></h1>
-                            <?php echo $this->layout()->content; ?>
-                        </div>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-        	<td>
-            	<table width="100%">
-                	<tr>
-                    	<td>last rows </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
 
-    </table>
-</body>
+        if(Zend_Auth::getInstance()->hasIdentity())
+        {
+            $val = Zend_Auth::getInstance()->getStorage()->read()->Username;
+              echo "<div align='right'>Welcome $val </div>";
+        }
+?>
+                </td></tr>
+            <tr><td>
+                    <table width="80%" border="0">
+                        <tr><td>
+<?php
+$basepath = $this->baseUrl();
+echo "<img src= '$basepath/images/mylazyjob.jpg'/>"
+?>
+                            </td>
+                            <td> HOME | MY LAZY JOBS | COMPANIES OFFERING JOBS |  <a href="#" style="cursor:help">FAQ</a> | CONTACT |
+                                <?php 
+                        $linkname = 'Login';
+                        if(Zend_Auth::getInstance()->hasIdentity())
+                        {
+                            $linkname = 'Logout';
+                        }
+                        echo getLinks('Authentication',$linkname,$linkname)
+
+                                ?>
+
+                            </td></tr>
+                    </table>
+                </td></tr>
+            <tr><td>
+                    <table width="100%" border="0">
+                        <tr>
+                            <td width="25%" valign="top">
+                                <?php
+if(Zend_Auth::getInstance()->hasIdentity())
+{
+    echo 'inshsdlkjf';
+    echo $this->partial('loginLink.phtml');
+}
+?>
+                            </td>
+                            <td width="100%" valign="top">
+                                <div id="content" class="toptable" align="justify">
+                                    <h1><?php echo $this->escape($this->title); ?></h1>
+<?php echo $this->layout()->content; ?>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table width="100%">
+                        <tr>
+                            <td>last rows </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+        </table>
+    </body>
 </html>

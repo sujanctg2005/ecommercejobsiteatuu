@@ -13,16 +13,18 @@ class AuthenticationController extends Zend_Controller_Action
 
     public function loginAction()
     {        
-//        if(Zend_Auth::getInstance()->hasIdentity())
-//        {
-//            $this->_redirect(array('controller'=>'index','action'=>'index'));
-//        }
+        if(Zend_Auth::getInstance()->hasIdentity())
+        {
+            $this->_redirect(array('controller'=>'index','action'=>'index'));
+        }
 
           $form = new Application_Form_Login();
 
           $form -> setAction($this->view->url(array('controller'=>'authentication','action'=>'login')));
 
           $form->setMethod('post');
+
+          $errors = '';
 
          if($this->getRequest()->isPost())
          {
@@ -53,11 +55,15 @@ class AuthenticationController extends Zend_Controller_Action
                      $authStorage->write($userInfo);
                      $this->_redirect(array('controller'=>'index','action'=>'index'));
                  }
+                 else
+                 {
+                      $this->view->errors = 'The username or password you entered is incorrect.';
+                 }
             }
 
             $form->setDefaults($data);
         }
-
+           
         $this->view->form = $form;
     }
 

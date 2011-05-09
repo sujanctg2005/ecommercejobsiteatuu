@@ -46,6 +46,12 @@ form #submitbutton {
     position: relative;
 }
 
+.jobheader
+{
+    background-color: #ff0000;
+
+}
+
 a:hover{
     color: #999999;
 }

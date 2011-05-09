@@ -5,7 +5,7 @@ class Application_Form_Login extends Zend_Form
 
     public function init()
     {
-
+        $usertype = $this->createElement('hidden', 'usertype');
         $username = $this->createElement('text', 'username');
         $username ->setLabel('Username:')
                 ->addValidator('alnum', true,
