@@ -4,7 +4,7 @@ class APP_Action_Helper_CustomActionHelper extends
 Zend_Controller_Action_Helper_Abstract {
 
     public function preDispatch() {
-        //$this->redirectIfNotAuthorized();
+        $this->redirectIfNotAuthorized();
     }
 
     public function redirectIfNotAuthorized()
@@ -71,29 +71,6 @@ Zend_Controller_Action_Helper_Abstract {
             $paginator->setCurrentPageNumber(1);
 
         return $paginator;
-    }
-
-    public static function getQueryProfileDump($str)
-    {
-        $dbAdapter = Zend_Db_Table::getDefaultAdapter();
-
-        $profiler = $dbAdapter->getProfiler();
-
-        $profiler->setEnabled(true);
-
-        $queryId = $profiler->queryStart($str);
-
-        $qp = $profiler->getQueryProfile($queryId);
-
-        if ($qp->hasEnded()) {
-        echo 'query ended';
-            $queryId = $profiler->queryClone($qp);
-        $qp = $profiler->getQueryProfile($queryId);
-        }
-        $qp->start($queryId);
-        $q = mysql_query($str);
-        $profiler->queryEnd($queryId);
-        var_dump($profiler->getQueryProfiles());
     }
 
     public static function getURL($controller, $action)
