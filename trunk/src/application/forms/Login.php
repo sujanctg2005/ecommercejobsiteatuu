@@ -31,7 +31,7 @@ class Application_Form_Login extends Zend_Form
              ->addElement($password)
              ->addElement($submit);
 
-        $this->addDisplayGroup(array($username, $password, $submit),'login1');
+        $this->addDisplayGroup(array($usertype, $username, $password, $submit),'login1');
 
         $login = $this->getDisplayGroup('login1');
 

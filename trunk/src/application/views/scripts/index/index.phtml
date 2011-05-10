@@ -3,11 +3,12 @@
             <tr>
                 <td>Search Jobs by Category</td>
             </tr>
-        <?php
-            $basepath = Zend_Controller_Front::getInstance()->getBaseUrl();
-            foreach($this->joblist as $job)
-            {
 
+        <?php
+        
+            $basepath = Zend_Controller_Front::getInstance()->getBaseUrl();
+            foreach($this->paginator as $job)
+            {
                 echo "<tr>";
                 echo "<td>";
                 echo "<a href='$basepath/jobs/jobsbycategory?jobcatid=".$job['jobcategoryid']
@@ -17,4 +18,7 @@
             }
         ?>
         </table>
+    <?php 
+    if($this->paginator->getTotalItemCount() > $this->paginator->getItemCountPerPage())
+        echo $this->paginationControl($this->paginator, 'Elastic', 'controls.phtml'); ?>
 </div>

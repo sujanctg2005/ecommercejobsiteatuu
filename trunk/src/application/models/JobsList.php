@@ -3,11 +3,16 @@
 class Application_Model_JobsList
 {
 
-    public function getJobsCountByCategory($top)
-    {
-        $dbtable = Zend_Db_Table::getDefaultAdapter();
+    protected $_table;
 
-        $select = $dbtable->select();
+    public function  __construct()
+    {
+        $this->_table = Zend_Db_Table::getDefaultAdapter();
+    }
+
+    public function getJobsCountByCategory()
+    {
+        $select = $this->_table->select();
 
         $select->from(array('j'=>'tbl_job'),null)
                 ->join(
@@ -17,24 +22,24 @@ class Application_Model_JobsList
                             'jobcount'=>'count(jc.jobcategoryid)')
                        )
                 ->group(array('jc.jobcategoryid', 'jc.jobcategory'))
-                ->order('jobcount')
-                ->limit($top);
+                ->order('jobcount');
 
-        return $dbtable->fetchAll($select);
+        return $this->_table->fetchAll($select);
     }
 
     public function getJobsForCategory($categoryid)
     {
-        $jobtable = new Application_Model_DbTable_Job();
-
-        return $jobtable->fetchAll('jobcategoryid='.$categoryid);
+        $query = $this->_table
+                ->select()
+                ->from('tbl_job')
+                ->where('jobcategoryid='.$categoryid);
+        return $this->_table->fetchAll($query);
     }
 
     public function getJobDetail($jobid)
     {
-        $dbtable = Zend_Db_Table::getDefaultAdapter();
 
-        $select = $dbtable->select();
+        $select = $this->_table->select();
 
         $select->from(array('j'=>'tbl_job'))
                 ->join(
@@ -47,8 +52,7 @@ class Application_Model_JobsList
                 ->where('jobid='.$jobid)
                 ->order('jobpostdate');
 
-
-        return $dbtable->fetchAll($select);
+        return $this->_table->fetchAll($select);
     }
 }
 
