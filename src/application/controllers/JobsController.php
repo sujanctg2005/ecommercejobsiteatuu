@@ -3,41 +3,29 @@
 class JobsController extends Zend_Controller_Action
 {
 
+    protected $_jobsLoader;
+
     public function init()
     {
         /* Initialize action controller here */
+        $this->_jobsLoader = new Application_Model_JobsList();
     }
 
     public function indexAction()
     {
-        $test = new Application_Model_JobsList();
-        $this->view->joblist = $test->getJobsCountByCategory(20);
+        $this->view->joblist = $this->_jobsLoader->getJobsCountByCategory();
     }
 
     public function jobsbycategoryAction()
     {
-        $jobcategoryid = $this->getRequest()->getParam('jobcatid');
-
-        $tbl = new Application_Model_JobsList();
-
-        $this->view->jobslist = $tbl->getJobsForCategory($jobcategoryid);
+        $this->view->jobslist = $this->_jobsLoader
+                ->getJobsForCategory($this->getRequest()->getParam('jobcatid'));
     }
 
     public function jobdetailAction()
     {
-        $jobid = $this->getRequest()->getParam('jobid');
-
-        $tbl = new Application_Model_JobsList();
-
-        $this->view->jobdetail = $tbl->getJobDetail($jobid);
-        // action body
-        //print_r($tbl->getJobDetail($jobid));
+        $this->view->jobdetail = $this->_jobsLoader
+                ->getJobDetail($this->getRequest()->getParam('jobid'));
     }
 
-
 }
-
-
-
-
-

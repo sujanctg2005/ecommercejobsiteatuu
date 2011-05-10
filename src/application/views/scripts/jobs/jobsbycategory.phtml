@@ -18,7 +18,8 @@
         else {
 
             foreach ($this->jobslist as $job) {
-                printf($format, $job->JobID, $job->JobTitle, $job->NoOfVacancy, $job->ApplicationDeadline );
+                //var_dump($job);
+                printf($format, $job['JobID'], $job['JobTitle'], $job['NoOfVacancy'], $job['ApplicationDeadline'] );
             }
         }
         ?>
