@@ -32,8 +32,7 @@ function gethref($controller, $action) {
             <tr><td>
 <?php
 $basepath = $this->baseUrl();
-echo "<p><a href ='" . $this->url(array('controller' => 'index',
-    'action' => 'index')) . "'>
+echo "<p><a href ='".Zend_Controller_Front::getInstance()->getBaseUrl()."'>
         <img src= '$basepath/images/Lazy_Portal_Logo.jpg'/></a></p>";
 
         if(Zend_Auth::getInstance()->hasIdentity())
