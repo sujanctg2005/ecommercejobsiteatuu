@@ -3,6 +3,7 @@
 class APP_Action_Helper_CustomActionHelper extends
 Zend_Controller_Action_Helper_Abstract {
 
+
     public function preDispatch() {
         $this->redirectIfNotAuthorized();
     }
@@ -19,7 +20,7 @@ Zend_Controller_Action_Helper_Abstract {
             if($controller !='index' && $action != 'index')
             {
                 $redirector = Zend_Controller_Action_HelperBroker::getStaticHelper('Redirector');
-                $redirector->gotoUrl('/');
+                $redirector->gotoUrl('/error/showauthorizationerror/');
             }
         }
     }
