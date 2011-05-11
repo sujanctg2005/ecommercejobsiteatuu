@@ -33,6 +33,8 @@ class Application_Model_JobsList
                 ->select()
                 ->from('tbl_job')
                 ->where('jobcategoryid='.$categoryid);
+
+        //APP_Action_Helper_CustomActionHelper::getQueryProfileDump($query);
         return $this->_table->fetchAll($query);
     }
 
@@ -53,6 +55,16 @@ class Application_Model_JobsList
                 ->order('jobpostdate');
 
         return $this->_table->fetchAll($select);
+    }
+
+    public function getCategoryName($jobCategoryID)
+    {
+        $select = $this->_table->select();
+
+        $select->from(array('jc'=>'tbl_job_category'), 'JobCategory')
+                ->where('jc.jobcategoryid ='.$jobCategoryID);
+
+        return $this->_table->fetchOne($select);
     }
 }
 

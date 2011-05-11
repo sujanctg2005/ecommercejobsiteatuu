@@ -15,20 +15,9 @@ class IndexController extends Zend_Controller_Action
     {
         $test = new Application_Model_JobsList();
 
-        $jobCategories = $test->getJobsCountByCategory();
-
-        $this->view->joblist = $test->getJobsCountByCategory();
-
-        $pagenumber = $currentpage = $this->getRequest()->getParam('page');
-
-        $paginator = Zend_Paginator::factory($jobCategories);
-        
-        if($pagenumber > 0)
-            $paginator->setCurrentPageNumber($pagenumber);
-        else
-            $paginator->setCurrentPageNumber(1);
-
-        $this->view->paginator = $paginator;
+        $this->view->paginator = APP_Action_Helper_CustomActionHelper::
+                getPaginationControl($test->getJobsCountByCategory(),
+                        $this->getRequest()->getParam('page'));
     }
 
     public function addAction()

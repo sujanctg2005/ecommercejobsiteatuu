@@ -18,8 +18,19 @@ class JobsController extends Zend_Controller_Action
 
     public function jobsbycategoryAction()
     {
-        $this->view->jobslist = $this->_jobsLoader
-                ->getJobsForCategory($this->getRequest()->getParam('jobcatid'));
+        try
+        {
+        $jobcategoryid = $this->getRequest()->getParam('jobcatid');
+
+        $data = $this->_jobsLoader
+                ->getJobsForCategory($jobcategoryid);
+
+        $this->view->paginator = APP_Action_Helper_CustomActionHelper::
+                getPaginationControl($data,
+                        $this->getRequest()->getParam('page'));
+        }
+        catch(Exception $e)
+        {}
     }
 
     public function jobdetailAction()

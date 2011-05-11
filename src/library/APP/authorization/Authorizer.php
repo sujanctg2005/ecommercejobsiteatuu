@@ -8,7 +8,7 @@ class APP_Authorization_Authorizer {
 
     private static function getInstance()
     {
-        if(null == self::$_acl)
+        if(self::$_acl == null)
         {
             self::$_acl = self::getPrivilegesLoadedACL();
         }

@@ -10,9 +10,11 @@ Zend_Controller_Action_Helper_Abstract {
     public function redirectIfNotAuthorized()
     {
         $req = $this->getRequest();
+        $controller = $req->getControllerName();
+        $action = $req->getActionName();
         if (!$this->authorizeAccess($this->getRole(), 
-                $req->getControllerName(),
-                $req->getActionName()))
+                $controller,
+                $action))
         {
             if($controller !='index' && $action != 'index')
             {
@@ -58,7 +60,6 @@ Zend_Controller_Action_Helper_Abstract {
             default:
                 return APP_Authorization_Roles::GUEST;
         }
-
     }
 
     public static function getPaginationControl($data, $currentPage)
@@ -81,6 +82,11 @@ Zend_Controller_Action_Helper_Abstract {
     public static function getControllerBaseURL()
     {
         return Zend_Controller_Front::getInstance()->getBaseUrl();
+    }
+
+    public function getRequests()
+    {
+        return $_SERVER['REQUEST_URI'];
     }
 }
 
