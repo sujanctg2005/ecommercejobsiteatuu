@@ -9,19 +9,24 @@
         <?php
          $basepath = Zend_Controller_Front::getInstance()->getBaseUrl();
         $format ="<tr>
-                    <td><a href='$basepath/jobs/jobdetail?jobid=%d'>%s</a></td>
+                    <td><a href='$basepath/jobs/jobdetail/jobid/%d'>%s</a></td>
                     <td>%s</td>
                     <td>%s</td>
                </tr>";
-        if (count($this->jobslist) == 0)
+        if (count($this->paginator) == 0)
             echo 'Sorry no jobs in the selected category';
         else {
 
-            foreach ($this->jobslist as $job) {
+            foreach ($this->paginator as $job) {
                 //var_dump($job);
                 printf($format, $job['JobID'], $job['JobTitle'], $job['NoOfVacancy'], $job['ApplicationDeadline'] );
             }
         }
         ?>
+        <tr><td>
+            <?php
+    if($this->paginator->getTotalItemCount() > $this->paginator->getItemCountPerPage())
+        echo $this->paginationControl($this->paginator, 'Elastic', 'controls.phtml', array('first'=>'hoem')); ?>
+            </td></tr>
     </table>
 </div>
