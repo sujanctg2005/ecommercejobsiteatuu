@@ -2,7 +2,7 @@
 
 <title>Employer Home </title>
 
-<?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/EmployerCSS.css'); ?>
+<?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/EmployerCSS.css'); ?>
 </head>
 <body id="sys_background">
 		<div id="outer">
@@ -16,31 +16,31 @@
 
 
 
-													<li class="first"><a href=<?=$this->escape($this->home)?> title="Home">Home</a></li>
-                                                    	<li><a href=<?=$this->escape($this->postjob)?> title="Post Job">Post Job</a></li>
+													<li class="first"><a href=<?php $this->escape($this->home)?> title="Home">Home</a></li>
+                                                    	<li><a href='<?php $this->escape($this->postjob)?>' title="Post Job">Post Job</a></li>
 
-                                                        <li><a href=<?=$this->escape($this->searchcv)?> title="Search Cv">Search CV</a></li>
-
-
-													<li><a href=<?=$this->escape($this->servicecharge)?> title="Service Charge">Service charge</a></li>
+                                                        <li><a href='<?php $this->escape($this->searchcv)?>' title="Search Cv">Search CV</a></li>
 
 
-
-
-
-													<li><a href=<?=$this->escape($this->contact)?> title="Menu">Service Benifits</a></li>
+													<li><a href=<?php $this->escape($this->servicecharge)?> title="Service Charge">Service charge</a></li>
 
 
 
 
 
-													<li><a href=<?=$this->escape($this->contact)?> title="Contacts">Contacts</a></li>
+													<li><a href=<?php $this->escape($this->contact)?> title="Menu">Service Benifits</a></li>
 
 
 
 
 
-													<li><a href=<?=$this->escape($this->contact)?> title="Other">Other</a></li>
+													<li><a href=<?php $this->escape($this->contact)?> title="Contacts">Contacts</a></li>
+
+
+
+
+
+													<li><a href=<?php $this->escape($this->contact)?> title="Other">Other</a></li>
 
 
 
@@ -70,7 +70,7 @@
         <tr>
           <td rowspan="5" align="center" valign="top"> 
             <!--### Form table start ###-->
-            <FORM name="frmDefault" id="frmDefault" method="post" action= <?=$this->escape($this->login)?> > <!--https://bdjobs.sslcert11.com/corporate/corporate_submit.asp-->
+            <FORM name="frmDefault" id="frmDefault" method="post" action= <?php $this->escape($this->login)?> > <!--https://bdjobs.sslcert11.com/corporate/corporate_submit.asp-->
 
               <table width="90%" border="0" cellspacing="0" cellpadding="0" id="tblSet2">
                 <tr> 
@@ -115,7 +115,7 @@
                     </table>
                     <img src="images/pix_gray.gif" width="100%" height="1" vspace="5"><br> 
                     <br> <div align="center"> 
-                      <span> <a href= <?=$this->escape($this->create)?>>Create New Account</a></span>
+                      <span> <a href= <?php $this->escape($this->create)?>>Create New Account</a></span>
                       <br>
                       <span class="BDJTopMenuDivider">If you have not already 
                       created an account</span></div>
