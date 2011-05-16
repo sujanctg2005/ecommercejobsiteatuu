@@ -1,6 +1,11 @@
 <br /><br />
 <div id="view-content">
-	<?php
+<script langauge ="javascript">
+    $(function() {
+		$("#DateOfBirth" ).datepicker();
+	});
+    </script>
+<?php
             $this->title ="Add Employee Info";
             $this->headTitle($this->title);
             echo $this->form;

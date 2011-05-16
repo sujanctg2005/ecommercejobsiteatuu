@@ -27,7 +27,7 @@ td {
 
 /* style form */
 form dt {
-    width: 100px;
+    width: 150px;
     display: block;
     float: left;
     clear: left;
@@ -37,8 +37,10 @@ form dd {
     float: left;
 
 }
-form #submitbutton {
+form Submit {
+    margin-top: 50px;
     margin-left: 100px;
+    position: relative;
 }
 
 .toptable {

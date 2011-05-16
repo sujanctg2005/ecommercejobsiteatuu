@@ -11,7 +11,7 @@ class Application_Form_Login extends Zend_Form
                 ->addValidator('alnum', true,
                 array('messages'=>
                     array(Zend_validate_alnum::NOT_ALNUM => 'The username contains non alphanumeric character.')))
-                ->addValidator('regex', true, array('/^[a-z]+/',
+                ->addValidator('regex', true, array('/^[A-Za-z]+/',
                     'messages'=>array(Zend_Validate_Regex::NOT_MATCH => 'The username should start with alphabet.')
                     ))
                 ->addValidator('stringLength', true, array('min'=>6,'max'=>20,

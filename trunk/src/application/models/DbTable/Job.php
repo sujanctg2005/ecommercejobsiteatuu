@@ -3,8 +3,6 @@
 class Application_Model_DbTable_Job extends Zend_Db_Table_Abstract
 {
 
-    protected $_name = 'tbl_job';
-
-    
+    protected $_name = 'tbl_job';    
 }
 
