@@ -36,30 +36,5 @@ class Application_Model_DbTable_UserInfo extends Zend_Db_Table_Abstract
         return $_username;
     }
 
-    public function setUserName($username)
-    {
-        return $_username = $username;
-    }
-
-     public function getUserName()
-    {
-        return $_username;
-    }
-
-    public function setUserName($username)
-    {
-        return $_username = $username;
-    }
-
-     public function getUserName()
-    {
-        return $_username;
-    }
-
-    public function setUserName($username)
-    {
-        return $_username = $username;
-    }
-
 }
 
