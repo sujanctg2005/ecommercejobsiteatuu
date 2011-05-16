@@ -1,0 +1,388 @@
+
+
+<?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/EmployerCSS.css'); ?>
+
+<title>Employer Home </title>
+
+
+	</head>
+	<body id="sys_background">
+		<div id="outer">
+			<div id="sys_banner" >
+
+
+				<h1><a id="sys_heading" href="./">Employer Home</a></h1>
+			</div>
+			<div id="menu">
+				<ul class='sys_navigation'>
+
+
+
+													<li class="first"><a href=<?=$this->escape($this->home)?> title="Home">Home</a></li>
+                                                    	<li><a href=<?=$this->escape($this->postjob)?> title="Post Job">Post Job</a></li>
+
+                                                        <li><a href=<?=$this->escape($this->searchcv)?> title="Search Cv">Search CV</a></li>
+
+
+													<li><a href=<?=$this->escape($this->servicecharge)?> title="Service Charge">Service charge</a></li>
+
+
+
+
+
+													<li><a href=<?=$this->escape($this->contact)?> title="Menu">Service Benifits</a></li>
+
+
+
+
+
+													<li><a href=<?=$this->escape($this->contact)?> title="Contacts">Contacts</a></li>
+
+
+
+
+
+													<li><a href=<?=$this->escape($this->contact)?> title="Other">Other</a></li>
+
+
+
+
+
+													
+
+
+
+
+
+
+
+
+
+
+									</ul>
+			</div>
+			<div id="content">
+				    <div style="width: 100%; padding: 0px; margin: 0px" class="layout_1-column">
+
+        <div id="layout_row1">
+        
+       	
+<table width="90%" border="0" align="center" cellpadding="0" cellspacing="0" class="BDJPageBorder">
+  	<tr>
+    <td style="padding-left:34px; padding-right:34px; padding-top:34px;" align="center">
+	<!--######################################################################################-->
+	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+		<tr>
+		<td colspan="2" style="padding-bottom:20px;">
+		<div align="center" style="width:90%" class="BDJFormTitle">SERVICES FOR EMPLOYERS </div>		
+		</td>
+ <? $datas = $this->service;?> 
+              
+		</tr>
+		
+		<tr>
+		<td height="400" align="center" valign="top" style="width:50%">
+		<table width="90%" border="0" cellspacing="0" cellpadding="0" id="tblSet1">
+        	<tr> 
+            <td class="headLeft">&nbsp;</td>
+            <td class="head">&nbsp;&nbsp;<a name="1"></a>Online Job Posting/Announcement</td>
+            <td class="headRight">&nbsp;</td>
+            </tr>
+
+            
+			<tr class="body"> 
+            <td class="bodyLeft">&nbsp;</td>
+            <td style="height:210px; padding-top:20px;" valign="top">
+			<div>
+			The announced/posted job vacancies will be displayed (for max. 30 days) in a particular job category (chosen by the employer at the time of job posting) at www.bdjobs.com
+				<UL>
+                	<LI>This will allow Job Seekers to apply online for the given job vacancy at bdjobs.com's site.</LI>
+					<LI>Employers will be able to receive job applications through internet.</LI>
+                    <LI>Registered Employer will be given a <strong>customized inbox</strong> at bdjobs.com's site from where the employer will be able to exclusively <strong>view, scrutinize and print</strong> applications and resumes directed to given vacancy post.</LI>
+
+                </UL>
+			</div>
+			<div style="padding-top:10px;">
+			<STRONG><U>10 times Cheaper</U></STRONG>
+
+			<BR/>
+			It is at least 10 times less costly than newspaper job advertisement.			
+			</div>
+			<div style="padding-top:10px; padding-bottom:5px; height:65px;">
+			  <p>
+			    			   			
+		
+
+			  <!--<p align="right"><font color='#009933' face='Verdana' size='1'><BLINK>New Pricing will be effective from october 01, 2010</BLINK></font></p>-->
+			</div>			
+			</td>
+            <td class="bodyRight">&nbsp;</td>
+            </tr>
+            
+			<tr class="body"> 
+            <td class="bodyLeft">&nbsp;</td>
+            <td align="center">
+			<table border="0" width="100%" cellpadding="0" cellspacing="0">
+				<tr>
+
+				<td style="width:50%; text-align:center; ">
+				<font class="BDJNoticeVerdana11Red">
+				<?=$datas[0]->getServiceFee()?> kr for each job position <br>  
+                              
+				<!--&amp; Tk.  for each subsequent job-->
+				</font>
+				
+               	</td>
+
+				
+				<td style="width:20%; text-align:center">
+				<a href="<?=$this->seervicpayment?>/id/<?=$datas[0]->getServiceId()?>">
+				<strong>Pay Now</strong>
+				</a>				
+				</td>
+				</tr>
+			</table>
+			</td>
+            <td class="bodyRight">&nbsp;</td>
+
+            </tr>
+			
+            <tr> 
+            <td class="footerLeft"><img src="images/pix.gif" width="6" height="5" /></td>
+            <td class="footerMiddle"><img src="images/pix.gif" width="1" height="1"></td>
+            <td class="footerRight"><img src="images/pix.gif" width="6" height="5" /></td>
+            </tr>
+        </table>		
+		</td>
+		
+		<td align="center" valign="top" style="width:50%">
+		<table width="90%" border="0" cellspacing="0" cellpadding="0" id="tblSet1" >
+
+        	<tr> 
+            <td class="headLeft">&nbsp;</td>
+            <td class="head">&nbsp;&nbsp;<a name="2"></a>Hot Job Announcement</td>
+            <td class="headRight">&nbsp;</td>
+            </tr>
+            
+			<tr class="body"> 
+            <td class="bodyLeft">&nbsp;</td>
+            <td style="height:210px; padding-top:20px;" valign="top">
+			<div>
+
+			<STRONG><U>Home page link for your job announcement</U></STRONG>
+			<BR/>
+			Vacancy announcement for your organization is featured at the Hot Jobs section at portalJobshome page/front page. Here organization logo and the list of jobs are placed with links with a customized job detail page.
+			Maximum display time at home page: 10 days
+			</div>
+			<div style="padding-top:10px;">	
+			<STRONG><U>Customized Job Detail Page</U></STRONG>
+			<BR/>
+			The Job Detail Page (linked with home page) can contain requirements, job responsibilities, a brief company profile, organization logo.
+			</div>
+
+			
+			</td>
+            <td class="bodyRight">&nbsp;</td>
+            </tr>
+            
+			<tr class="body"> 
+            <td class="bodyLeft">&nbsp;</td>
+            <td align="center">
+			<table border="0" width="100%" cellpadding="0" cellspacing="0">
+
+				<tr>
+				<td style="width:60%; text-align:left">				
+				<!--For each job position : Tk. -->
+                <font class="BDJNoticeVerdana11Red"><?=$datas[1]->getServiceFee()?> KR for each Job Position : </font>
+                       				
+				
+             
+				</td>
+				
+				<td style="width:10%; text-align:center">
+			<a href="<?=$this->seervicpayment?>/id/<?=$datas[1]->getServiceId()?>">
+				<strong>Pay Now</strong>
+
+				</a>				
+				</td>
+				</tr>
+			</table>
+			</td>
+            <td class="bodyRight">&nbsp;</td>
+            </tr>
+			
+            <tr> 
+            <td class="footerLeft"><img src="images/pix.gif" width="6" height="5" /></td>
+            <td class="footerMiddle"><img src="images/pix.gif" width="1" height="1"></td>
+
+            <td class="footerRight"><img src="images/pix.gif" width="6" height="5" /></td>
+            </tr>
+        </table>								
+		</td>
+		</tr>
+
+		<tr style="padding-top:20px;">
+		
+		
+		<td align="center" valign="top">
+		
+		<table width="90%" border="0" cellspacing="0" cellpadding="0" id="tblSet1" >
+        	<tr> 
+            <td class="headLeft">&nbsp;</td>
+            <td class="head">&nbsp;<a name="3"></a>Online CV Bank Access</td>
+
+            <td class="headRight">&nbsp;</td>
+            </tr>
+            
+			<tr class="body"> 
+            <td class="bodyLeft">&nbsp;</td>
+            <td style="height:210px; padding-top:20px;" valign="top">
+			<div>
+			Online CV Bank Access gives you instant direct access to the largest database of professionals in Bangladesh.			
+			</div>
+			<div style="padding-top:10px; height:295px">	
+			<UL>
+
+				<LI>No Intermediary to Contact Candidates</LI>
+				<LI>You can directly contact the prospective candidates who meet your job requirements.</LI>
+				<LI>Search for the right candidates by Professional group, Age group, years of experience, Educational or Professional qualification, Specific job sector/industry, Special skills or open 'key words'</LI>
+			</UL>
+            		 
+			</div>
+			</td>
+            <td class="bodyRight">&nbsp;</td>
+
+            </tr>
+            
+			<tr class="body"> 
+            <td class="bodyLeft">&nbsp;</td>
+            <td align="center">
+			<table border="0" width="100%" cellpadding="0" cellspacing="0">
+				<tr>
+				<td style="width:50%; text-align:center">
+				<font class="BDJNoticeVerdana11Red">
+				<?=$datas[2]->getServiceFee()?> Kr for one year
+				</font>
+
+				
+                
+                </td>
+				
+				<td style="width:20%; text-align:center">
+				<a href="<?=$this->seervicpayment?>/id/<?=$datas[2]->getServiceId()?>">
+				<strong>Pay Now</strong>
+
+				</a>				
+				</td>
+				</tr>
+			</table>
+			</td>
+            <td class="bodyRight">&nbsp;</td>
+            </tr>
+			
+            <tr> 
+            <td class="footerLeft"><img src="images/pix.gif" width="6" height="5" /></td>
+            <td class="footerMiddle"><img src="images/pix.gif" width="1" height="1"></td>
+
+            <td class="footerRight"><img src="images/pix.gif" width="6" height="5" /></td>
+            </tr>
+        </table>						
+		</td>
+		<td align="center" valign="top">
+	   <table width="90%" border="0" cellspacing="0" cellpadding="0" id="tblSet1" >
+        	<tr> 
+            <td class="headLeft">&nbsp;</td>
+
+            <td class="head">&nbsp;<a name="5"></a>Executive Search Service</td>
+            <td class="headRight">&nbsp;</td>
+            </tr>
+            
+			<tr class="body"> 
+            <td class="bodyLeft">&nbsp;</td>
+            <td style="height:210px; padding-top:20px;" valign="top">
+			<div>
+			The recruitment related tasks (job announcement, application receiving, candidate short-listing and contact, interview, etc) makes the recruitment and selection process very lengthy for organizations with a small HR Department. 		
+			</div>
+
+			<div style="padding-top:10px;">
+			Let portalJobstake the responsiblity of doing the tiresome recruitment tasks on behalf of you. We can locate for you the best talents in the market. With the largest active network across the job market (more than 3,10,000 Cvs hosted online) and a panel of recruitment experts, portalJobsoffers the best professional <strong>Executive Search</strong> service in the market.			</div>
+			<div style="padding-top:10px;">	
+			<UL>
+				<LI>We define candidate profile according to your need.</LI>
+				<LI>We advertise at portalJobs& Receive applications.</LI>
+
+				<LI>We search from Online CV Bank & contact candidates. </LI>
+				<LI>We short-list from the prospective candidates.</LI>
+				<LI>We take interview & written test.</LI>
+				<LI>We select best 3-10 candidates for final selection. </LI>
+			</UL>			 
+			</div>
+
+			</td>
+            <td class="bodyRight">&nbsp;</td>
+            </tr>
+            
+			<tr class="body"> 
+            <td class="bodyLeft">&nbsp;</td>
+            <td align="center">
+			<table border="0" width="100%" cellpadding="0" cellspacing="0">
+				<tr>
+				<td style="width:50%; text-align:center">
+
+				<font class="BDJNoticeVerdana11Red">
+				<?=$datas[3]->getServiceFee()?>
+				</font>				
+				</td>
+				
+				<td style="width:20%; text-align:center">
+			<a href="<?=$this->seervicpayment?>/id/<?=$datas[3]->getServiceId()?>">
+			<strong>Pay Now</strong>
+				</a>				
+				</td>
+				</tr>
+
+			</table>
+			</td>
+            <td class="bodyRight">&nbsp;</td>
+            </tr>
+			
+            <tr> 
+            <td class="footerLeft"><img src="images/pix.gif" width="6" height="5" /></td>
+            <td class="footerMiddle"><img src="images/pix.gif" width="1" height="1"></td>
+            <td class="footerRight"><img src="images/pix.gif" width="6" height="5" /></td>
+            </tr>
+
+        </table>		
+		</td>
+		</tr>
+
+			
+	</table>	 
+	</td>
+  	</tr>
+  	
+	<tr>
+    <td height="50" align="center" valign="bottom" class="BDJCopyright"></td>
+  	</tr>
+</table>
+   
+       
+        
+     
+            
+            
+            
+        </div>
+        
+        
+    </div>
+			</div>
+            <div id="footer-wrap">
+			<div id='sys_footer' class='sys_footer'>Designed by <a href='http://www.freecsstemplates.org' target='_blank'>Free CSS Templates</a></div>
+
+
+
+
+            </div>
+        </div>
+    </body>

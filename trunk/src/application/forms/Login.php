@@ -20,6 +20,7 @@ class Application_Form_Login extends Zend_Form
                     ))
                 ->addFilter('stripTags');
 
+
         $password = $this->createElement('password', 'password');
         $password->setLabel('Password:')
                 ->addValidator('stringLength',false,array('min'=>6))
