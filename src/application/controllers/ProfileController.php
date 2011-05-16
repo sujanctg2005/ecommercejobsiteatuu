@@ -41,6 +41,7 @@ class ProfileController extends Zend_Controller_Action {
                 $ImagePath = 'image';//$form->getValue('ImagePath');
                 $upload = new Zend_File_Transfer_Adapter_Http();
                 $upload->setDestination("E:/Test/");
+
                 
                 try {
                     $upload->receive();
