@@ -2,8 +2,8 @@
 <div id="view-content">
 
     <?php
-        echo '<form method="post" action=""><table>';
-       $format = "<tr class='jobheader'><td>%s</td></tr><tr><td class='jobvalue'>%s</td></tr>";
+        echo '<form method="post" action=""><table border="1">';
+       $format = "<tr class='jobheader'><td>%s:</td><td class='jobvalue'>%s</td></tr>";
 
        foreach($this->jobdetail as $kjob => $vjob)
        {
