@@ -13,6 +13,8 @@ class IndexController extends Zend_Controller_Action
 
     public function indexAction()
     {
+        
+
         $test = new Application_Model_JobsList();
 
         $this->view->paginator = APP_Action_Helper_CustomActionHelper::

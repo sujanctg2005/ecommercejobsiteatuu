@@ -4,6 +4,37 @@ class Application_Form_EmployeeProfileForm extends Zend_Form {
 
     public function init() {
         $this->setName("EmployeeProfile");
+        $this->setAction("");
+        $this->setAttrib('enctype','multipart/form-data');
+
+        $Username = new Zend_Form_Element_Text('Username');
+        $Username->setLabel('Username:')
+                ->setRequired(true)
+                ->addFilter('StripTags')
+                ->addFilter('StringTrim')
+                ->addValidator('alnum',true, array('messages'=>
+                    array(Zend_validate_alnum::NOT_ALNUM => 'The username contains non alphanumeric character.')))
+                ->addValidator('regex', true, array('/^[A-Za-z]+/',
+                    'messages'=>array(Zend_Validate_Regex::NOT_MATCH => 'The username should start with alphabet.')
+                    ))
+                ->addValidator('stringLength', true, array('min'=>6,'max'=>20,
+                    'messages'=>array(Zend_Validate_StringLength::TOO_LONG => 'The username cannot be more than 20 characters.',
+                                Zend_Validate_StringLength::TOO_SHORT => 'The username should be atleast 6 characters long.')
+                    ));
+
+        $Password = new Zend_Form_Element_Password('Password');
+        $Password->setLabel('Password:')
+                ->setRequired(true)
+                ->addFilter('StripTags')
+                ->addFilter('StringTrim')
+                ->addValidator('NotEmpty');
+
+        $Repassword = new Zend_Form_Element_Password('Repassword');
+        $Repassword->setLabel('Re-password:')
+                ->setRequired(true)
+                ->addFilter('StripTags')
+                ->addFilter('StringTrim')
+                ->addValidator('stringLength',false,array('min'=>6));
 
         $UserID = new Zend_Form_Element_Hidden("UserID");
         $UserID->addFilter('Int');
@@ -22,19 +53,22 @@ class Application_Form_EmployeeProfileForm extends Zend_Form {
                 ->addFilter('StringTrim')
                 ->addValidator('NotEmpty');
 
-        $Gender = new Zend_Form_Element_Text('Gender');
+        
+        $Gender = new Zend_Form_Element_Select('Gender');
         $Gender->setLabel('Gender:')
                 ->setRequired(true)
                 ->addFilter('StripTags')
                 ->addFilter('StringTrim')
-                ->addValidator('NotEmpty');
+                ->setMultiOptions(array('Male','Female'));
+        
 
-        $MaritialStatus = new Zend_Form_Element_Text('MaritialStatus');
+        $MaritialStatus = new Zend_Form_Element_Select('MaritialStatus');
         $MaritialStatus->setLabel('Maritial Status:')
                 ->setRequired(true)
                 ->addFilter('StripTags')
                 ->addFilter('StringTrim')
-                ->addValidator('NotEmpty');
+                ->addValidator('NotEmpty')
+                ->setMultiOptions(array('Single', 'Married'));
 
         $Nationality = new Zend_Form_Element_Text('Nationality');
         $Nationality->setLabel('Nationality:')
@@ -94,17 +128,20 @@ class Application_Form_EmployeeProfileForm extends Zend_Form {
                 ->addFilter('StripTags')
                 ->addFilter('StringTrim');
 
-        $ImagePath = new Zend_Form_Element_Text('ImagePath');
-        $ImagePath->setLabel('Photo:')
+        $ImagePath = new Zend_Form_Element_File('ImagePath');
+        $ImagePath->setLabel('Image:')
                 ->setRequired(true)
                 ->addFilter('StripTags')
                 ->addFilter('StringTrim')
-                ->addValidator('NotEmpty');
+                ->setMaxFileSize(1024000)
+                ->addValidator('Count',false,1)
+                ->addValidator('Size',false,1024000)
+                ->addValidator('Extension',false,'jpeg,jpg,png,gif');
 
         $Submit = new Zend_Form_Element_Submit('Submit');
         $Submit->setAttrib('UserID', 'submitbutton');
 
-        $this->addElements(array($Name, $DOB, $Gender, $MaritialStatus, $Nationality, $Religion, $CurrentAddress, $PermanentAddress, $HomePhone, $Mobile, $OfficePhone, $Email, $AlternativeEmail, $ImagePath, $Submit));
+        $this->addElements(array($Username, $Password, $Repassword, $Name, $DOB, $Gender, $MaritialStatus, $Nationality, $Religion, $CurrentAddress, $PermanentAddress, $HomePhone, $Mobile, $OfficePhone, $Email, $AlternativeEmail, $ImagePath, $Submit));
     }
 
 }

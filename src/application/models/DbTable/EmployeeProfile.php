@@ -2,23 +2,27 @@
 
 class Application_Model_DbTable_EmployeeProfile extends Zend_Db_Table_Abstract {
 
-    protected $_name = 'tbl_employee';
+    public function addEmployee($Username, $Password, $Name, $DOB, $Gender, $MaritialStatus, $Nationality, $Religion, $CurrentAddress, $PermanentAddress, $HomePhone, $Mobile, $OfficePhone, $Email, $AlternativeEmail, $ImagePath) {
+        $table = Zend_Db_Table_Abstract::getDefaultAdapter();
+        $table->beginTransaction();
 
-    public function addEmployee($Name, $DOB, $Gender, $MaritialStatus, $Nationality, $Religion, $CurrentAddress, $PermanentAddress, $HomePhone, $Mobile, $OfficePhone, $Email, $AlternativeEmail, $ImagePath) {
-
-        $validator = new Zend_Validate_EmailAddress();
-
-        if ($validator->isValid($Email)) {
-            // email appears to be valid
-        } else {
-            // email is invalid; print the reasons
-            foreach ($validator->getMessages() as $messageId => $message) {
-                echo "Validation failure '$messageId': $message\n";
-            }
-        }
-        $data = array(
+        $CurDate = $table->fetchOne('select curdate()');
+        $employeeLoginInfo = array(
+            'Username' => $Username,
+            'Password' => $Password,
+            'UserType' => 'Employee',
+            'CreatedOn' => $CurDate,
+            'LastUpdatedOn' => $CurDate
+        );
+        
+        $table->insert('tbl_user_info',$employeeLoginInfo);
+        $UserID = $table->fetchOne('select last_insert_id()');
+        $modifiedDOB = new Zend_Db_Expr("str_to_date('$DOB','%m/%d/%Y')");
+        
+        $employeeInfo = array(
+            'UserID' => $UserID,
             'Name' => $Name,
-            'DateOfBirth' => $DOB,
+            'DateOfBirth' => $modifiedDOB,
             'Gender' => $Gender,
             'MaritialStatus' => $MaritialStatus,
             'Nationality' => $Nationality,
@@ -32,8 +36,8 @@ class Application_Model_DbTable_EmployeeProfile extends Zend_Db_Table_Abstract {
             'AlternativeEmail' => $AlternativeEmail,
             'ImagePath' => $ImagePath
         );
-        $this->insert($data);
+        $table->insert('tbl_employee',$employeeInfo);
+        $table->commit();
     }
-
 }
 
