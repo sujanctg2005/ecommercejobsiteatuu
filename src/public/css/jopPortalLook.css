@@ -4,7 +4,8 @@ body,html {
 }
 h1 {
     font-size: 1.4em;
-    color: #ff0000;
+    color: maroon;
+    text-decoration: underline;
 }
 a {
     color: #000000;
@@ -43,12 +44,6 @@ form Submit {
     position: relative;
 }
 
-.jobheader
-{
-    background-color: #ff0000;
-
-}
-
 a:hover{
     color: #999999;    
     top: 2px;
@@ -68,15 +63,21 @@ table,th, td
 border: 0px solid black;
 }
 
-.resumeheader{
+.header{
     text-align: left;
     background-color: chocolate;
     color: white;
     right: 1px;
 }
 
-.resumevalue{
+.value{
     text-align: left;
     background-color: skyblue;
     color: black;
+}
+
+.lastline{
+    text-align: center;
+    font-size: 10px;
+    color: silver;
 }
