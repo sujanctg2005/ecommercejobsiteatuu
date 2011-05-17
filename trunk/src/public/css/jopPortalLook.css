@@ -14,15 +14,11 @@ a {
 
 /* Table */
 th {
-    text-align: left;
+    text-align: right;
 }
 td, th {
     padding-right: 5px;
     font-size: 12px;
-}
-
-td {
-
 }
 
 /* style form */
@@ -44,7 +40,6 @@ form Submit {
 }
 
 .toptable {
-    background-color: #cccccc;
     position: relative;
 }
 
@@ -55,9 +50,33 @@ form Submit {
 }
 
 a:hover{
-    color: #999999;
+    color: #999999;    
+    top: 2px;
+    position: relative;
 }
 
 .userlogin{    
     color: #0099ff;
+}
+
+table
+{
+border-collapse:separate;
+}
+table,th, td
+{
+border: 0px solid black;
+}
+
+.resumeheader{
+    text-align: left;
+    background-color: chocolate;
+    color: white;
+    right: 1px;
+}
+
+.resumevalue{
+    text-align: left;
+    background-color: skyblue;
+    color: black;
 }

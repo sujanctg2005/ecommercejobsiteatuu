@@ -1,3 +1,12 @@
-<div id="view-content">
-Here resume should be shown.
+<div id="viewresume">
+    <?php
+        echo '<form method="post" action""><table border="0" width="70%">';
+        $format = "<tr class = 'resumeheader'><td>%s: </td><td class = 'resumevalue'>%s</td></tr>";
+
+        foreach($this->view as $abc => $def){
+            foreach($def as $d=>$e){
+                printf($format,$d,$e);
+            }
+        }
+    ?>
 </div>

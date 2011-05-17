@@ -2,10 +2,11 @@
 
 class ResumeController extends Zend_Controller_Action
 {
+    protected $_resumeLoader;
 
     public function init()
     {
-        /* Initialize action controller here */
+        $this->_resumeLoader = new Application_Model_ResumeList();
     }
 
     public function indexAction()
@@ -21,7 +22,8 @@ class ResumeController extends Zend_Controller_Action
 
     public function viewAction()
     {
-        // action body
+        $this->view->view = $this->_resumeLoader
+                ->getResumeDetail($this->getRequest()->getParam('UserID'));
     }
 
     public function emailAction()
