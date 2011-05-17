@@ -1,50 +1,45 @@
 <?php
-                            $format = "<a href='%s'>%s</a><br/>";
-                            $basepath = Zend_Controller_Front::getInstance()->getBaseUrl();
 
-                            printf($format, $basepath . "/profile/create", "Create Profile");
-                            printf($format, $basepath . "/resume/edit", "Edit Resume");
-                            printf($format, $basepath . "/resume/view", "View Resume");
-                            printf($format, $basepath . "/resume/email", "Email Resume");
-                            printf($format, $basepath . "/resume/delete", "Delete Resume");
-                            printf($format, $basepath . "/employer/block", "Block Employer");
-                            printf($format, $basepath . "/view/stats", "View Stats");
-                            printf($format, $basepath . "/notification/email", "Email Notification");
-                            printf($format, $basepath . "/change/password", "Change Password");
-                            printf($format, $basepath . "/employer/listemployer", "Employer List");
+$actionhelper = Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper');
 
-//echo "
-//                    	<table width='100%' border='0'>
-//                	<tr>
-//                    	<td valign='top'>
-//                        <table border='0'>
-//        ";
-//                            $format = "<tr><td><a href='%s'>%s</a></td></tr>";
-//                            $basepath = Zend_Controller_Front::getInstance()->getBaseUrl();
-//
-//                            printf($format, $basepath . "/profile/create", "Create Profile");
-//                            printf($format, $basepath . "/resume/edit", "Edit Resume");
-//                            printf($format, $basepath . "/resume/view", "View Resume");
-//                            printf($format, $basepath . "/resume/email", "Email Resume");
-//                            printf($format, $basepath . "/resume/delete", "Delete Resume");
-//                            printf($format, $basepath . "/employer/block", "Block Employer");
-//                            printf($format, $basepath . "/view/stats", "View Stats");
-//                            printf($format, $basepath . "/notification/email", "Email Notification");
-//                            printf($format, $basepath . "/change/password", "Change Password");
-//                            printf($format, $basepath . "/employer/listemployer", "Employer List");
-//
-//                            echo "
-//                        </table>
-//                        </td>
-//                            ";
-//
-//                            echo '<h1>'. $this->escape($this->title) . '</h1>';
-//
-//                         // echo $this->layout()->content;
-//
-//                            echo '
-//                        </div>
-//                        </td>
-//                    </tr>
-//                </table>';
+$role = $actionhelper->getRole();
+
+$sidebarmenu = array();
+
+if($role==APP_Authorization_Roles::GUEST)
+{
+    array_push($sidebarmenu, array('profile','create','Create Profile'));
+}
+else if($role == APP_Authorization_Roles::EMPLOYEE)
+{
+    array_push($sidebarmenu, array('resume','edit','Edit Resume'));
+    array_push($sidebarmenu, array('resume','view','View Resume'));
+    array_push($sidebarmenu, array('resume','email','Email Resume'));
+    array_push($sidebarmenu, array('resume','delete','Delete Resume'));
+    array_push($sidebarmenu, array('employer','block','Block Employer'));
+    array_push($sidebarmenu, array('view','stats','View Stats'));
+    array_push($sidebarmenu, array('notification','email','Email Notification'));
+    array_push($sidebarmenu, array('change','password','Change Password'));
+}
+else if($role == APP_Authorization_Roles::EMPLOYER)
+{
+    array_push($sidebarmenu, array('jobpost','postform','Post Job'));
+    array_push($sidebarmenu, array('searchcv','index','Search CV'));
+    array_push($sidebarmenu, array('servcecharge','index','Service Charges'));
+    array_push($sidebarmenu, array('change','password','Change Password'));
+}
+else if($role == APP_Authorization_Roles::ADMIN)
+{
+
+
+}
+
+$format = "<a href='%s'>%s</a><br/>";
+$basepath = Zend_Controller_Front::getInstance()->getBaseUrl();
+
+foreach($sidebarmenu as $menus)
+{
+    printf($format, $basepath . "/" . $menus[0] . "/" . $menus[1] , $menus[2]);
+}
+
 ?>
