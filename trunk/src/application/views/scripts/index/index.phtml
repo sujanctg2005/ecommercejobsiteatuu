@@ -1,23 +1,7 @@
-<div id="view-content">
-        <p>Search Jobs by Category</p>
-        <table>
-        <?php
-            $basepath = Zend_Controller_Front::getInstance()->getBaseUrl();
-            
-            foreach($this->paginator as $job)
-            {
-                echo "<tr>";
-                echo "<td>";
-                echo "<a href='$basepath/jobs/jobsbycategory/jobcatid/".$job['jobcategoryid']
-                ."'>" . $job['jobcategory']. "(" . $job['jobcount']. ") </a>";
-                echo "</td>";
-                echo "</tr>";
-            }
-        ?>
-        </table>
-        <div class ="pagingcontrol">
+<div id="viewhomepage">
     <?php
-    if($this->paginator->getTotalItemCount() > $this->paginator->getItemCountPerPage())
-        echo $this->paginationControl($this->paginator, 'Elastic', 'controls.phtml'); ?>
-        </div>
+    $this->title ="Welcome!!";
+    $this->headTitle($this->title);
+    ?>
+       
 </div>

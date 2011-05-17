@@ -4,7 +4,7 @@
 
 $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
 $this->headTitle()->setSeparator(' - ');
-$this->headTitle('Lazy Job Portal');
+$this->headTitle('The Job Portal');
 error_reporting(E_ALL);
 echo $this->doctype();
 
@@ -49,6 +49,7 @@ function gethref($controller, $action) {
                     href="<?php echo Zend_Controller_Front::getInstance()->getBaseUrl() ?>" >
                     <img src="<?php echo $basepath ?>/images/logo.jpg" />
                 </a>
+                <span class="slogan">Employer & Employee</span>
                 <?php echo $this->navigation()->menu(); ?>
 
             </div>
@@ -71,7 +72,7 @@ function gethref($controller, $action) {
             </div>
 
             <div id="footer" class="footer">
-                <p>Copyright 2011. All rights reserved.</p>
+                <p>The Job Portal © 2011. All rights reserved on Group 4.</p>
             </div>
         </div>
     </body>

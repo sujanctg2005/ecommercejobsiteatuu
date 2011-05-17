@@ -77,7 +77,7 @@ border: 0px solid black;
 
 .value{
     text-align: left;
-    background-color: skyblue;
+    background-color: #9ECE2A;
     color: black;
 }
 
@@ -97,7 +97,7 @@ border: 0px solid black;
     float:left;
     line-height:40px;
     height:40px;
-    padding:0 5px 14px 14px;
+    padding:0 5px 16px 16px;
     background-image:url(../images/line.gif);
     background-position:top right;
     background-repeat:no-repeat;
@@ -112,7 +112,7 @@ background:#ff0000;
 {
     margin-top: 15px;
     margin-left: 0px;
-    width: 840px;
+    width: 940px;
 }
 
 .topnav a{
@@ -131,8 +131,8 @@ text-decoration:none;
 {
     float:right;
     color: #9ECE2A;
-    font-size: 10px;
-    margin-top: 8px;
+    font-size: 12px;
+    margin-top: 5px;
 }
 
 .logo
@@ -152,10 +152,12 @@ text-decoration:none;
 .content{
     float: left;
     width: 100%;
-    display: block;
+    display: block;  
     background-image:url(../images/top.gif);
     background-position:top center;
     background-repeat: no-repeat;
+    position: relative;
+    top: 10px;
 }
 
 .leftsidebar
@@ -164,6 +166,7 @@ text-decoration:none;
     position: relative;
     width: 15%;
     margin-left: 100px;
+    top: 10px;
 }
 
 .leftsidebar td
@@ -176,7 +179,7 @@ text-decoration:none;
 {
     float: left;
     position: relative;
-    border: 1px solid;
+    border: 0px solid;
     width: 50%;
     padding: 12px;
 
@@ -186,15 +189,16 @@ text-decoration:none;
 {
    clear: both;
    position:relative;
-   bottom:0;
+   bottom:1px;
    width:100%;
    height:40px;
    text-align: center;
-   font-size: 8px;
-   padding: 2px;
+   font-size: 9px;
+   padding: 20px 0;
     background-image:url(../images/footer_bg.gif);
     background-position:top center;
     background-repeat: no-repeat;
+    color: darkgrey;
 }
 
 
@@ -209,12 +213,21 @@ text-decoration:none;
 {
     background-color: #AAAAAA;
 
-    border: 1px solid;
+    border: 0px solid;
 }
 
 .pagingcontrol
 {
     margin: 0 auto;
+}
+
+.slogan{
+display:block;
+position:absolute;
+top:65px;
+left:160px;
+text-decoration: overline;
+color: #cc6600;
 }
 
 
