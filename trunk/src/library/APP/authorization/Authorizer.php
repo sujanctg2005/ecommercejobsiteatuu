@@ -41,6 +41,7 @@ class APP_Authorization_Authorizer {
         $acl->allow(APP_Authorization_Roles::GUEST,'authentication',null);
         $acl->allow(APP_Authorization_Roles::GUEST, 'jobs',null);
         $acl->allow(APP_Authorization_Roles::GUEST, 'error',null);
+        $acl->allow(APP_Authorization_Roles::GUEST, 'search',null);
         $acl->allow(APP_Authorization_Roles::GUEST, 'employer','listemployer');
 
         $acl->allow(APP_Authorization_Roles::EMPLOYER, 'employer', null);

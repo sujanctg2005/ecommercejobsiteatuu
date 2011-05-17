@@ -3,41 +3,41 @@
 <navigation>
     <guestnavigation>
         <home><label>Home</label><controller>index</controller><action>index</action></home>
-        <searchemployer><label>Search Employers</label><uri>/</uri></searchemployer>
-        <searchjob><label>Search Jobs</label><uri>search/jobsearch</uri></searchjob>
-        <employerpage><label>For Employer</label><uri>index/employerhome</uri></employerpage>
-        <contact><label>Contact Us</label><uri>index/contactus</uri></contact>
-        <aboutus><label>About Us</label><uri>index/about</uri></aboutus>
-        <login><label>Login</label><uri>authentication/login</uri></login>
+        <searchemployer><label>Search Employers</label><controller>employer</controller><action>listemployer</action></searchemployer>
+        <searchjob><label>Search Jobs</label><controller>search</controller><action>jobsearch</action></searchjob>
+        <employerpage><label>For Employer</label><controller>employer</controller><action>index</action></employerpage>
+        <contact><label>Contact Us</label><controller>index</controller><action>contactus</action></contact>
+        <aboutus><label>About Us</label><controller>index</controller><action>about</action></aboutus>
+        <login><label>Login</label><controller>authentication</controller><action>login</action></login>
     </guestnavigation>
 
     <employeenavigation>
         <home><label>Home</label><controller>index</controller><action>index</action></home>
-        <jobhistory><label>Jobs History</label><uri>jobs/jobhistory</uri></jobhistory>
-        <searchemployer><label>Search Employers</label><uri>index/employerlist</uri></searchemployer>
-        <searchjob><label>Search Jobs</label><uri>search/jobsearch</uri></searchjob>
-        <contact><label>Contact Us</label><uri>index/contactus</uri></contact>
-        <aboutus><label>About Us</label><uri>index/about</uri></aboutus>
-        <logout><label>Logout</label><uri>authentication/logout</uri></logout>
+        <jobhistory><label>Jobs History</label><controller>jobs</controller><action>jobhistory</action></jobhistory>
+        <searchemployer><label>Search Employers</label><controller>employer</controller><action>listemployer</action></searchemployer>
+        <searchjob><label>Search Jobs</label><controller>search</controller><action>jobsearch</action></searchjob>
+        <contact><label>Contact Us</label><controller>index</controller><action>contactus</action></contact>
+        <aboutus><label>About Us</label><controller>index</controller><action>about</action></aboutus>
+        <logout><label>Logout</label><controller>authentication</controller><action>logout</action></logout>
     </employeenavigation>
 
     <employernavigation>
         <home><label>Home</label><controller>index</controller><action>index</action></home>
-        <searchcv><label>Search CV</label><uri>/</uri></searchcv>
-        <postjob><label>Post Jobs</label><uri>employer/postjob</uri></postjob>
-        <servicecharge><label>Service Charges</label><uri>index/servicecharge</uri></servicecharge>
-        <contact><label>Contact Us</label><uri>index/contactus</uri></contact>
-        <aboutus><label>About Us</label><uri>index/about</uri></aboutus>
-        <logout><label>Logout</label><uri>authentication/logout</uri></logout>
+        <searchcv><label>Search CV</label><controller>index</controller><action>index</action></searchcv>
+        <postjob><label>Post Jobs</label><controller>employer</controller><action>postjob</action></postjob>
+        <servicecharge><label>Service Charges</label><controller>index</controller><action>servicecharge</action></servicecharge>
+        <contact><label>Contact Us</label><controller>index</controller><action>contactus</action></contact>
+        <aboutus><label>About Us</label><controller>index</controller><action>about</action></aboutus>
+        <logout><label>Logout</label><controller>authentication</controller><action>logout</action></logout>
     </employernavigation>
 
     <adminnavigation>
         <home><label>Home</label><controller>index</controller><action>index</action></home>
-        <searchemployer><label>Search Employers</label><uri>/</uri></searchemployer>
-        <searchjob><label>Search Jobs</label><uri>search/jobsearch</uri></searchjob>
-        <employerpage><label>For Employer</label><uri>index/employerhome</uri></employerpage>
-        <contact><label>Contact Us</label><uri>index/contactus</uri></contact>
-        <aboutus><label>About Us</label><uri>index/about</uri></aboutus>
-        <logout><label>Logout</label><uri>authentication/logout</uri></logout>
+        <searchemployer><label>Search Employers</label><controller></controller><action></action></searchemployer>
+        <searchjob><label>Search Jobs</label><controller>search</controller><action>jobsearch</action></searchjob>
+        <employerpage><label>For Employer</label><controller>index</controller><action>employerhome</action></employerpage>
+        <contact><label>Contact Us</label><controller>index</controller><action>contactus</action></contact>
+        <aboutus><label>About Us</label><controller>index</controller><action>about</action></aboutus>
+        <logout><label>Logout</label><controller>authentication</controller><action>logout</action></logout>
     </adminnavigation>
 </navigation>
