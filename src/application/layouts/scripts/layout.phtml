@@ -58,7 +58,7 @@ $basepath = $this->baseUrl();
 echo "<img src= '$basepath/images/mylazyjob.jpg'/>"
 ?>
                             </td>
-                            <td> HOME | MY LAZY JOBS | COMPANIES OFFERING JOBS |  <a href="#" style="cursor:help">FAQ</a> | CONTACT |
+                            <td> <?php echo "<a href= '$basepath' >HOME</a>"; ?> | MY LAZY JOBS | COMPANIES OFFERING JOBS |  <a href="#" style="cursor:help">FAQ</a> | CONTACT |
                                 <?php 
                         $linkname = 'Login';
                         if(Zend_Auth::getInstance()->hasIdentity())
