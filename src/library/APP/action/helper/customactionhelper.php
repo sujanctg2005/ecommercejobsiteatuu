@@ -49,7 +49,7 @@ Zend_Controller_Action_Helper_Abstract {
 
     }
 
-    private function getRole()
+    public function getRole()
     {
         $auth = Zend_Auth::getInstance();
 
