@@ -1,6 +1,11 @@
 body,html {
     margin: 0 5px;
     font-family: Verdana,sans-serif;
+    font-size: 12px;
+    width:99%;
+    background-image:url(../images/bg.gif);
+    background-position:top left;
+    background-repeat:repeat-x;
 }
 h1 {
     font-size: 1.4em;
@@ -81,3 +86,135 @@ border: 0px solid black;
     font-size: 10px;
     color: silver;
 }
+.userlogin{    
+    color: #0099ff;
+}
+
+.topnav li
+{
+    list-style-type:none;
+    display:block;
+    float:left;
+    line-height:40px;
+    height:40px;
+    padding:0 5px 14px 14px;
+    background-image:url(../images/line.gif);
+    background-position:top right;
+    background-repeat:no-repeat;
+
+}
+
+.topnav li last{
+background:#ff0000;
+}
+
+.topnav
+{
+    margin-top: 15px;
+    margin-left: 0px;
+    width: 840px;
+}
+
+.topnav a{
+font-size:12px;
+color:#272727;
+text-decoration:none;
+}
+
+.topnav a:visited{text-decoration:none}
+
+.topnav a:hover{text-decoration:underline}
+
+
+
+.status
+{
+    float:right;
+    color: #9ECE2A;
+    font-size: 10px;
+    margin-top: 8px;
+}
+
+.logo
+{
+    float: left;
+    margin-left: 100px;
+    margin-top: 25px;
+    margin-right: 0px;
+}
+
+#navigation
+{
+    float: left;
+
+}
+
+.content{
+    float: left;
+    width: 100%;
+    display: block;
+    background-image:url(../images/top.gif);
+    background-position:top center;
+    background-repeat: no-repeat;
+}
+
+.leftsidebar
+{
+    float: left;
+    position: relative;
+    width: 15%;
+    margin-left: 100px;
+}
+
+.leftsidebar td
+{
+    
+
+}
+
+.maincontent
+{
+    float: left;
+    position: relative;
+    border: 1px solid;
+    width: 50%;
+    padding: 12px;
+
+}
+
+.footer
+{
+   clear: both;
+   position:relative;
+   bottom:0;
+   width:100%;
+   height:40px;
+   text-align: center;
+   font-size: 8px;
+   padding: 2px;
+    background-image:url(../images/footer_bg.gif);
+    background-position:top center;
+    background-repeat: no-repeat;
+}
+
+
+
+
+.grid
+{
+    background-color: #F8F8F8;
+}
+
+.gridheader
+{
+    background-color: #AAAAAA;
+
+    border: 1px solid;
+}
+
+.pagingcontrol
+{
+    margin: 0 auto;
+}
+
+

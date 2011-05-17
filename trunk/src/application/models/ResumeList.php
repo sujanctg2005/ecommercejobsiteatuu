@@ -6,10 +6,10 @@ class Application_Model_ResumeList{
         $this->_table = Zend_Db_Table::getDefaultAdapter();
     }
 
-    public function getResumeDetail(){
+    public function getResumeDetail($userid){
         $select = $this->_table->select();
         $select->from(array('tbl_employee'))
-                ->where('tbl_employee.UserID='.'49');
+                ->where('tbl_employee.UserID='.$userid);
 
         return $this->_table->fetchAll($select);
     }

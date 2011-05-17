@@ -38,6 +38,17 @@ Zend_Controller_Action_Helper_Abstract {
         strtolower($action));
     }
 
+    public function getUserID()
+    {
+        $auth = Zend_Auth::getInstance();
+
+        if($auth->hasIdentity())
+                return $auth->getStorage()->read()->UserID;
+
+        return -1;
+
+    }
+
     private function getRole()
     {
         $auth = Zend_Auth::getInstance();
@@ -88,6 +99,22 @@ Zend_Controller_Action_Helper_Abstract {
     public function getRequests()
     {
         return $_SERVER['REQUEST_URI'];
+    }
+
+    public function getNavigationRootNodeName()
+    {
+        $role = $this->getRole();
+
+        if($role == APP_Authorization_Roles::ADMIN)
+            return "adminnavigation";
+
+        if($role == APP_Authorization_Roles::EMPLOYEE)
+            return "employeenavigation";
+
+        if($role == APP_Authorization_Roles::EMPLOYER)
+            return "employernavigation";
+
+        return "guestnavigation";
     }
 }
 

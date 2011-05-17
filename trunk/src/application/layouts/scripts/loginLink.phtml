@@ -1,13 +1,5 @@
-
-
 <?php
-echo "
-                    	<table width='100%' border='0'>
-                	<tr>
-                    	<td valign='top'>
-                        <table border='0'>
-        ";
-                            $format = "<tr><td><a href='%s'>%s</a></td></tr>";
+                            $format = "<a href='%s'>%s</a><br/>";
                             $basepath = Zend_Controller_Front::getInstance()->getBaseUrl();
 
                             printf($format, $basepath . "/profile/create", "Create Profile");
@@ -21,18 +13,38 @@ echo "
                             printf($format, $basepath . "/change/password", "Change Password");
                             printf($format, $basepath . "/employer/listemployer", "Employer List");
 
-                            echo "
-                        </table>
-                        </td>
-                            ";
-
-                            echo '<h1>'. $this->escape($this->title) . '</h1>';
-
-                         // echo $this->layout()->content;
-
-                            echo '
-                        </div>
-                        </td>
-                    </tr>
-                </table>';
+//echo "
+//                    	<table width='100%' border='0'>
+//                	<tr>
+//                    	<td valign='top'>
+//                        <table border='0'>
+//        ";
+//                            $format = "<tr><td><a href='%s'>%s</a></td></tr>";
+//                            $basepath = Zend_Controller_Front::getInstance()->getBaseUrl();
+//
+//                            printf($format, $basepath . "/profile/create", "Create Profile");
+//                            printf($format, $basepath . "/resume/edit", "Edit Resume");
+//                            printf($format, $basepath . "/resume/view", "View Resume");
+//                            printf($format, $basepath . "/resume/email", "Email Resume");
+//                            printf($format, $basepath . "/resume/delete", "Delete Resume");
+//                            printf($format, $basepath . "/employer/block", "Block Employer");
+//                            printf($format, $basepath . "/view/stats", "View Stats");
+//                            printf($format, $basepath . "/notification/email", "Email Notification");
+//                            printf($format, $basepath . "/change/password", "Change Password");
+//                            printf($format, $basepath . "/employer/listemployer", "Employer List");
+//
+//                            echo "
+//                        </table>
+//                        </td>
+//                            ";
+//
+//                            echo '<h1>'. $this->escape($this->title) . '</h1>';
+//
+//                         // echo $this->layout()->content;
+//
+//                            echo '
+//                        </div>
+//                        </td>
+//                    </tr>
+//                </table>';
 ?>

@@ -1,11 +1,9 @@
 <div id="view-content">
+        <p>Search Jobs by Category</p>
         <table>
-            <tr>
-                <td>Search Jobs by Category</td>
-            </tr>
-
         <?php
             $basepath = Zend_Controller_Front::getInstance()->getBaseUrl();
+            
             foreach($this->paginator as $job)
             {
                 echo "<tr>";
@@ -17,7 +15,9 @@
             }
         ?>
         </table>
+        <div class ="pagingcontrol">
     <?php
     if($this->paginator->getTotalItemCount() > $this->paginator->getItemCountPerPage())
         echo $this->paginationControl($this->paginator, 'Elastic', 'controls.phtml'); ?>
+        </div>
 </div>
