@@ -20,6 +20,7 @@ class ProfileController extends Zend_Controller_Action {
             $formData = $this->getRequest()->getPost();
             if ($form->isValid($formData))
                     {
+                
                 $Username = $form->getValue('Username');
                 $Password = $form->getValue('Password');
 
@@ -40,7 +41,7 @@ class ProfileController extends Zend_Controller_Action {
                 $AlternativeEmail = $form->getValue('AlternativeEmail');
                 $ImagePath = 'image';//$form->getValue('ImagePath');
                 $upload = new Zend_File_Transfer_Adapter_Http();
-                $upload->setDestination("E:/Test/");
+                $upload->setDestination(APPLICATION_PATH . "/../uploads");
 
                 
                 try {

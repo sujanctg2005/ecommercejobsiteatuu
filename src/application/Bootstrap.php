@@ -22,5 +22,26 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 
         Zend_Mail::setDefaultTransport($mailTransport);
     }
+
+    protected function _initNavigation()
+    {
+        $actionhelper = Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper');
+
+        $this->bootstrap('layout');
+
+        $layout = $this->getResource('layout');
+
+        $view = $layout->getView();
+
+        $config = new Zend_Config_XML(
+                APPLICATION_PATH . '/configs/navigation.xml',
+                $actionhelper->getNavigationRootNodeName());
+
+        $navigation = new Zend_Navigation($config);
+//        var_dump($view);
+//        exit;
+
+        $view->navigation($navigation);
+    }
 }
 

@@ -2,13 +2,16 @@
     <?php
           $this->title ="View Resume";
           $this->headTitle($this->title);
-        echo '<form method="post" action""><table border="0" width="70%" cellspacing="1" cellpadding="3">';
-        $format = "<tr class = 'header'><td>%s: </td><td class = 'value'>%s</td></tr>";
-
-        foreach($this->view as $abc => $def){
-            foreach($def as $d=>$e){
-                printf($format,$d,$e);
-            }
-        }
+        echo
+          '
+              <form method="post" action="">
+              <table border="0" width="70%" cellspacing="1" cellpadding="3">';
+                $format = "<tr class = 'header'><td>%s: </td><td class = 'value'>%s</td></tr>";
+                foreach($this->view as $abc => $def){
+                    foreach($def as $d=>$e){
+                        printf($format,$d,$e);
+                    }
+                }
+          echo '</table></form>'
     ?>
 </div>
