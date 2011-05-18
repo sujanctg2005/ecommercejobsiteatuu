@@ -7,7 +7,7 @@
         <searchjob><label>Search Jobs</label><controller>search</controller><action>jobsearch</action></searchjob>
         <employerpage><label>For Employer</label><controller>employer</controller><action>index</action></employerpage>
         <contact><label>Contact Us</label><controller>index</controller><action>contactus</action></contact>
-        <aboutus><label>About Us</label><controller>index</controller><action>about</action></aboutus>
+        <aboutus><label>Register</label><controller>profile</controller><action>create</action></aboutus>
         <login><label>Login</label><controller>authentication</controller><action>login</action></login>
     </guestnavigation>
 
