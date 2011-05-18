@@ -3,16 +3,16 @@
 <!-- First page link -->
 <?php if (isset($this->previous)): ?>
        <a href="<?php echo $this->url(array('page' => $this->first)); ?>">
-    First
+    &lt;&lt;
   </a> |
 <?php else: ?>
-  <span class="disabled">First</span> |
+  <span class="disabled">&lt;&lt;</span> |
 <?php endif; ?>
 
 <!-- Previous page link -->
 <?php if (isset($this->previous)): ?>
   <a href="<?php echo $this->url(array('page' => $this->previous)); ?>">
-    &lt; Previous
+    &lt Previous;
   </a> |
 <?php else: ?>
   <span class="disabled">&lt; Previous</span> |
@@ -30,10 +30,10 @@
 <!-- Last page link -->
 <?php if (isset($this->next)): ?>
   <a href="<?php echo $this->url(array('page' => $this->last)); ?>">
-    Last
+    &gt;&gt;
   </a>
 <?php else: ?>
-  <span class="disabled">Last</span>
+  <span class="disabled">&gt;&gt;</span>
 <?php endif; ?>
 
 <?php endif; ?>

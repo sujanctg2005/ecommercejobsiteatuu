@@ -38,9 +38,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
                 $actionhelper->getNavigationRootNodeName());
 
         $navigation = new Zend_Navigation($config);
-//        var_dump($view);
-//        exit;
 
+//        var_dump($view);
+      // exit;
+        //$this->
+      //  $view->shownavigation = false;
         $view->navigation($navigation);
     }
 }

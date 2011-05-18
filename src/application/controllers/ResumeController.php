@@ -23,7 +23,6 @@ class ResumeController extends Zend_Controller_Action
     public function viewAction()
     {
         $actionhelper = Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper');
-        echo $actionhelper->getUserID();
         $this->view->view = $this->_resumeLoader
                 ->getResumeDetail($actionhelper->getUserID());
     }

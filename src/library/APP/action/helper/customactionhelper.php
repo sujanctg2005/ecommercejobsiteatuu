@@ -17,11 +17,11 @@ Zend_Controller_Action_Helper_Abstract {
                 $controller,
                 $action))
         {
-            if($controller !='index' && $action != 'index')
-            {
+//            if($controller !='index' && $action != 'index')
+//            {
                 $redirector = Zend_Controller_Action_HelperBroker::getStaticHelper('Redirector');
                 $redirector->gotoUrl('/error/showauthorizationerror/');
-            }
+//            }
         }
     }
 

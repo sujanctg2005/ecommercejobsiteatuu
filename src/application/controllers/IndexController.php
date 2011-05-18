@@ -6,15 +6,36 @@ class IndexController extends Zend_Controller_Action {
 
     public function init() {
         /* Initialize action controller here */
+
     }
 
     public function indexAction() {
 
+
+        $actionhelper = Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper');
+        $role = $actionhelper->getRole();
+        $redirector = Zend_Controller_Action_HelperBroker::getStaticHelper('Redirector');
+        if ($actionhelper->getRole() == APP_Authorization_Roles::EMPLOYEE) {
+            //echo 'here';
+            $redirector->gotoUrl('/profile/index/');
+        } else if ($actionhelper->getRole() == APP_Authorization_Roles::EMPLOYER) {
+            //echo 'here2';
+            $redirector->gotoUrl('/employer/index/');
+        }
+        
         $test = new Application_Model_JobsList();
 
         $this->view->paginator = APP_Action_Helper_CustomActionHelper::
                 getPaginationControl($test->getJobsCountByCategory(),
                         $this->getRequest()->getParam('page'));
+
+        $form = new Application_Form_Login();
+
+        $form->setAction($this->view->url(array('controller' => 'authentication', 'action' => 'login')));
+
+        $form->setMethod('post');
+
+        $this->view->login = $form;
     }
 
     public function addAction() {
@@ -22,32 +43,25 @@ class IndexController extends Zend_Controller_Action {
         $this->view->form = $form;
     }
 
-    public function contactusAction()
-    {
+    public function contactusAction() {
 
+    }
+
+    public function aboutAction() {
         
     }
 
-    public function aboutAction()
-    {
-        
-        
-    }
-
-    public function feedbackAction()
-    {
+    public function feedbackAction() {
         $form = new Application_Form_FeedbackForm();
 
-        $form -> setAction($this->view->url(array('controller'=>'index','action'=>'feedback')));
+        $form->setAction($this->view->url(array('controller' => 'index', 'action' => 'feedback')));
 
         $errors = '';
 
-         if($this->getRequest()->isPost())
-         {
+        if ($this->getRequest()->isPost()) {
             $data = $this->getRequest()->getParams();
 
-            if($form->isValid($data))
-            {
+            if ($form->isValid($data)) {
                 $email = $form->getValue('email');
                 $description = $form->getValue('description');
                 $template = "<html><body>Email: $email<br/>Description: <br/>$description</body></html>";
@@ -58,15 +72,13 @@ class IndexController extends Zend_Controller_Action {
                         ->send();
                 echo "Thankyou for the feedback.";
                 $form = null;
-            }
-            else
-            {
+            } else {
                 $form->setDefaults($data);
             }
         }
 
         $this->view->form = $form;
-
     }
+
 }
 

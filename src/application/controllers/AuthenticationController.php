@@ -12,7 +12,9 @@ class AuthenticationController extends Zend_Controller_Action
     }
 
     public function loginAction()
-    {        
+    {
+
+        $redirector = Zend_Controller_Action_HelperBroker::getStaticHelper('Redirector');
         if(Zend_Auth::getInstance()->hasIdentity())
         {
             $this->_redirect(array('controller'=>'index','action'=>'index'));
@@ -50,10 +52,11 @@ class AuthenticationController extends Zend_Controller_Action
                  if($authenticate->isValid())
                  {
                      $userInfo = $authAdapter->getResultRowObject(null,'password');
-                     print_r($userInfo);
+                     //print_r($userInfo);
                      $authStorage = Zend_Auth::getInstance()-> getStorage();
                      $authStorage->write($userInfo);
-                     $this->_redirect(array('controller'=>'index','action'=>'index'));
+
+                     $this->_redirect(array('controller' => 'index', 'action' => 'index'));
                  }
                  else
                  {
