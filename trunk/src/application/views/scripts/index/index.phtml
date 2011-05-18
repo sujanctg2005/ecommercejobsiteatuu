@@ -3,4 +3,51 @@
     $this->title ="Welcome!!";
     $this->headTitle($this->title);
     ?>
+    <div class="mainpicture">
+        <img src="images/background_main.jpg" alt="" />
+    </div>
+    <div class="search" >
+        <form action="#">
+            <img src="images/title.gif" alt="" width="90" height="30" />
+            <input type="text" class="" /> 
+        </form>
+    </div>
+    <div id="blocks">
+         <div class="block">
+             <img src="images/search_category.gif" alt="" width="214" height="29" /><br />
+             <?php
+            $basepath = Zend_Controller_Front::getInstance()->getBaseUrl();
+            echo '<table>';
+            foreach($this->paginator as $job)
+            {
+                echo "<tr>";
+                echo "<td>";
+                echo "<a href='$basepath/jobs/jobsbycategory/jobcatid/".$job['jobcategoryid']
+                ."'>" . $job['jobcategory']. "(" . $job['jobcount']. ") </a>";
+                echo "</td>";
+                echo "</tr>";
+            }
+            if(count($this->paginator) > 0)
+            {
+                echo "<tr><td><div class='paginator'>$this->paginator</div></td></tr>";
+
+            }
+            echo '</table>';
+        ?>
+
+            
+        </div>
+        <div class="block">
+            <img src="images/hot_jobs.gif" alt="" width="214" height="29" /><br />
+        </div>
+        <div class="block">
+            <img src="images/blank.gif" alt="" width="214" height="29" /><br />
+        </div>
+        <div class ="block">
+            <img src="images/sign_up.gif" alt="" width="214" height="29" /><br />
+            <p class="signup"><?php echo $this->login; ?> </p>
+        </div>
+         
 </div>
+
+ </div>
