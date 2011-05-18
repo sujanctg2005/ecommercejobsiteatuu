@@ -44,6 +44,7 @@ class APP_Authorization_Authorizer {
         $acl->allow(APP_Authorization_Roles::GUEST, 'search',null);
         $acl->allow(APP_Authorization_Roles::GUEST, 'employer','listemployer');
         $acl->allow(APP_Authorization_Roles::GUEST, 'employer','registerform');
+        $acl->allow(APP_Authorization_Roles::GUEST, 'profile','create');
 
         $acl->allow(APP_Authorization_Roles::EMPLOYER, 'employer', null);
 

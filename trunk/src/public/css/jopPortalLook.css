@@ -186,7 +186,13 @@ padding-left: 100px;
     padding: 12px;
 
 }
+.errors li{    
+    color: #ff0000;
+}
 
+.errors{
+    color: red;
+}
 .footer
 {
    clear: both;
