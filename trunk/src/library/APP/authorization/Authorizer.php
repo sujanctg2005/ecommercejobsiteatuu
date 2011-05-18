@@ -33,7 +33,8 @@ class APP_Authorization_Authorizer {
         //LOAD RESOURCES
         foreach(APP_Authorization_Resources::getListOfControllers() as $resource)
         {
-           $acl->addResource($resource);
+           $acl
+            ->addResource($resource);
         }
 
         //LOAD PRIVILEGES
