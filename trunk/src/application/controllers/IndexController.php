@@ -33,5 +33,40 @@ class IndexController extends Zend_Controller_Action {
         
         
     }
+
+    public function feedbackAction()
+    {
+        $form = new Application_Form_FeedbackForm();
+
+        $form -> setAction($this->view->url(array('controller'=>'index','action'=>'feedback')));
+
+        $errors = '';
+
+         if($this->getRequest()->isPost())
+         {
+            $data = $this->getRequest()->getParams();
+
+            if($form->isValid($data))
+            {
+                $email = $form->getValue('email');
+                $description = $form->getValue('description');
+                $template = "<html><body>Email: $email<br/>Description: <br/>$description</body></html>";
+                $mail = new Zend_Mail();
+                $mail->addTo($email)
+                        ->setSubject("Feedback...")
+                        ->setBodyHtml($template)
+                        ->send();
+                echo "Thankyou for the feedback.";
+                $form = null;
+            }
+            else
+            {
+                $form->setDefaults($data);
+            }
+        }
+
+        $this->view->form = $form;
+
+    }
 }
 

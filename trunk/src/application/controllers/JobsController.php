@@ -39,4 +39,12 @@ class JobsController extends Zend_Controller_Action
                 ->getJobDetail($this->getRequest()->getParam('jobid'));
     }
 
+    public function jobsbyemployerAction()
+    {
+        $this->view->paginator = APP_Action_Helper_CustomActionHelper::
+                getPaginationControl($this->_jobsLoader
+                ->getJobsByEmployer($this->getRequest()->getParam('employerid')),
+                        $this->getRequest()->getParam('page'));
+
+    }
 }

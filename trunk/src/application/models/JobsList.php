@@ -57,6 +57,18 @@ class Application_Model_JobsList
         return $this->_table->fetchAll($select);
     }
 
+    public function getJobsByEmployer($employerid)
+    {
+        $query = $this->_table
+                ->select()
+                ->from('tbl_job')
+                ->where('employeerid='.$employerid);
+
+        //APP_Action_Helper_CustomActionHelper::getQueryProfileDump($query);
+        return $this->_table->fetchAll($query);
+
+    }
+
     public function getCategoryName($jobCategoryID)
     {
         $select = $this->_table->select();

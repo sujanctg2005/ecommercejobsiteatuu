@@ -349,13 +349,13 @@ class Application_Model_Jobvacancy
     }
     public function insertJobVacancey ()
     {
-        $registry = Zend_Registry::getInstance();
-        $DB = $registry['DB'];
-        // $DB->insert('tbl_job', $this->puplateToArray());
+        $DB = Zend_Db_Table::getDefaultAdapter();
+        
         $DB->insert('tbl_job', $this->puplateToArray());
         $id = $DB->lastInsertId();
         $this->setJobID($id);
-        $DB->insert('tbl_job_requirement', $this->puplateRequirmentToArray());
+        var_dump($this->puplateRequirmentToArray());
+        //$DB->insert('tbl_job_requirement', $this->puplateRequirmentToArray());
     }
     public function editJobVacancey ()
     {
@@ -394,10 +394,10 @@ class Application_Model_Jobvacancy
     {
         $data = array('JobTitle' => $this->getJobTitle(), 
         'NoOfVacancy' => $this->getNoOfVacancy(), 
-        'JobCategoryID' => $this->getJobCategoryID(), 
+        'JobCategoryID' => $this->getJobCategoryID(),
         'JobPostDate' =>"",
         'ApplicationDeadline' => $this->getApplicationDeadline(), 
-        'EmployeerID' => $this->getEmployeerID(), 
+        'EmployeerID' => $this->getEmployeerID(),
         'Designation' => $this->getDesignation(), 
         'CompanyName' => $this->getCompanyName(), 
         'HeightCompanyName' => $this->getHideCompanyName());
@@ -419,7 +419,8 @@ class Application_Model_Jobvacancy
         'AdditionalJobRequirement' => $this->getAdditionalJobRequirement(), 
         'MinimumSalaryRange' => $this->getMinimumSalaryRange(), 
         'MaximumSalaryRange' => $this->getMaximumSalaryRange(), 
-        'Benifits' => $this->getBenifits());
+        'Benifits' => $this->getBenifits(),
+            'EmployeerID' => 2);
         return $data;
     }
     public function puplateObject ($result)

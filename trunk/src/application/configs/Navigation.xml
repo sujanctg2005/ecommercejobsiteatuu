@@ -24,7 +24,7 @@
     <employernavigation>
         <home><label>Home</label><controller>index</controller><action>index</action></home>
         <searchcv><label>Search CV</label><controller>index</controller><action>index</action></searchcv>
-        <postjob><label>Post Jobs</label><controller>employer</controller><action>postjob</action></postjob>
+        <postjob><label>Post Jobs</label><controller>jobpost</controller><action>postjob</action></postjob>
         <servicecharge><label>Service Charges</label><controller>index</controller><action>servicecharge</action></servicecharge>
         <contact><label>Contact Us</label><controller>index</controller><action>contactus</action></contact>
         <aboutus><label>About Us</label><controller>index</controller><action>about</action></aboutus>

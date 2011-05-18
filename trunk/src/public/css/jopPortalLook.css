@@ -93,7 +93,7 @@ border: 0px solid black;
 .topnav li
 {
     list-style-type:none;
-    display:block;
+    display:inline;
     float:left;
     line-height:40px;
     height:40px;
@@ -102,10 +102,6 @@ border: 0px solid black;
     background-position:top right;
     background-repeat:no-repeat;
 
-}
-
-.topnav li last{
-background:#ff0000;
 }
 
 .topnav
