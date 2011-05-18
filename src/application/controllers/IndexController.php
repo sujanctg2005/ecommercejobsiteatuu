@@ -16,7 +16,6 @@ class IndexController extends Zend_Controller_Action {
         $role = $actionhelper->getRole();
         $redirector = Zend_Controller_Action_HelperBroker::getStaticHelper('Redirector');
         if ($actionhelper->getRole() == APP_Authorization_Roles::EMPLOYEE) {
-            //echo 'here';
             $redirector->gotoUrl('/profile/index/');
         } else if ($actionhelper->getRole() == APP_Authorization_Roles::EMPLOYER) {
             //echo 'here2';

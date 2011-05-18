@@ -57,7 +57,43 @@ class ProfileController extends Zend_Controller_Action {
                 $employeeInfo = new Application_Model_DbTable_EmployeeProfile();
                 $addEmployee = $employeeInfo->addEmployee($Username, $Password, $Name, $DOB, $Gender, $MaritialStatus, $Nationality, $Religion, $CurrentAddress, $PermanentAddress, $HomePhone, $Mobile, $OfficePhone, $Email, $AlternativeEmail, $ImagePath);
 
-                $this->_helper->redirector('index');
+
+
+                //authenticate the user
+                $authAdapter = new Zend_Auth_Adapter_DbTable(Zend_Db_Table::getDefaultAdapter());
+
+                $authAdapter ->setTableName("tbl_user_info");
+
+                $authAdapter ->setIdentityColumn("username")
+                             ->setCredentialColumn("password");
+
+                $authAdapter->setIdentity($Username)
+                                ->setCredential($Password);
+
+                $authenticate = Zend_Auth::getInstance()
+                                ->authenticate($authAdapter);
+
+                 if($authenticate->isValid())
+                 {
+                     $userInfo = $authAdapter->getResultRowObject(null,'password');
+                     //print_r($userInfo);
+                     $authStorage = Zend_Auth::getInstance()-> getStorage();
+                     $authStorage->write($userInfo);
+
+
+                $redirector = Zend_Controller_Action_HelperBroker::getStaticHelper('Redirector');
+                 $redirector->gotoUrl('/profile/index/');
+                 }
+
+
+
+
+
+
+
+
+
+
             } else {
                 $form->populate($formData);
             }
