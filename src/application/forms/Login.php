@@ -38,5 +38,7 @@ class Application_Form_Login extends Zend_Form
 
         $login->setDecorators(array('FormElements'));
     }
+
+
 }
 

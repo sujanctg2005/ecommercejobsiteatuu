@@ -43,11 +43,15 @@ class APP_Authorization_Authorizer {
         $acl->allow(APP_Authorization_Roles::GUEST, 'error',null);
         $acl->allow(APP_Authorization_Roles::GUEST, 'search',null);
         $acl->allow(APP_Authorization_Roles::GUEST, 'employer','listemployer');
+        $acl->allow(APP_Authorization_Roles::GUEST, 'employer','registerform');
 
         $acl->allow(APP_Authorization_Roles::EMPLOYER, 'employer', null);
 
         $acl->allow(APP_Authorization_Roles::EMPLOYEE, 'profile', null);
         $acl->allow(APP_Authorization_Roles::EMPLOYEE, 'resume', null);
+
+
+        $acl->allow(APP_Authorization_Roles::EMPLOYER, 'jobpost', null);
 
         return $acl;
     }

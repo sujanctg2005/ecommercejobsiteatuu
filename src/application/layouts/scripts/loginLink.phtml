@@ -5,10 +5,17 @@ $actionhelper = Zend_Controller_Action_HelperBroker::getExistingHelper('CustomAc
 $role = $actionhelper->getRole();
 
 $sidebarmenu = array();
-
+echo $role;
 if($role==APP_Authorization_Roles::GUEST)
 {
-    array_push($sidebarmenu, array('profile','create','Create Profile'));
+    $form = new Application_Form_Login();
+
+    $form -> setAction($this->view->url(array('controller'=>'authentication','action'=>'login')));
+
+    $form->setMethod('post');
+
+    echo 'here';
+    echo $form;
 }
 else if($role == APP_Authorization_Roles::EMPLOYEE)
 {

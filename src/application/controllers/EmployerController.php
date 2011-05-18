@@ -7,15 +7,58 @@ class EmployerController extends Zend_Controller_Action {
     }
 
     public function indexAction() {
-        // action body
-        $request = $this->getRequest();
-        $this->view->assign('postjob', $request->getBaseURL() . "/jobpost/postform");
-        $this->view->assign('searchcv', $request->getBaseURL() . "/searchcv/index");
-        $this->view->assign('servicecharge', $request->getBaseURL() . "/servcecharge/index");
-        $this->view->assign('home', $request->getBaseURL() . "/jobpost/index");
-        $this->view->assign('contact', $request->getBaseURL() . "/employer/index");
-        $this->view->assign('login', $request->getBaseURL() . "/jobpost/index");
-        $this->view->assign('create', $request->getBaseURL() . "/employer/registerform");
+                if(Zend_Auth::getInstance()->hasIdentity())
+        {
+            $this->_redirect(array('controller'=>'index','action'=>'index'));
+        }
+
+          $form = new Application_Form_Login();
+
+          $form -> setAction($this->view->url(array('controller'=>'authentication','action'=>'login')));
+
+          $form->setMethod('post');
+
+          $errors = '';
+
+         if($this->getRequest()->isPost())
+         {
+
+            $data = $this->getRequest()->getParams();
+
+            if($form->isValid($data))
+            {
+                //authenticate the user
+                $authAdapter = new Zend_Auth_Adapter_DbTable(Zend_Db_Table::getDefaultAdapter());
+
+                $authAdapter ->setTableName("tbl_user_info");
+
+                $authAdapter ->setIdentityColumn("username")
+                             ->setCredentialColumn("password");
+
+                $authAdapter->setIdentity($data['username'])
+                                ->setCredential($data['password']);
+
+                $authenticate = Zend_Auth::getInstance()
+                                ->authenticate($authAdapter);
+
+                 if($authenticate->isValid())
+                 {
+                     $userInfo = $authAdapter->getResultRowObject(null,'password');
+                     print_r($userInfo);
+                     $authStorage = Zend_Auth::getInstance()-> getStorage();
+                     $authStorage->write($userInfo);
+                     $this->_redirect(array('controller'=>'index','action'=>'index'));
+                 }
+                 else
+                 {
+                      $this->view->errors = 'The username or password you entered is incorrect.';
+                 }
+            }
+
+            $form->setDefaults($data);
+        }
+
+        echo $form;
     }
 
     public function registerformAction() {
