@@ -188,9 +188,19 @@ padding-left: 0px;
 
 .maincontent2
 {
+
     float: left;
     position: relative;
     padding-top: 5px;
+    margin-left: 186px;
+
+}
+.maincontent3
+{
+
+    float: left;
+    position: relative;
+    padding-top: 7px;
     margin-left: 186px;
 
 }
