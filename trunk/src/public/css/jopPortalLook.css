@@ -181,7 +181,16 @@ padding-left: 0px;
     float: left;
     position: relative;
     border: 0px solid;
-    padding: 12px;
+    padding: 0px;
+    margin-left: 186px;
+
+}
+
+.maincontent2
+{
+    float: left;
+    position: relative;
+    padding-top: 5px;
     margin-left: 186px;
 
 }
@@ -202,7 +211,6 @@ padding-left: 0px;
    text-align: center;
    font-size: 9px;
    padding: 20px 0;
-    background-image:url(../images/footer_bg.gif);
     margin-left: 200px;
     background-repeat: no-repeat;
     color: darkgrey;
