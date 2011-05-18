@@ -23,8 +23,10 @@ class ResumeController extends Zend_Controller_Action
     public function viewAction()
     {
         $actionhelper = Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper');
-        $this->view->view = $this->_resumeLoader
+        $data = $this->_resumeLoader
                 ->getResumeDetail($actionhelper->getUserID());
+        $this->view->imagepath = $data[0]['ImagePath'];
+        $this->view->view = $data;
     }
 
     public function emailAction()
