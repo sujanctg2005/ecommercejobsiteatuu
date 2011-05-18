@@ -40,11 +40,15 @@ class ProfileController extends Zend_Controller_Action {
                 $OfficePhone = $form->getValue('OfficePhone');
                 $Email = $form->getValue('Email');
                 $AlternativeEmail = $form->getValue('AlternativeEmail');
-                $ImagePath = 'image';//$form->getValue('ImagePath');
+                
                 $upload = new Zend_File_Transfer_Adapter_Http();
                 $upload->setDestination(APPLICATION_PATH . "/../uploads");
-
+                $va = $upload->getFileInfo();
                 
+                 $ImagePath = $this->view->baseUrl() ."/../uploads/". $va['ImagePath']['name']; //$form->getValue('ImagePath');
+
+               
+               
                 try {
                     $upload->receive();
                 } catch (Zend_File_Transfer_Exception $e) {
