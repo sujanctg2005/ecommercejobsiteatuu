@@ -49,11 +49,6 @@ form Submit {
     position: relative;
 }
 
-a:hover{
-    color: #999999;    
-    top: 2px;
-    position: relative;
-}
 
 .userlogin{    
     color: #0099ff;
@@ -204,6 +199,9 @@ padding-left: 0px;
     margin-left: 186px;
 
 }
+.block{
+    color: #ffffff;
+}
 .errors li{    
     color: #ff0000;
 }
@@ -230,6 +228,9 @@ padding-left: 0px;
 
     position: relative;
     float: right;
+}
+.feedback{
+    color: #A1A2A6;
 }
 
 #blocks{
