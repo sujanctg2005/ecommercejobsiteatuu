@@ -5,36 +5,38 @@ class Application_Form_EmployeeProfileForm extends Zend_Form {
     public function init() {
         $this->setName("EmployeeProfile");
         $this->setAction("");
-        $this->setAttrib('enctype','multipart/form-data');
+        $this->setAttrib('enctype', 'multipart/form-data');
 
         $Username = new Zend_Form_Element_Text('Username');
         $Username->setLabel('Username:')
                 ->setRequired(true)
                 ->addFilter('StripTags')
                 ->addFilter('StringTrim')
-                ->addValidator('alnum',true, array('messages'=>
+                ->addValidator('alnum', true, array('messages' =>
                     array(Zend_validate_alnum::NOT_ALNUM => 'The username contains non alphanumeric character.')))
                 ->addValidator('regex', true, array('/^[A-Za-z]+/',
-                    'messages'=>array(Zend_Validate_Regex::NOT_MATCH => 'The username should start with alphabet.')
-                    ))
-                ->addValidator('stringLength', true, array('min'=>6,'max'=>20,
-                    'messages'=>array(Zend_Validate_StringLength::TOO_LONG => 'The username cannot be more than 20 characters.',
-                                Zend_Validate_StringLength::TOO_SHORT => 'The username should be atleast 6 characters long.')
-                    ));
+                    'messages' => array(Zend_Validate_Regex::NOT_MATCH => 'The username should start with alphabet.')
+                ))
+                ->addValidator('stringLength', true, array('min' => 6, 'max' => 20,
+                    'messages' => array(Zend_Validate_StringLength::TOO_LONG => 'The username cannot be more than 20 characters.',
+                        Zend_Validate_StringLength::TOO_SHORT => 'The username should be atleast 6 characters long.')
+                ));
 
         $Password = new Zend_Form_Element_Password('Password');
         $Password->setLabel('Password:')
                 ->setRequired(true)
                 ->addFilter('StripTags')
                 ->addFilter('StringTrim')
-                ->addValidator('NotEmpty');
+                ->addValidator('stringLength', false, array('min' => 6));
 
         $Repassword = new Zend_Form_Element_Password('Repassword');
         $Repassword->setLabel('Re-password:')
                 ->setRequired(true)
                 ->addFilter('StripTags')
                 ->addFilter('StringTrim')
-                ->addValidator('stringLength',false,array('min'=>6));
+                ->addValidator(
+                            new Zend_Validate_Identical(Zend_Controller_Front::getInstance()
+                                    ->getRequest()->getParam('Password')));
 
         $UserID = new Zend_Form_Element_Hidden("UserID");
         $UserID->addFilter('Int');
@@ -53,14 +55,14 @@ class Application_Form_EmployeeProfileForm extends Zend_Form {
                 ->addFilter('StringTrim')
                 ->addValidator('NotEmpty');
 
-        
+
         $Gender = new Zend_Form_Element_Select('Gender');
         $Gender->setLabel('Gender:')
                 ->setRequired(true)
                 ->addFilter('StripTags')
                 ->addFilter('StringTrim')
-                ->setMultiOptions(array('Male','Female'));
-        
+                ->setMultiOptions(array('Male', 'Female'));
+
 
         $MaritialStatus = new Zend_Form_Element_Select('MaritialStatus');
         $MaritialStatus->setLabel('Maritial Status:')
@@ -120,13 +122,14 @@ class Application_Form_EmployeeProfileForm extends Zend_Form {
                 ->setRequired(true)
                 ->addFilter('StripTags')
                 ->addFilter('StringTrim')
-                ->addValidator('NotEmpty');
+                ->addValidator('EmailAddress', true, array());
 
         $AlternativeEmail = new Zend_Form_Element_Text('AlternativeEmail');
         $AlternativeEmail->setLabel('Alternative Email:')
                 ->setRequired(false)
                 ->addFilter('StripTags')
-                ->addFilter('StringTrim');
+                ->addFilter('StringTrim')
+                ->addValidator('EmailAddress', true, array());;
 
         $ImagePath = new Zend_Form_Element_File('ImagePath');
         $ImagePath->setLabel('Image:')
@@ -134,15 +137,14 @@ class Application_Form_EmployeeProfileForm extends Zend_Form {
                 ->addFilter('StripTags')
                 ->addFilter('StringTrim')
                 ->setMaxFileSize(1024000)
-                ->addValidator('Count',false,1)
-                ->addValidator('Size',false,1024000)
-                ->addValidator('Extension',false,'jpeg,jpg,png,gif');
+                ->addValidator('Count', false, 1)
+                ->addValidator('Size', false, 1024000)
+                ->addValidator('Extension', false, 'jpeg,jpg,png,gif');
 
         $Submit = new Zend_Form_Element_Submit('Submit');
         $Submit->setAttrib('UserID', 'submitbutton');
 
         $this->addElements(array($Username, $Password, $Repassword, $Name, $DOB, $Gender, $MaritialStatus, $Nationality, $Religion, $CurrentAddress, $PermanentAddress, $HomePhone, $Mobile, $OfficePhone, $Email, $AlternativeEmail, $ImagePath, $Submit));
     }
-
 }
 

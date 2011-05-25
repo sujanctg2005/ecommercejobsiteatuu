@@ -8,7 +8,6 @@ class ProfileController extends Zend_Controller_Action {
 
     public function indexAction() {
         // action body
-        
     }
 
     public function createAction() {
@@ -19,9 +18,8 @@ class ProfileController extends Zend_Controller_Action {
 
         if ($this->getRequest()->isPost()) {
             $formData = $this->getRequest()->getPost();
-            if ($form->isValid($formData))
-                    {
-                
+            if ($form->isValid($formData)) {
+
                 $Username = $form->getValue('Username');
                 $Password = $form->getValue('Password');
 
@@ -40,20 +38,39 @@ class ProfileController extends Zend_Controller_Action {
                 $OfficePhone = $form->getValue('OfficePhone');
                 $Email = $form->getValue('Email');
                 $AlternativeEmail = $form->getValue('AlternativeEmail');
-                
+
                 $upload = new Zend_File_Transfer_Adapter_Http();
                 $upload->setDestination(APPLICATION_PATH . "/../uploads");
                 $va = $upload->getFileInfo();
-                
+
                  $ImagePath = $this->view->baseUrl() ."/../uploads/". $va['ImagePath']['name']; //$form->getValue('ImagePath');
 
-               
-               
+
+
                 try {
                     $upload->receive();
+                    $upload->image_resize = true;
+                    $upload->image_x = 100;
+                    $upload->image_ratio_y = true;
                 } catch (Zend_File_Transfer_Exception $e) {
                     $e->getMessage();
                 }
+//                require_once 'class.upload.php';
+//                //require_once('class.upload.php');
+//                $ImagePath = new Upload($_FILES['ImagePath']);
+//                if ($ImagePath->uploaded) {
+//                    $ImagePath->image_resize = true;
+//                    $ImagePath->image_x = 100;
+//                    $ImagePath->image_ratio_y = true;
+//                    $ImagePath->Process('APPLICATION_PATH . "/../uploads"');
+//                    if ($ImagePath->processed) {
+//                        echo ' resized x=100';
+//                        $ImagePath->Clean();
+//                    } else {
+//                        echo 'error : ' . $ImagePath->error;
+//                    }
+//                }
+
                 $employeeInfo = new Application_Model_DbTable_EmployeeProfile();
                 $addEmployee = $employeeInfo->addEmployee($Username, $Password, $Name, $DOB, $Gender, $MaritialStatus, $Nationality, $Religion, $CurrentAddress, $PermanentAddress, $HomePhone, $Mobile, $OfficePhone, $Email, $AlternativeEmail, $ImagePath);
 
@@ -62,38 +79,27 @@ class ProfileController extends Zend_Controller_Action {
                 //authenticate the user
                 $authAdapter = new Zend_Auth_Adapter_DbTable(Zend_Db_Table::getDefaultAdapter());
 
-                $authAdapter ->setTableName("tbl_user_info");
+                $authAdapter->setTableName("tbl_user_info");
 
-                $authAdapter ->setIdentityColumn("username")
-                             ->setCredentialColumn("password");
+                $authAdapter->setIdentityColumn("username")
+                        ->setCredentialColumn("password");
 
                 $authAdapter->setIdentity($Username)
-                                ->setCredential($Password);
+                        ->setCredential($Password);
 
                 $authenticate = Zend_Auth::getInstance()
                                 ->authenticate($authAdapter);
 
-                 if($authenticate->isValid())
-                 {
-                     $userInfo = $authAdapter->getResultRowObject(null,'password');
-                     //print_r($userInfo);
-                     $authStorage = Zend_Auth::getInstance()-> getStorage();
-                     $authStorage->write($userInfo);
+                if ($authenticate->isValid()) {
+                    $userInfo = $authAdapter->getResultRowObject(null, 'password');
+                    //print_r($userInfo);
+                    $authStorage = Zend_Auth::getInstance()->getStorage();
+                    $authStorage->write($userInfo);
 
 
-                $redirector = Zend_Controller_Action_HelperBroker::getStaticHelper('Redirector');
-                 $redirector->gotoUrl('/profile/index/');
-                 }
-
-
-
-
-
-
-
-
-
-
+                    $redirector = Zend_Controller_Action_HelperBroker::getStaticHelper('Redirector');
+                    $redirector->gotoUrl('/profile/index/');
+                }
             } else {
                 $form->populate($formData);
             }
