@@ -1,6 +1,11 @@
 <?php
 
 class Application_Model_DbTable_EmployeeProfile extends Zend_Db_Table_Abstract {
+    
+   public function Encrypt($string){
+        $crypted = crypt(md5($string),  md5($string));
+        return $crypted;
+    }
 
     public function addEmployee($Username, $Password, $Name, $DOB, $Gender, $MaritialStatus, $Nationality, $Religion, $CurrentAddress, $PermanentAddress, $HomePhone, $Mobile, $OfficePhone, $Email, $AlternativeEmail, $ImagePath) {
         $table = Zend_Db_Table_Abstract::getDefaultAdapter();
@@ -9,7 +14,7 @@ class Application_Model_DbTable_EmployeeProfile extends Zend_Db_Table_Abstract {
         $CurDate = $table->fetchOne('select curdate()');
         $employeeLoginInfo = array(
             'Username' => $Username,
-            'Password' => $Password,
+            'Password' => $this->Encrypt($Password),
             'UserType' => 'Employee',
             'CreatedOn' => $CurDate,
             'LastUpdatedOn' => $CurDate
