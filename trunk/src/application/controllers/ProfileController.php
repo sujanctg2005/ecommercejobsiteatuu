@@ -85,7 +85,7 @@ class ProfileController extends Zend_Controller_Action {
                         ->setCredentialColumn("password");
 
                 $authAdapter->setIdentity($Username)
-                        ->setCredential($Password);
+                        ->setCredential(Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper')->md5encrypt($password));
 
                 $authenticate = Zend_Auth::getInstance()
                                 ->authenticate($authAdapter);

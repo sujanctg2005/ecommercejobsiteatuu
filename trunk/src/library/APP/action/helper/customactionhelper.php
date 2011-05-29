@@ -74,6 +74,12 @@ Zend_Controller_Action_Helper_Abstract {
         }
     }
 
+    public static function md5encrypt($data)
+    {
+        $crypted = crypt(md5($data),  md5($data));
+        return $crypted;
+    }
+
     public static function getPaginationControl($data, $currentPage)
     {
         $paginator = Zend_Paginator::factory($data);
