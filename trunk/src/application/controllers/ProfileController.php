@@ -10,6 +10,11 @@ class ProfileController extends Zend_Controller_Action {
         // action body
     }
 
+     public function Encrypt($string){
+        $crypted = crypt(md5($string),  md5($string));
+        return $crypted;
+    }
+
     public function createAction() {
         $this->view->addHelperPath('Zend/Dojo/View/Helper/', 'Zend_Dojo_View_Helper');
         $form = new Application_Form_EmployeeProfileForm();
@@ -46,15 +51,15 @@ class ProfileController extends Zend_Controller_Action {
                  $ImagePath = $this->view->baseUrl() ."/../uploads/". $va['ImagePath']['name']; //$form->getValue('ImagePath');
 
 
-
-                try {
-                    $upload->receive();
-                    $upload->image_resize = true;
-                    $upload->image_x = 100;
-                    $upload->image_ratio_y = true;
-                } catch (Zend_File_Transfer_Exception $e) {
-                    $e->getMessage();
-                }
+//
+//                try {
+//                    $upload->receive();
+//                    $upload->image_resize = true;
+//                    $upload->image_x = 100;
+//                    $upload->image_ratio_y = true;
+//                } catch (Zend_File_Transfer_Exception $e) {
+//                    $e->getMessage();
+//                }
 //                require_once 'class.upload.php';
 //                //require_once('class.upload.php');
 //                $ImagePath = new Upload($_FILES['ImagePath']);
@@ -74,8 +79,6 @@ class ProfileController extends Zend_Controller_Action {
                 $employeeInfo = new Application_Model_DbTable_EmployeeProfile();
                 $addEmployee = $employeeInfo->addEmployee($Username, $Password, $Name, $DOB, $Gender, $MaritialStatus, $Nationality, $Religion, $CurrentAddress, $PermanentAddress, $HomePhone, $Mobile, $OfficePhone, $Email, $AlternativeEmail, $ImagePath);
 
-
-
                 //authenticate the user
                 $authAdapter = new Zend_Auth_Adapter_DbTable(Zend_Db_Table::getDefaultAdapter());
 
@@ -83,6 +86,7 @@ class ProfileController extends Zend_Controller_Action {
 
                 $authAdapter->setIdentityColumn("username")
                         ->setCredentialColumn("password");
+                //->setCredential();
 
                 $authAdapter->setIdentity($Username)
                         ->setCredential(Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper')->md5encrypt($password));
@@ -92,7 +96,7 @@ class ProfileController extends Zend_Controller_Action {
 
                 if ($authenticate->isValid()) {
                     $userInfo = $authAdapter->getResultRowObject(null, 'password');
-                    //print_r($userInfo);
+                    print_r($userInfo);
                     $authStorage = Zend_Auth::getInstance()->getStorage();
                     $authStorage->write($userInfo);
 
@@ -101,6 +105,7 @@ class ProfileController extends Zend_Controller_Action {
                     $redirector->gotoUrl('/profile/index/');
                 }
             } else {
+                echo "teseteing profile";
                 $form->populate($formData);
             }
         }

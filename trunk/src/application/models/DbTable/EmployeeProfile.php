@@ -7,7 +7,10 @@ class Application_Model_DbTable_EmployeeProfile extends Zend_Db_Table_Abstract {
         return $crypted;
     }
 
-    public function addEmployee($Username, $Password, $Name, $DOB, $Gender, $MaritialStatus, $Nationality, $Religion, $CurrentAddress, $PermanentAddress, $HomePhone, $Mobile, $OfficePhone, $Email, $AlternativeEmail, $ImagePath) {
+    public function addEmployee($Username, $Password, $Name, $DOB, $Gender,
+            $MaritialStatus, $Nationality, $Religion, $CurrentAddress,
+            $PermanentAddress, $HomePhone, $Mobile, $OfficePhone, $Email,
+            $AlternativeEmail, $ImagePath) {
         $table = Zend_Db_Table_Abstract::getDefaultAdapter();
         $table->beginTransaction();
 
@@ -43,6 +46,31 @@ class Application_Model_DbTable_EmployeeProfile extends Zend_Db_Table_Abstract {
         );
         $table->insert('tbl_employee',$employeeInfo);
         $table->commit();
+    }
+
+    public function updateEmplyeeInfo($Name, $DOB, $Gender,
+            $MaritialStatus, $Nationality, $Religion, $CurrentAddress,
+            $PermanentAddress, $HomePhone, $Mobile, $OfficePhone, $Email,
+            $AlternativeEmail, $ImagePath) {
+        $table = Zend_Db_Table_Abstract::getDefaultAdapter();
+        $modifiedDOB = new Zend_Db_Expr("str_to_date('$DOB','%m/%d/%Y')");
+        $data = array(
+           'Name' => $Name,
+            'DateOfBirth' => $modifiedDOB,
+            'Gender' => $Gender,
+            'MaritialStatus' => $MaritialStatus,
+            'Nationality' => $Nationality,
+            'Religion' => $Religion,
+            'CurrentAddress' => $CurrentAddress,
+            'PermanentAddress' => $PermanentAddress,
+            'HomePhone' => $HomePhone,
+            'Mobile' => $Mobile,
+            'OfficePhone' => $OfficePhone,
+            'Email' => $Email,
+            'AlternativeEmail' => $AlternativeEmail,
+            'ImagePath' => $ImagePath
+        );
+        $table->update('tbl_employee',$data);
     }
 }
 

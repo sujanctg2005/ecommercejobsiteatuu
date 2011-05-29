@@ -13,6 +13,7 @@ class Application_Model_ResumeList{
 
         return $this->_table->fetchAll($select);
     }
+
 }
 
 ?>

@@ -1,47 +1,14 @@
 <?php
-//require_once('class.upload.php');
-class Application_Form_EmployeeProfileForm extends Zend_Form {
 
-    public function init() {
-        
-        $this->setName("EmployeeProfile");
+class Application_Form_UpdateEmployeeProfile extends Zend_Form
+{
+
+    public function init()
+    {
+        $this->setName("UpdateEmployeeProfile");
         $this->setAction("");
         $this->setAttrib('enctype', 'multipart/form-data');
-
-        $Username = new Zend_Form_Element_Text('Username');
-        $Username->setLabel('Username:')
-                ->setRequired(true)
-                ->addFilter('StripTags')
-                ->addFilter('StringTrim')
-                ->addValidator('alnum', true, array('messages' =>
-                    array(Zend_validate_alnum::NOT_ALNUM => 'The username contains non alphanumeric character.')))
-                ->addValidator('regex', true, array('/^[A-Za-z]+/',
-                    'messages' => array(Zend_Validate_Regex::NOT_MATCH => 'The username should start with alphabet.')
-                ))
-                ->addValidator('stringLength', true, array('min' => 6, 'max' => 20,
-                    'messages' => array(Zend_Validate_StringLength::TOO_LONG => 'The username cannot be more than 20 characters.',
-                        Zend_Validate_StringLength::TOO_SHORT => 'The username should be atleast 6 characters long.')
-                ));
-
-        $Password = new Zend_Form_Element_Password('Password');
-        $Password->setLabel('Password:')
-                ->setRequired(true)
-                ->addFilter('StripTags')
-                ->addFilter('StringTrim')
-                ->addValidator('stringLength', false, array('min' => 6));
-
-        $Repassword = new Zend_Form_Element_Password('Repassword');
-        $Repassword->setLabel('Re-password:')
-                ->setRequired(true)
-                ->addFilter('StripTags')
-                ->addFilter('StringTrim')
-                ->addValidator(
-                            new Zend_Validate_Identical(Zend_Controller_Front::getInstance()
-                                    ->getRequest()->getParam('Password')));
-
-        $UserID = new Zend_Form_Element_Hidden("UserID");
-        $UserID->addFilter('Int');
-
+     
         $Name = new Zend_Form_Element_Text('Name');
         $Name->setLabel('Name:')
                 ->setRequired(true)
@@ -141,26 +108,14 @@ class Application_Form_EmployeeProfileForm extends Zend_Form {
                 ->addValidator('Count', false, 1)
                 ->addValidator('Size', false, 1024000)
                 ->addValidator('Extension', false, 'jpeg,jpg,png,gif');
-      
-//            $foo = new Upload($_FILES['ImagePath']);
-//    if ($foo->uploaded){
-//        $foo->file_new_name_body = 'image_resized';
-//        $foo->image_resize = true;
-//        $foo->image_x = 100;
-//        $foo->image_ratio_y = true;
-//        $foo->Process('/home/user/files/');
-//        if ($foo->processed) {
-//        echo 'image renamed, resized x=100
-//        and converted to GIF';
-//        $foo->Clean();
-//        } else {
-//        echo 'error : ' . $foo->error;
-//        }
-   // }
+
         $Submit = new Zend_Form_Element_Submit('Submit');
         $Submit->setAttrib('UserID', 'submitbutton');
 
-        $this->addElements(array($Username, $Password, $Repassword, $Name, $DOB, $Gender, $MaritialStatus, $Nationality, $Religion, $CurrentAddress, $PermanentAddress, $HomePhone, $Mobile, $OfficePhone, $Email, $AlternativeEmail, $ImagePath, $Submit));
+        $this->addElements(array($Name, $DOB, $Gender, $MaritialStatus,
+                          $Nationality, $Religion,$CurrentAddress,
+                          $PermanentAddress, $HomePhone, $Mobile,
+                          $OfficePhone, $Email, $AlternativeEmail, $ImagePath, $Submit));
     }
 }
 
