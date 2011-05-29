@@ -3,17 +3,13 @@
 class AuthenticationController extends Zend_Controller_Action
 {
     public function init()
-    {        
+    {
+
     }
 
     public function indexAction()
     {
         $this->_forward('login', 'authentication');
-    }
-
-    public function Encrypt($string){
-        $crypted = crypt(md5($string),  md5($string));
-        return $crypted;
     }
 
     public function loginAction()
@@ -49,7 +45,8 @@ class AuthenticationController extends Zend_Controller_Action
                              ->setCredentialColumn("password");
 
                 $authAdapter->setIdentity($data['username'])
-                                ->setCredential($this->Encrypt($data['password']));
+                                ->setCredential(
+                                         Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper')->md5encrypt($data['password']));
 
                 $authenticate = Zend_Auth::getInstance()
                                 ->authenticate($authAdapter);
