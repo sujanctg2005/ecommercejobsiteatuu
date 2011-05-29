@@ -1,5 +1,11 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Resume</b> and script/action name <b>edit</b></p>
-        <br /> <br /><br /><br /><br /><br /><br />
-</div>
+<script langauge ="javascript">
+    $(function() {
+		$("#DateOfBirth" ).datepicker();
+	});
+    </script>
+
+<?php
+    $this->title = "Edit Employee Info";
+    $this->headTitle($this->title);
+    echo $this->form;
+?>
