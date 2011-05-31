@@ -333,7 +333,12 @@ class Application_Model_Employer
     {
         $registry = Zend_Registry::getInstance();
         $DB = $registry['DB'];
-        $DB->insert('tbl_employer', $this->puplateToArray());
+        $DB->insert('tbl_user_info', $this->puplateToArrayUser());
+        $id = $DB->lastInsertId();
+        $this->setUserId($id);
+        $data = $this->puplateToArray($id);
+        var_dump($data);
+        $DB->insert('tbl_employer', $this->puplateToArray($id ));
     }
     public function editEmployer ()
     {
@@ -360,10 +365,15 @@ class Application_Model_Employer
         
        
     }
- 
-    public function puplateToArray ()
+ public function puplateToArrayUser ()
     {
-        $data = array('UserID' => $this->getUserId(), 
+        $data = array('Username' => $this->getUsername(), 
+        'Password' => Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper')->md5encrypt($this->getPassword()));
+        return $data;
+    }
+    public function puplateToArray ($userId)
+    {
+        $data = array('UserID' => $userId, 
         'CompanyName' => $this->getCompanyname(), 
         'AlternativeCompanyName' => $this->getAlternativeCompany(), 
         'CompanyAddress' => $this->getCompanyAddress(), 

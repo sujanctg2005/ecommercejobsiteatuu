@@ -10,7 +10,7 @@ class EmployerController extends Zend_Controller_Action
         // action body
         $request = $this->getRequest();
      
-        $this->view->assign('login', $request->getBaseURL() . "/jobpost/index");
+        $this->view->assign('login', $request->getBaseURL() . "/authentication/login");
         $this->view->assign('create', 
         $request->getBaseURL() . "/employer/registerform");
         $this->assignViewformAction($request);
@@ -56,10 +56,9 @@ class EmployerController extends Zend_Controller_Action
         }
         else{*/
         $application_Model_Employer = new Application_Model_Employer();
-        $application_Model_Employer->setUserId(2);
+       // $application_Model_Employer->setUserId(2);
         $application_Model_Employer->setUsername(
         $request->getParam("txtUserName"));
-        
         $application_Model_Employer->setPassword(
         $request->getParam("txtPassword"));
         $application_Model_Employer->setPassword(
@@ -89,6 +88,7 @@ class EmployerController extends Zend_Controller_Action
         $request->getParam("txtBillingAddress"));
         $application_Model_Employer->setCityId($request->getParam("cboCity"));
         $application_Model_Employer->insertEmployer();
+        
         $this->_redirect('/jobpost/index');
         $this->view->assign('action', $request->getBaseURL() . "/jobpost/index");
         $this->view->assign('company', 

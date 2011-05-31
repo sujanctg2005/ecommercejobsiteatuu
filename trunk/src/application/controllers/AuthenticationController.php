@@ -17,7 +17,7 @@ class AuthenticationController extends Zend_Controller_Action
 
         $redirector = Zend_Controller_Action_HelperBroker::getStaticHelper('Redirector');
         if(Zend_Auth::getInstance()->hasIdentity())
-        {
+        {	
             $this->_redirect(array('controller'=>'index','action'=>'index'));
         }
 
@@ -33,7 +33,7 @@ class AuthenticationController extends Zend_Controller_Action
          {
 
             $data = $this->getRequest()->getParams();
-
+            
             if($form->isValid($data))
             {
                 //authenticate the user
@@ -57,7 +57,6 @@ class AuthenticationController extends Zend_Controller_Action
                      //print_r($userInfo);
                      $authStorage = Zend_Auth::getInstance()-> getStorage();
                      $authStorage->write($userInfo);
-
                      $this->_redirect(array('controller' => 'index', 'action' => 'index'));
                  }
                  else
