@@ -14,31 +14,31 @@
 
 
 
-												<li class="first"><a href=<?=$this->escape($this->home)?> title="Home">Home</a></li>
-                                                    	<li><a href=<?=$this->escape($this->postjob)?> title="Post Job">Post Job</a></li>
+												<li class="first"><a href=<?php echo$this->escape($this->home)?> title="Home">Home</a></li>
+                                                    	<li><a href=<?php echo$this->escape($this->postjob)?> title="Post Job">Post Job</a></li>
 
-                                                        <li><a href=<?=$this->escape($this->searchcv)?> title="Search Cv">Search CV</a></li>
-
-
-													<li><a href=<?=$this->escape($this->servicecharge)?> title="Service Charge">Service charge</a></li>
+                                                        <li><a href=<?php echo$this->escape($this->searchcv)?> title="Search Cv">Search CV</a></li>
 
 
-
-
-
-													<li><a href=<?=$this->escape($this->contact)?> title="Menu">Service Benifits</a></li>
+													<li><a href=<?php echo$this->escape($this->servicecharge)?> title="Service Charge">Service charge</a></li>
 
 
 
 
 
-													<li><a href=<?=$this->escape($this->contact)?> title="Contacts">Contacts</a></li>
+													<li><a href=<?php echo$this->escape($this->contact)?> title="Menu">Service Benifits</a></li>
 
 
 
 
 
-													<li><a href=<?=$this->escape($this->contact)?> title="Other">Other</a></li>
+													<li><a href=<?php echo$this->escape($this->contact)?> title="Contacts">Contacts</a></li>
+
+
+
+
+
+													<li><a href=<?php echo$this->escape($this->contact)?> title="Other">Other</a></li>
 
 
 
@@ -71,7 +71,7 @@
           <td width="215" height="30" align="center"><img src="images/txt_corporate_panel.gif" width="161" height="14"></td>
           <td style="background-image:url(images/gradient_top.jpg); background-repeat:repeat-y;"><table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td class="BDJCompanyName" >&nbsp;&nbsp;Company Name: <?=$this->escape($this->company)?></td>
+              <td class="BDJCompanyName" >&nbsp;&nbsp;Company Name: <?php echo$this->escape($this->company)?></td>
 
                 <td align="right"><img src="images/icons_logout2.gif" width="16" height="15" hspace="5" align="middle"><a href="logout.asp" class="BDJGreenArial11px"><strong>Logout</strong></a></td>
             </tr>
@@ -96,12 +96,12 @@
         <img src="images/pix_gray.gif" width="100%" height="1" vspace="6"><br>
         
         <div class="BDJWelcomeTxt">
-         <img src="images/icons_addnew.gif" width="15" height="16" vspace="4" align="middle" style="margin-right:5px;"><a href=<?=$this->escape($this->postform)?> class='BDJNavLink'>Post a New Job</a><br>
-        <img src="images/icons_account.gif" width="15" height="16" vspace="4" align="middle" style="margin-right:5px;"><a href=<?=$this->escape($this->findemployer)?> class='BDJNavLink'>Edit Account Info</a><br>
-        <img src="images/icons_invoice.gif" width="15" height="16" vspace="4" align="middle" style="margin-right:5px;"><a href=<?=$this->escape($this->create)?> class='BDJNavLink'>Payment Status</a><br>  
-        <img src="images/icons_email.gif" width="15" height="16" vspace="4" align="middle" style="margin-right:5px;"><a href=<?=$this->escape($this->create)?> class='BDJNavLink'>Contact Support</a><br>
+         <img src="images/icons_addnew.gif" width="15" height="16" vspace="4" align="middle" style="margin-right:5px;"><a href=<?php echo$this->escape($this->postform)?> class='BDJNavLink'>Post a New Job</a><br>
+        <img src="images/icons_account.gif" width="15" height="16" vspace="4" align="middle" style="margin-right:5px;"><a href=<?php echo$this->escape($this->findemployer)?> class='BDJNavLink'>Edit Account Info</a><br>
+        <img src="images/icons_invoice.gif" width="15" height="16" vspace="4" align="middle" style="margin-right:5px;"><a href=<?php echo$this->escape($this->create)?> class='BDJNavLink'>Payment Status</a><br>  
+        <img src="images/icons_email.gif" width="15" height="16" vspace="4" align="middle" style="margin-right:5px;"><a href=<?php echo$this->escape($this->create)?> class='BDJNavLink'>Contact Support</a><br>
 
-        <img src="images/btn_icon_login.gif" width="15" height="16" vspace="4" align="middle" style="margin-right:5px;"><a href=<?=$this->escape($this->create)?> class='BDJNavLink'>Change Password</a><br>
+        <img src="images/btn_icon_login.gif" width="15" height="16" vspace="4" align="middle" style="margin-right:5px;"><a href=<?php echo$this->escape($this->create)?> class='BDJNavLink'>Change Password</a><br>
         
         <!--
         <img src="images/icons_email.gif" width="15" height="16" vspace="4" align="absmiddle" style="margin-right:5px;"><br>
@@ -136,13 +136,13 @@
 
         
         
-        <img src="images/pix_gray.gif" width="100%" height="1" vspace="6"/><br/><span class="BDJFormTitle">Corporate Support</span><br/>
+        <img src="images/pix_gray.gif" width="100%" height="1" vspace="6"/><br/><span class="BDJFormTitle"></span><br/>
         <img src="images/pix_gray.gif" width="100%" height="1" vspace="6"/>
        
        
         <br/>
-        <span class="BDJtabLinkSelected">Help Desk:</span> <br/><span class="BDJGrayArial12px"><strong>9117179, 9140345, 01811410858, 01811410860</strong></span>
-        <div  style="margin-top:5px;" align="justify" class="BDJRedArial11px">Please call us if you face any difficulty in accessing the online services or plan for subscribing to additional services</div>
+        <span class="BDJtabLinkSelected"></span> <br/><span class="BDJGrayArial12px"><strong></strong></span>
+        <div  style="margin-top:5px;" align="justify" class="BDJRedArial11px"></div>
         <div class="BDJWelcomeTxt"></div>
 
         </td>    
@@ -188,25 +188,25 @@
 
                 <td width="13" class="headRight">&nbsp;</td>
               </tr>
-              <? $edit = $this->editpost;?>
-               <? $delete = $this->deletepost;?> 
-               <? $detail = $this->detailpost;?> 
-               <? $datas = $this->postjoblist;?> 
-               <?for($i = 0; $i < count($datas);$i++){ ?> 
+              <?php   $edit = $this->editpost;?>
+               <?php   $delete = $this->deletepost;?> 
+               <?php   $detail = $this->detailpost;?> 
+               <?php   $datas = $this->postjoblist;?> 
+                <?php for($i = 0; $i < count($datas);$i++){ ?> 
                
               <tr class="body"> 
                 <td class="bodyLeft">&nbsp;</td>
                 <td align="center" valign="middle">&nbsp; </td>
-				<td align="center" valign="middle"> <a href="<?=$detail?>/id/<?=$datas[$i]->getJobID()?> "> <?=$datas[$i]->getJobTitle()?></a></td>
+				<td align="center" valign="middle"> <a href="<?php echo$detail?>/id/<?php echo$datas[$i]->getJobID()?> "> <?php echo$datas[$i]->getJobTitle()?></a></td>
                
                 <td align="center" valign="middle">&nbsp;</td>
-                <td align="center" valign="middle"><?=$datas[$i]->getJobPostDate()?></td>
+                <td align="center" valign="middle"><?php echo$datas[$i]->getJobPostDate()?></td>
 
-                  <td align="center" valign="middle"><?=$datas[$i]->getApplicationDeadline()?></td>
+                  <td align="center" valign="middle"><?php echo$datas[$i]->getApplicationDeadline()?></td>
 
-				<td align="center" valign="middle" nowrap="nowrap" class="bodyCell"><a href="<?=$edit?>/edi/<?=$datas[$i]->getJobID()?>">Edit</a></td>
+				<td align="center" valign="middle" nowrap="nowrap" class="bodyCell"><a href="<?php echo$edit?>/edi/<?php echo$datas[$i]->getJobID()?>">Edit</a></td>
 				 
-               				 <td align="center" valign="middle" nowrap="nowrap" class="bodyCell"><a href="<?=$delete?>/del/<?=$datas[$i]->getJobID()?>">Delete</a></td>
+               				 <td align="center" valign="middle" nowrap="nowrap" class="bodyCell"><a href="<?php echo$delete?>/del/<?php echo$datas[$i]->getJobID()?>">Delete</a></td>
 				 
                 <td align="center" valign="middle">-</td>
                 <td align="center" valign="middle">-</td>
@@ -215,7 +215,7 @@
                 <td align="center" valign="middle">-</td>
                 <td class="bodyRight">&nbsp;</td>
               </tr>
-               <? } ?>
+               <?php   } ?>
               <tr> 
                 <td class="footerLeft"><img src="images/pix.gif" width="6" height="5" /></td>
                 <td colspan="11" class="footerMiddle"><img src="images/pix.gif" width="1" height="1"  /></td>
@@ -262,9 +262,9 @@
             
                  
                   <br />
-                  linked with custom designed web page
-                  <br />
-                  for your job announcements
+                  
+                  
+                  along with  your job announcements displyed.
                   </td>
                   <td valign="top"  style="padding:5px;"> 		
                   

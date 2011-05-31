@@ -16,37 +16,40 @@
 
 
 
-													<li class="first"><a href="./" title="Home">Home</a></li>
-                                                    	<li><a href="reviews.php" title="Reviews">Post Job</a></li>
+													<<li class="first"><a href=<?php echo$this->escape($this->home)?> title="Home">Home</a></li>
+                                                    	<li><a href=<?php echo$this->escape($this->postjob)?> title="Post Job">Post Job</a></li>
 
-                                                        <li><a href="directions.php" title="Directions">Search Job</a></li>
-
-
-													<li><a href="about-us.php" title="About us">Service charge</a></li>
+                                                        <li><a href=<?php echo$this->escape($this->searchcv)?> title="Search Cv">Search CV</a></li>
 
 
-
-
-
-													<li><a href="menu.php" title="Menu">Service Benifits</a></li>
+													<li><a href=<?php echo$this->escape($this->servicecharge)?> title="Service Charge">Service charge</a></li>
 
 
 
 
 
-													<li><a href="picture-gallery.php" title="Picture gallery">Contacts</a></li>
+													<li><a href=<?php echo$this->escape($this->contact)?> title="Menu">Service Benifits</a></li>
 
 
 
 
 
-													<li><a href="reviews.php" title="Reviews">Other</a></li>
+													<li><a href=<?php echo$this->escape($this->contact)?> title="Contacts">Contacts</a></li>
+
+
+
+
+
+													<li><a href=<?php echo$this->escape($this->contact)?> title="Other">Other</a></li>
 
 
 
 
 
 													
+
+
+
 
 
 
@@ -99,12 +102,12 @@
         <img src="images/pix_gray.gif" width="100%" height="1" vspace="6"><br>
         
         <div class="BDJWelcomeTxt">
-         <img src="images/icons_addnew.gif" width="15" height="16" vspace="4" align="middle" style="margin-right:5px;"><a href=<?=$this->escape($this->postform)?> class='BDJNavLink'>Post a New Job</a><br>
-        <img src="images/icons_account.gif" width="15" height="16" vspace="4" align="middle" style="margin-right:5px;"><a href=<?=$this->escape($this->findemployer)?> class='BDJNavLink'>Edit Account Info</a><br>
-        <img src="images/icons_invoice.gif" width="15" height="16" vspace="4" align="middle" style="margin-right:5px;"><a href=<?=$this->escape($this->create)?> class='BDJNavLink'>Payment Status</a><br>  
-        <img src="images/icons_email.gif" width="15" height="16" vspace="4" align="middle" style="margin-right:5px;"><a href=<?=$this->escape($this->create)?> class='BDJNavLink'>Contact Support</a><br>
+         <img src="images/icons_addnew.gif" width="15" height="16" vspace="4" align="middle" style="margin-right:5px;"><a href=<?php echo$this->escape($this->postform)?> class='BDJNavLink'>Post a New Job</a><br>
+        <img src="images/icons_account.gif" width="15" height="16" vspace="4" align="middle" style="margin-right:5px;"><a href=<?php echo$this->escape($this->findemployer)?> class='BDJNavLink'>Edit Account Info</a><br>
+        <img src="images/icons_invoice.gif" width="15" height="16" vspace="4" align="middle" style="margin-right:5px;"><a href=<?php echo$this->escape($this->create)?> class='BDJNavLink'>Payment Status</a><br>  
+        <img src="images/icons_email.gif" width="15" height="16" vspace="4" align="middle" style="margin-right:5px;"><a href=<?php echo$this->escape($this->create)?> class='BDJNavLink'>Contact Support</a><br>
 
-        <img src="images/btn_icon_login.gif" width="15" height="16" vspace="4" align="middle" style="margin-right:5px;"><a href=<?=$this->escape($this->create)?> class='BDJNavLink'>Change Password</a><br>
+        <img src="images/btn_icon_login.gif" width="15" height="16" vspace="4" align="middle" style="margin-right:5px;"><a href=<?php echo$this->escape($this->create)?> class='BDJNavLink'>Change Password</a><br>
         
         <!--
         <img src="images/icons_email.gif" width="15" height="16" vspace="4" align="absmiddle" style="margin-right:5px;"><br>
@@ -182,12 +185,12 @@
 		JOBPOSTING STEP 01 STARTS:
 		-------------------------->
         <table width="100%" border="0" cellspacing="0" cellpadding="0" id="tblSet4">
-			<FORM name="frmJobPostingStep01" id="frmJobPostingStep01" method="post" action=<?=$this->escape($this->modify)?>>
+			<FORM name="frmJobPostingStep01" id="frmJobPostingStep01" method="post" action=<?php echo$this->escape($this->modify)?>>
 				<!----------------------------------
 				'READING JOB POSTING STEP 02 INPUT:
 				'---------------------------------->	
-				<INPUT type="hidden" name="jobId" id="cboAgeFrom" value=<?=$this->editjoblist->getJobID()?>/>
-				<INPUT type="hidden" name="requirmentId" id="cboAgeTo" value=<?=$this->editjoblist->setJobRequirementID()?>/>
+				<INPUT type="hidden" name="jobId" id="cboAgeFrom" value=<?php echo$this->editjoblist->getJobID()?>/>
+				<INPUT type="hidden" name="requirmentId" id="cboAgeTo" value=<?php echo$this->editjoblist->setJobRequirementID()?>/>
 				
 				<tr>
 
@@ -209,13 +212,17 @@
                 </td>
 				
                 <td width="70%">
-               	
+               	 <?php  $datas = $this->category;?> 
 				<SELECT name="cboJobCategory" id="cboJobCategory" style="width:230px">
 					<!--option value="-1" >Select</option-->
 						
 							   <!--<option value="" selected></option>-->
-						 <option value='-1' Selected>Select</option><option value='Accounting'>Accounting</option><option value='10'>Advertisement/Event Mgt.</option><option value='2'>Banking/Insurance/Leasing</option><option value='3'>Commercial/Supply Chain</option><option value='16'>Customer Support/Call Centre</option><option value='15'>Data Entry/Operator/BPO</option><option value='18'>Design/Creative</option><option value='4'>Education/Training</option><option value='5'>Engineer/Architect</option><option value='6'>Garments/Textile</option><option value='7'>General Management/Admin</option><option value='17'>HR/Org. Development</option><option value='8'>IT/Telecommunication</option><option value='9'>Marketing/Sales</option><option value='11'>Medical/Pharmaceutical</option><option value='12'>NGO/Development</option><option value='13'>Research/Consultancy</option><option value='14'>Secretary/Receptionist</option>
-
+						 <option value='-1' Selected>Select</option>
+						 <?php for($i = 0; $i < count($datas);$i++){ ?>            
+             <option value=<?php echo$datas[$i]->getCategoryType()?> <?php if($datas[$i]->getCategoryType() == $this->escape($this->editjoblist->getJobCategoryID())) echo ' selected'; ?>> 
+                <?php echo$datas[$i]->getCategoryType()?></option>
+			
+               <?php  } ?>
                     <option value="-10" >Others</option>
 				</SELECT>
                 </td>
@@ -233,7 +240,7 @@
 						 
 				<img src="images/star.gif" width="7" height="7" hspace="5">				</td>
 				<td>
-				<INPUT type="text" name="txtJobTitle" id="txtJobTitle" class="BDJtextBox" style="width:90%;" maxlength="100" value=<?=$this->editjoblist->getJobTitle()?>>				</td>
+				<INPUT type="text" name="txtJobTitle" id="txtJobTitle" class="BDJtextBox" style="width:90%;" maxlength="100" value=<?php echo$this->editjoblist->getJobTitle()?>>				</td>
 				<td class="bodyRight">&nbsp;</td>
 				</tr>
 				<!--
@@ -248,7 +255,7 @@
 						 
 				<img src="images/star.gif" width="7" height="7" hspace="5">				</td>
 				<td>
-				<INPUT name="txtTotalVacancy" type="text" class="BDJtextBox" id="txtTotalVacancy" style="width:10%;" value=<?=$this->editjoblist->getNoOfVacancy()?> maxlength="50">				</td>
+				<INPUT name="txtTotalVacancy" type="text" class="BDJtextBox" id="txtTotalVacancy" style="width:10%;" value=<?php echo$this->editjoblist->getNoOfVacancy()?> maxlength="50">				</td>
 				<td class="bodyRight">&nbsp;</td>
 				</tr>
 							
@@ -383,7 +390,7 @@
 					 
 				<img src="images/star.gif" width="7" height="7" hspace="5"></td>
 				<td>
-				<INPUT name="txtBillingContact" type="text" class="BDJtextBox" id="txtBillingContact" style="width:60%;vertical-align:middle;" value=<?=$this->editjoblist->getEmployeerID()?> maxlength="80">				</td>
+				<INPUT name="txtBillingContact" type="text" class="BDJtextBox" id="txtBillingContact" style="width:60%;vertical-align:middle;" value=<?php echo$this->editjoblist->getEmployeerID()?> maxlength="80">				</td>
 				<td class="bodyRight">&nbsp;</td>
 				</tr>
 				<!--
@@ -398,7 +405,7 @@
 					 
 				<img src="images/star.gif" width="7" height="7" hspace="5"></td>
 				<td>
-				<INPUT name="txtDesignation" type="text" class="BDJtextBox" id="txtDesignation" style="width:60%;" value=<?=$this->editjoblist->getDesignation()?> maxlength="80">				</td>
+				<INPUT name="txtDesignation" type="text" class="BDJtextBox" id="txtDesignation" style="width:60%;" value=<?php echo$this->editjoblist->getDesignation()?> maxlength="80">				</td>
 				<td class="bodyRight">&nbsp;</td>
 				</tr>
 				<!--
@@ -871,7 +878,7 @@
 			</td>
 	        <td style="padding-top:2px; padding-bottom:2px;">
 			<TEXTAREA name="txtEducation" id="txtEducation" class="BDJtextBox" onKeyUp="countLetter(this.id , 500 , 'CADD_sp1' , 'Educational Qualification' , 1)" onChange="countLetter(this.id , 500 , 'CADD_sp1' , 'Educational Qualification' , 1 )" style="width:100%; height:80px;">
-			<?=$this->editjoblist->getEducationalQualificationalID()?></TEXTAREA>
+			<?php echo$this->editjoblist->getEducationalQualificationalID()?></TEXTAREA>
 			<SPAN id="CADD_sp1" name="CADD_sp1" class="BDJValues"></SPAN>
 			</td>
 	        <td class="bodyRight">&nbsp;</td>
@@ -891,7 +898,7 @@
 			</td>
 			
 	        <td style="padding-top:2px; padding-bottom:2px;">
-	        <TEXTAREA name="txtJobDescription" id="txtJobDescription" class="BDJtextBox" style="width:100%; height:80px;"><?=$this->editjoblist->getJobResponsibility()?></TEXTAREA>
+	        <TEXTAREA name="txtJobDescription" id="txtJobDescription" class="BDJtextBox" style="width:100%; height:80px;"><?php echo$this->editjoblist->getJobResponsibility()?></TEXTAREA>
 
 			</td>
     	    <td class="bodyRight">&nbsp;</td>
@@ -910,7 +917,7 @@
 			</td>
 
 			<td style="padding-top:2px; padding-bottom:2px;">
-			<TEXTAREA name="txtJobRequirements" id="txtJobRequirements"  class="BDJtextBox" style="width:100%; height:80px;"> <?=$this->editjoblist->getAdditionalJobRequirement()?></TEXTAREA>
+			<TEXTAREA name="txtJobRequirements" id="txtJobRequirements"  class="BDJtextBox" style="width:100%; height:80px;"> <?php echo$this->editjoblist->getAdditionalJobRequirement()?></TEXTAREA>
 			</td>
 			<td class="bodyRight">&nbsp;</td>
 			</tr>
@@ -1187,7 +1194,7 @@
 				   id="txtSalaryFrom" 
 				   class="BDJtextBox"
 				  maxlength="10" 				   
-				   value=<?=$this->editjoblist->getMaximumSalaryRange()?>
+				   value=<?php echo$this->editjoblist->getMaximumSalaryRange()?>
 				   style="width:20%;vertical-align:middle;">
 			<SPAN class="BDJGrayArial11px" 
 			      style="color:
@@ -1200,7 +1207,7 @@
 				  
 				   maxlength="10"
 				   class="BDJtextBox" 				   
-				   value=<?=$this->editjoblist->getMaximumSalaryRange()?>
+				   value=<?php echo$this->editjoblist->getMaximumSalaryRange()?>
 				   
 					style="width:20%;vertical-align:middle;" >
 			<SPAN  id="spnBDT" 
@@ -1212,7 +1219,7 @@
 			<SPAN class="BDJGrayArial11px">Other Benefits</SPAN>
 
 			<TEXTAREA name="txtOtherBenefits" id="txtOtherBenefits" class="BDJtextBox" style="width:100%; height:80px;">
-			<?=$this->editjoblist->getBenifits()?></TEXTAREA>			
+			<?php echo$this->editjoblist->getBenifits()?></TEXTAREA>			
 			</td>
 			<td class="bodyRight" style="border-bottom:0px;">&nbsp;</td>
 			</tr>
@@ -1254,7 +1261,7 @@
     </div>
 			</div>
             <div id="footer-wrap">
-			<div id='sys_footer' class='sys_footer'>Designed by <a href='http://www.freecsstemplates.org' target='_blank'>Free CSS Templates</a></div>
+			<div id='sys_footer' class='sys_footer'>Designed by <a href='http://www.freecsstemplates.org' target='_blank'>xxxxxxxxxxxxxxxxxxxxxxx</a></div>
 
 
 
