@@ -4,15 +4,14 @@
           $this->headTitle($this->title);
         echo
           '
-              <table border="1" cellspacing="1" cellpadding="3">';
-                $format = "<tr class = 'header'><td>%s: </td><td class = 'value'>%s</td></tr>";
+              <table border="5" cellspacing="1" cellpadding="3" width="550" >';
+        echo "<tr><td></td><td></td><td border='5' width='140' rowspan = '10' align='left'><img src='$this->imagepath'/></td></tr>";
+                $format = "<tr class = 'header'><td width=40 px>%s: </td><td class = 'value' colspan='2'>%s</td></tr>";
                 foreach($this->view as $abc => $def){
                     foreach($def as $d=>$e){
                         printf($format,$d,$e);
                     }
                 }
-          echo '</table>'
-    ?>
-<img src="<?php echo $this->imagepath; ?> "/>
-        
+          echo "</table>";            
+    ?>        
 </div>

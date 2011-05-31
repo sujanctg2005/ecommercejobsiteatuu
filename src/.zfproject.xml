@@ -28,6 +28,10 @@
           <actionMethod actionName="jobsbycategory"/>
           <actionMethod actionName="jobdetail"/>
         </controllerFile>
+        <controllerFile controllerName="Qualification">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="add"/>
+        </controllerFile>
       </controllersDirectory>
       <formsDirectory>
         <formFile formName="CreateJobCategory"/>
@@ -36,6 +40,8 @@
         <formFile formName="EmployeeProfile"/>
         <formFile formName="Applyjob"/>
         <formFile formName="UpdateEmployeeProfile;"/>
+        <formFile formName="EmployeeChangePassword"/>
+        <formFile formName="EmployeeQualification"/>
       </formsDirectory>
       <layoutsDirectory enabled="false"/>
       <modelsDirectory>
@@ -86,6 +92,12 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Index">
             <viewScriptFile forActionName="addEmployee"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Qualification">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Qualification">
+            <viewScriptFile forActionName="add"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>

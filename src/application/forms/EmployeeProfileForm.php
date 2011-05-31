@@ -140,23 +140,8 @@ class Application_Form_EmployeeProfileForm extends Zend_Form {
                 ->setMaxFileSize(1024000)
                 ->addValidator('Count', false, 1)
                 ->addValidator('Size', false, 1024000)
-                ->addValidator('Extension', false, 'jpeg,jpg,png,gif');
+                ->addValidator('Extension', false, 'jpeg,jpg,png,gif,bmp');
       
-//            $foo = new Upload($_FILES['ImagePath']);
-//    if ($foo->uploaded){
-//        $foo->file_new_name_body = 'image_resized';
-//        $foo->image_resize = true;
-//        $foo->image_x = 100;
-//        $foo->image_ratio_y = true;
-//        $foo->Process('/home/user/files/');
-//        if ($foo->processed) {
-//        echo 'image renamed, resized x=100
-//        and converted to GIF';
-//        $foo->Clean();
-//        } else {
-//        echo 'error : ' . $foo->error;
-//        }
-   // }
         $Submit = new Zend_Form_Element_Submit('Submit');
         $Submit->setAttrib('UserID', 'submitbutton');
 

@@ -27,8 +27,24 @@ Zend_Controller_Action_Helper_Abstract {
 
     public function  postDispatch() {
         parent::postDispatch();
+    }
 
+    public function returnImage($srcfile, $baseurl){
+        $imageUpload = new Upload($srcfile);
+                $imageUpload->file_new_name_body = "Image_0";
+                $imageUpload->image_resize = true;
+                $imageUpload->image_convert = gif;
+                $imageUpload->image_x = 135;
+                $imageUpload->image_ratio_y = true;
+                $imageUpload->Process(APPLICATION_PATH . "/../uploads");
+                $ImagePath = $baseurl ."/../uploads/".$imageUpload->file_dst_name;
+                if ($imageUpload->processed) {
+                $imageUpload->Clean();
 
+                } else {
+                echo 'error : ' . $imageUpload->error;
+                }
+                return $ImagePath;
     }
 
     private function authorizeAccess($role, $controller, $action)
@@ -44,6 +60,16 @@ Zend_Controller_Action_Helper_Abstract {
 
         if($auth->hasIdentity())
                 return $auth->getStorage()->read()->UserID;
+
+        return -1;
+
+    }
+    public function getUserName()
+    {
+        $auth = Zend_Auth::getInstance();
+
+        if($auth->hasIdentity())
+                return $auth->getStorage()->read()->Username;
 
         return -1;
 

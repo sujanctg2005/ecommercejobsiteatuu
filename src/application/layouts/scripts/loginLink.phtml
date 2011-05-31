@@ -12,13 +12,14 @@ if($role==APP_Authorization_Roles::GUEST)
 }
 else if($role == APP_Authorization_Roles::EMPLOYEE)
 {
-    array_push($sidebarmenu, array('resume','edit','Edit Resume'));
+    array_push($sidebarmenu, array('qualification','add','Add Qualification'));
     array_push($sidebarmenu, array('resume','view','View Resume'));
     array_push($sidebarmenu, array('resume','email','Email Resume'));
     array_push($sidebarmenu, array('resume','delete','Delete Resume'));
     array_push($sidebarmenu, array('employer','block','Block Employer'));
     array_push($sidebarmenu, array('view','stats','View Stats'));
     array_push($sidebarmenu, array('notification','email','Email Notification'));
+    array_push($sidebarmenu, array('resume','edit','Edit Resume'));
     array_push($sidebarmenu, array('change','password','Change Password'));
 }
 else if($role == APP_Authorization_Roles::EMPLOYER)
