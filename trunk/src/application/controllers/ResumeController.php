@@ -6,6 +6,7 @@ class ResumeController extends Zend_Controller_Action
 
     public function init()
     {
+        require_once 'upload.php';
         $this->_resumeLoader = new Application_Model_ResumeList();
     }
 
@@ -19,14 +20,14 @@ class ResumeController extends Zend_Controller_Action
         $actionhelper = Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper');
                 $data = $this->_resumeLoader
                         ->getResumeDetail($actionhelper->getUserID());
-       $form = new Application_Form_UpdateEmployeeProfile();
+       $form = new Application_Form_EmployeeUpdateProfile();
        $form->Submit->setLabel('Update');
        $this->view->form = $form;
-       
 
        if($this->getRequest()->isPost()){
            $formData = $this->getRequest()->getPost();
             if ($form->isValid($formData)) {
+                $UserID = $actionhelper->getUserID();
                 $Name = $form->getValue('Name');
                 $DOB = $form->getValue('DateOfBirth');
                 $optionGender = $form->getElement('Gender')->getMultiOptions();
@@ -42,14 +43,11 @@ class ResumeController extends Zend_Controller_Action
                 $OfficePhone = $form->getValue('OfficePhone');
                 $Email = $form->getValue('Email');
                 $AlternativeEmail = $form->getValue('AlternativeEmail');
-                $upload = new Zend_File_Transfer_Adapter_Http();
-                $upload->setDestination(APPLICATION_PATH . "/../uploads");
-                $va = $upload->getFileInfo();
-
-                $ImagePath = $this->view->baseUrl() ."/../uploads/". $va['ImagePath']['name']; //$form->getValue('ImagePath');
+                $ImagePath = Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper')->
+                        returnImage($_FILES['ImagePath'],$this->view->baseUrl());
 
                 $employeeInfo = new Application_Model_DbTable_EmployeeProfile();
-                $updateEmployeeInfo = $employeeInfo->updateEmplyeeInfo($Name, $DOB, $Gender,
+                $updateEmployeeInfo = $employeeInfo->updateEmplyeeInfo($UserID, $Name, $DOB, $Gender,
                                         $MaritialStatus, $Nationality, $Religion, $CurrentAddress,
                                         $PermanentAddress, $HomePhone, $Mobile, $OfficePhone, $Email,
                                         $AlternativeEmail, $ImagePath);

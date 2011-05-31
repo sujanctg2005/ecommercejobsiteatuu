@@ -3,16 +3,11 @@
 class ProfileController extends Zend_Controller_Action {
 
     public function init() {
-        /* Initialize action controller here */
+        require_once 'upload.php';
     }
 
     public function indexAction() {
         // action body
-    }
-
-     public function Encrypt($string){
-        $crypted = crypt(md5($string),  md5($string));
-        return $crypted;
     }
 
     public function createAction() {
@@ -24,10 +19,8 @@ class ProfileController extends Zend_Controller_Action {
         if ($this->getRequest()->isPost()) {
             $formData = $this->getRequest()->getPost();
             if ($form->isValid($formData)) {
-
                 $Username = $form->getValue('Username');
                 $Password = $form->getValue('Password');
-
                 $Name = $form->getValue('Name');
                 $DOB = $form->getValue('DateOfBirth');
                 $optionGender = $form->getElement('Gender')->getMultiOptions();
@@ -43,39 +36,8 @@ class ProfileController extends Zend_Controller_Action {
                 $OfficePhone = $form->getValue('OfficePhone');
                 $Email = $form->getValue('Email');
                 $AlternativeEmail = $form->getValue('AlternativeEmail');
-
-                $upload = new Zend_File_Transfer_Adapter_Http();
-                $upload->setDestination(APPLICATION_PATH . "/../uploads");
-                $va = $upload->getFileInfo();
-
-                 $ImagePath = $this->view->baseUrl() ."/../uploads/". $va['ImagePath']['name']; //$form->getValue('ImagePath');
-
-
-//
-//                try {
-//                    $upload->receive();
-//                    $upload->image_resize = true;
-//                    $upload->image_x = 100;
-//                    $upload->image_ratio_y = true;
-//                } catch (Zend_File_Transfer_Exception $e) {
-//                    $e->getMessage();
-//                }
-//                require_once 'class.upload.php';
-//                //require_once('class.upload.php');
-//                $ImagePath = new Upload($_FILES['ImagePath']);
-//                if ($ImagePath->uploaded) {
-//                    $ImagePath->image_resize = true;
-//                    $ImagePath->image_x = 100;
-//                    $ImagePath->image_ratio_y = true;
-//                    $ImagePath->Process('APPLICATION_PATH . "/../uploads"');
-//                    if ($ImagePath->processed) {
-//                        echo ' resized x=100';
-//                        $ImagePath->Clean();
-//                    } else {
-//                        echo 'error : ' . $ImagePath->error;
-//                    }
-//                }
-
+                $ImagePath = Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper')->
+                        returnImage($_FILES['ImagePath'],$this->view->baseUrl());
                 $employeeInfo = new Application_Model_DbTable_EmployeeProfile();
                 $addEmployee = $employeeInfo->addEmployee($Username, $Password, $Name, $DOB, $Gender, $MaritialStatus, $Nationality, $Religion, $CurrentAddress, $PermanentAddress, $HomePhone, $Mobile, $OfficePhone, $Email, $AlternativeEmail, $ImagePath);
 
@@ -86,7 +48,6 @@ class ProfileController extends Zend_Controller_Action {
 
                 $authAdapter->setIdentityColumn("username")
                         ->setCredentialColumn("password");
-                //->setCredential();
 
                 $authAdapter->setIdentity($Username)
                         ->setCredential(Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper')->md5encrypt($password));
@@ -105,7 +66,6 @@ class ProfileController extends Zend_Controller_Action {
                     $redirector->gotoUrl('/profile/index/');
                 }
             } else {
-                echo "teseteing profile";
                 $form->populate($formData);
             }
         }

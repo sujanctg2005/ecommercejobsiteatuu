@@ -15,7 +15,11 @@ class ChangeController extends Zend_Controller_Action
 
     public function passwordAction()
     {
-        // action body
+        $form = new Application_Form_EmployeeChangePassword();
+        $form->setUserName(
+        Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper')->getUserName());
+        $form->Submit->setLabel('Submit');
+        $this->view->form = $form;
     }
 
 

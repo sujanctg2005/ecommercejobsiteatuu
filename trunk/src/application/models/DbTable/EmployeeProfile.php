@@ -1,12 +1,9 @@
 <?php
 
 class Application_Model_DbTable_EmployeeProfile extends Zend_Db_Table_Abstract {
-    
-   public function Encrypt($string){
-        $crypted = crypt(md5($string),  md5($string));
-        return $crypted;
-    }
 
+    protected $_name = 'tbl_employee';
+    
     public function addEmployee($Username, $Password, $Name, $DOB, $Gender,
             $MaritialStatus, $Nationality, $Religion, $CurrentAddress,
             $PermanentAddress, $HomePhone, $Mobile, $OfficePhone, $Email,
@@ -17,7 +14,7 @@ class Application_Model_DbTable_EmployeeProfile extends Zend_Db_Table_Abstract {
         $CurDate = $table->fetchOne('select curdate()');
         $employeeLoginInfo = array(
             'Username' => $Username,
-            'Password' => $this->Encrypt($Password),
+            'Password' => Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper')->md5encrypt($password),
             'UserType' => 'Employee',
             'CreatedOn' => $CurDate,
             'LastUpdatedOn' => $CurDate
@@ -26,7 +23,6 @@ class Application_Model_DbTable_EmployeeProfile extends Zend_Db_Table_Abstract {
         $table->insert('tbl_user_info',$employeeLoginInfo);
         $UserID = $table->fetchOne('select last_insert_id()');
         $modifiedDOB = new Zend_Db_Expr("str_to_date('$DOB','%m/%d/%Y')");
-        
         $employeeInfo = array(
             'UserID' => $UserID,
             'Name' => $Name,
@@ -48,12 +44,14 @@ class Application_Model_DbTable_EmployeeProfile extends Zend_Db_Table_Abstract {
         $table->commit();
     }
 
-    public function updateEmplyeeInfo($Name, $DOB, $Gender,
+    public function updateEmplyeeInfo($UserID, $Name, $DOB, $Gender,
             $MaritialStatus, $Nationality, $Religion, $CurrentAddress,
             $PermanentAddress, $HomePhone, $Mobile, $OfficePhone, $Email,
             $AlternativeEmail, $ImagePath) {
         $table = Zend_Db_Table_Abstract::getDefaultAdapter();
         $modifiedDOB = new Zend_Db_Expr("str_to_date('$DOB','%m/%d/%Y')");
+        echo $modifiedDOB;
+        
         $data = array(
            'Name' => $Name,
             'DateOfBirth' => $modifiedDOB,
@@ -70,7 +68,7 @@ class Application_Model_DbTable_EmployeeProfile extends Zend_Db_Table_Abstract {
             'AlternativeEmail' => $AlternativeEmail,
             'ImagePath' => $ImagePath
         );
-        $table->update('tbl_employee',$data);
+        $this->update($data, 'UserID = '. (int)$UserID);
     }
 }
 

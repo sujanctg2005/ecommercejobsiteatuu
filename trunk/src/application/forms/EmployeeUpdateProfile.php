@@ -1,11 +1,11 @@
 <?php
 
-class Application_Form_UpdateEmployeeProfile extends Zend_Form
+class Application_Form_EmployeeUpdateProfile extends Zend_Form
 {
 
     public function init()
     {
-        $this->setName("UpdateEmployeeProfile");
+        $this->setName("EmployeeUpdateProfile");
         $this->setAction("");
         $this->setAttrib('enctype', 'multipart/form-data');
      
