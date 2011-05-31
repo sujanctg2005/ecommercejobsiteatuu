@@ -18,31 +18,31 @@
 
 
 
-													<li class="first"><a href=<?=$this->escape($this->home)?> title="Home">Home</a></li>
-                                                    	<li><a href=<?=$this->escape($this->postjob)?> title="Post Job">Post Job</a></li>
+													<li class="first"><a href=<?php echo$this->escape($this->home)?> title="Home">Home</a></li>
+                                                    	<li><a href=<?php echo$this->escape($this->postjob)?> title="Post Job">Post Job</a></li>
 
-                                                        <li><a href=<?=$this->escape($this->searchcv)?> title="Search Cv">Search CV</a></li>
-
-
-													<li><a href=<?=$this->escape($this->servicecharge)?> title="Service Charge">Service charge</a></li>
+                                                        <li><a href=<?php echo$this->escape($this->searchcv)?> title="Search Cv">Search CV</a></li>
 
 
-
-
-
-													<li><a href=<?=$this->escape($this->contact)?> title="Menu">Service Benifits</a></li>
+													<li><a href=<?php echo$this->escape($this->servicecharge)?> title="Service Charge">Service charge</a></li>
 
 
 
 
 
-													<li><a href=<?=$this->escape($this->contact)?> title="Contacts">Contacts</a></li>
+													<li><a href=<?php echo$this->escape($this->contact)?> title="Menu">Service Benifits</a></li>
 
 
 
 
 
-													<li><a href=<?=$this->escape($this->contact)?> title="Other">Other</a></li>
+													<li><a href=<?php echo$this->escape($this->contact)?> title="Contacts">Contacts</a></li>
+
+
+
+
+
+													<li><a href=<?php echo$this->escape($this->contact)?> title="Other">Other</a></li>
 
 
 
@@ -76,7 +76,7 @@
 		<td colspan="2" style="padding-bottom:20px;">
 		<div align="center" style="width:90%" class="BDJFormTitle">SERVICES FOR EMPLOYERS </div>		
 		</td>
- <? $datas = $this->service;?> 
+ <?php  $datas = $this->service;?> 
               
 		</tr>
 		
@@ -94,19 +94,17 @@
             <td class="bodyLeft">&nbsp;</td>
             <td style="height:210px; padding-top:20px;" valign="top">
 			<div>
-			The announced/posted job vacancies will be displayed (for max. 30 days) in a particular job category (chosen by the employer at the time of job posting) at www.bdjobs.com
+			The announced/posted job vacancies will be displayed (for max. 30 days) in a particular job category (chosen by the employer at the time of job posting) at Portaljobs
 				<UL>
-                	<LI>This will allow Job Seekers to apply online for the given job vacancy at bdjobs.com's site.</LI>
+                	<LI>This will allow Job Seekers to apply online for the given job vacancy at Jobportal's site.</LI>
 					<LI>Employers will be able to receive job applications through internet.</LI>
-                    <LI>Registered Employer will be given a <strong>customized inbox</strong> at bdjobs.com's site from where the employer will be able to exclusively <strong>view, scrutinize and print</strong> applications and resumes directed to given vacancy post.</LI>
-
-                </UL>
+                                  </UL>
 			</div>
 			<div style="padding-top:10px;">
-			<STRONG><U>10 times Cheaper</U></STRONG>
+			<STRONG><U></U></STRONG>
 
 			<BR/>
-			It is at least 10 times less costly than newspaper job advertisement.			
+						
 			</div>
 			<div style="padding-top:10px; padding-bottom:5px; height:65px;">
 			  <p>
@@ -127,7 +125,7 @@
 
 				<td style="width:50%; text-align:center; ">
 				<font class="BDJNoticeVerdana11Red">
-				<?=$datas[0]->getServiceFee()?> kr for each job position <br>  
+				<?php echo$datas[0]->getServiceFee()?> kr for each job position <br>  
                               
 				<!--&amp; Tk.  for each subsequent job-->
 				</font>
@@ -136,9 +134,17 @@
 
 				
 				<td style="width:20%; text-align:center">
-				<a href="<?=$this->seervicpayment?>/id/<?=$datas[0]->getServiceId()?>">
-				<strong>Pay Now</strong>
-				</a>				
+				<a href="<?php echo$this->seervicpayment?>/id/<?php echo$datas[0]->getServiceId()?>"></a>		
+				<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="3BRZC8QBYMN7A">
+<input type="image" src="https://www.sandbox.paypal.com/WEBSCR-640-20110429-1/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.sandbox.paypal.com/WEBSCR-640-20110429-1/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+				
+				
+						
 				</td>
 				</tr>
 			</table>
@@ -169,16 +175,15 @@
             <td style="height:210px; padding-top:20px;" valign="top">
 			<div>
 
-			<STRONG><U>Home page link for your job announcement</U></STRONG>
-			<BR/>
-			Vacancy announcement for your organization is featured at the Hot Jobs section at portalJobshome page/front page. Here organization logo and the list of jobs are placed with links with a customized job detail page.
-			Maximum display time at home page: 10 days
-			</div>
-			<div style="padding-top:10px;">	
-			<STRONG><U>Customized Job Detail Page</U></STRONG>
-			<BR/>
-			The Job Detail Page (linked with home page) can contain requirements, job responsibilities, a brief company profile, organization logo.
-			</div>
+			<UL>
+
+                    <LI><strong>Job Announcements</strong> (with company logo) 
+                      displayed at the <strong>homepage</strong> for max. 10 days 
+                      (with 30 days display facility at category section)</LI>
+                                      <LI><strong>Special Job notification</strong> to prospective 
+                      qualified candidates through e-mail</LI>
+
+                  </UL></div>
 
 			
 			</td>
@@ -193,17 +198,21 @@
 				<tr>
 				<td style="width:60%; text-align:left">				
 				<!--For each job position : Tk. -->
-                <font class="BDJNoticeVerdana11Red"><?=$datas[1]->getServiceFee()?> KR for each Job Position : </font>
+                <font class="BDJNoticeVerdana11Red"><?php echo$datas[1]->getServiceFee()?> KR for each Job Position : </font>
                        				
 				
              
 				</td>
 				
 				<td style="width:10%; text-align:center">
-			<a href="<?=$this->seervicpayment?>/id/<?=$datas[1]->getServiceId()?>">
-				<strong>Pay Now</strong>
-
-				</a>				
+			<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+">
+<input type="image" src="https://www.sandbox.paypal.com/WEBSCR-640-20110429-1/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.sandbox.paypal.com/WEBSCR-640-20110429-1/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+				
 				</td>
 				</tr>
 			</table>
@@ -238,7 +247,7 @@
             <td class="bodyLeft">&nbsp;</td>
             <td style="height:210px; padding-top:20px;" valign="top">
 			<div>
-			Online CV Bank Access gives you instant direct access to the largest database of professionals in Bangladesh.			
+			Online CV Bank Access gives you instant direct access to the largest database of professionals in Jobportal.			
 			</div>
 			<div style="padding-top:10px; height:295px">	
 			<UL>
@@ -261,7 +270,7 @@
 				<tr>
 				<td style="width:50%; text-align:center">
 				<font class="BDJNoticeVerdana11Red">
-				<?=$datas[2]->getServiceFee()?> Kr for one year
+				<?php echo$datas[2]->getServiceFee()?> Kr for one year
 				</font>
 
 				
@@ -269,10 +278,14 @@
                 </td>
 				
 				<td style="width:20%; text-align:center">
-				<a href="<?=$this->seervicpayment?>/id/<?=$datas[2]->getServiceId()?>">
-				<strong>Pay Now</strong>
-
-				</a>				
+				<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+">
+<input type="image" src="https://www.sandbox.paypal.com/WEBSCR-640-20110429-1/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.sandbox.paypal.com/WEBSCR-640-20110429-1/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+				
 				</td>
 				</tr>
 			</table>
@@ -289,70 +302,7 @@
         </table>						
 		</td>
 		<td align="center" valign="top">
-	   <table width="90%" border="0" cellspacing="0" cellpadding="0" id="tblSet1" >
-        	<tr> 
-            <td class="headLeft">&nbsp;</td>
-
-            <td class="head">&nbsp;<a name="5"></a>Executive Search Service</td>
-            <td class="headRight">&nbsp;</td>
-            </tr>
-            
-			<tr class="body"> 
-            <td class="bodyLeft">&nbsp;</td>
-            <td style="height:210px; padding-top:20px;" valign="top">
-			<div>
-			The recruitment related tasks (job announcement, application receiving, candidate short-listing and contact, interview, etc) makes the recruitment and selection process very lengthy for organizations with a small HR Department. 		
-			</div>
-
-			<div style="padding-top:10px;">
-			Let portalJobstake the responsiblity of doing the tiresome recruitment tasks on behalf of you. We can locate for you the best talents in the market. With the largest active network across the job market (more than 3,10,000 Cvs hosted online) and a panel of recruitment experts, portalJobsoffers the best professional <strong>Executive Search</strong> service in the market.			</div>
-			<div style="padding-top:10px;">	
-			<UL>
-				<LI>We define candidate profile according to your need.</LI>
-				<LI>We advertise at portalJobs& Receive applications.</LI>
-
-				<LI>We search from Online CV Bank & contact candidates. </LI>
-				<LI>We short-list from the prospective candidates.</LI>
-				<LI>We take interview & written test.</LI>
-				<LI>We select best 3-10 candidates for final selection. </LI>
-			</UL>			 
-			</div>
-
-			</td>
-            <td class="bodyRight">&nbsp;</td>
-            </tr>
-            
-			<tr class="body"> 
-            <td class="bodyLeft">&nbsp;</td>
-            <td align="center">
-			<table border="0" width="100%" cellpadding="0" cellspacing="0">
-				<tr>
-				<td style="width:50%; text-align:center">
-
-				<font class="BDJNoticeVerdana11Red">
-				<?=$datas[3]->getServiceFee()?>
-				</font>				
-				</td>
-				
-				<td style="width:20%; text-align:center">
-			<a href="<?=$this->seervicpayment?>/id/<?=$datas[3]->getServiceId()?>">
-			<strong>Pay Now</strong>
-				</a>				
-				</td>
-				</tr>
-
-			</table>
-			</td>
-            <td class="bodyRight">&nbsp;</td>
-            </tr>
-			
-            <tr> 
-            <td class="footerLeft"><img src="images/pix.gif" width="6" height="5" /></td>
-            <td class="footerMiddle"><img src="images/pix.gif" width="1" height="1"></td>
-            <td class="footerRight"><img src="images/pix.gif" width="6" height="5" /></td>
-            </tr>
-
-        </table>		
+	   		
 		</td>
 		</tr>
 
@@ -378,7 +328,7 @@
     </div>
 			</div>
             <div id="footer-wrap">
-			<div id='sys_footer' class='sys_footer'>Designed by <a href='http://www.freecsstemplates.org' target='_blank'>Free CSS Templates</a></div>
+			<div id='sys_footer' class='sys_footer'>Designed by <a href='http://www.freecsstemplates.org' target='_blank'>xxxxxxxxxxxxxxxxxxxx</a></div>
 
 
 

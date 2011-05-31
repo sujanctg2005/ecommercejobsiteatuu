@@ -413,7 +413,7 @@ public function puplateEditToArray ()
         $this->setCountry($row->CountryID);
         $this->setBusinessType($row->BusinessTypeID);
         $this->setBillingAddress($row->BillingAddress);
-        $this->setCity($row->CityID);
+        $this->setCityId($row->CityID);
     	
         
     }
@@ -441,12 +441,6 @@ public function puplateEditToArray ()
         }
         return $entries;
     }
-    //public function fetchAllEmployer(){
-//  $registry  = Zend_Registry::getInstance(); 
-//  $DB = $registry['DB'];  
-//  $sql = "SELECT * FROM 'tbl_employer' ;
-//  $result = $DB->fetchAssoc($sql);
-//  $this->puplateObjectList($result); 	
-//}
+ 
 }
 
