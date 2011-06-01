@@ -23,12 +23,14 @@ else if($role == APP_Authorization_Roles::EMPLOYEE)
     array_push($sidebarmenu, array('change','password','Change Password'));
 }
 else if($role == APP_Authorization_Roles::EMPLOYER)
-{
+{   
+	array_push($sidebarmenu, array('jobpost','index','Home'));
     array_push($sidebarmenu, array('jobpost','postform','Post Job'));
     array_push($sidebarmenu, array('searchcv','index','Search CV'));
     array_push($sidebarmenu, array('servcecharge','index','Service Charges'));
+    array_push($sidebarmenu, array('employer','findemployer','Update Profile'));
     array_push($sidebarmenu, array('change','password','Change Password'));
-}
+   }
 else if($role == APP_Authorization_Roles::ADMIN)
 {
 
