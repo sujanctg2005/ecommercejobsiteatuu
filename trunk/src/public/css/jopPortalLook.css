@@ -135,9 +135,10 @@ padding-left: 0px;
 .status
 {
     float:right;
-    color: #9ECE2A;
+    color: #ffffff;
     font-size: 12px;
     margin-top: 5px;
+
 }
 
 .logo
@@ -208,7 +209,7 @@ padding-left: 0px;
     position: relative;
     border: 0px solid;
     padding-bottom: 3px;
-    width: 54%;
+    width: 52%;
 
 }
 

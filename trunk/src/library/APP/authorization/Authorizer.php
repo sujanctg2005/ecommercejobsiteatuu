@@ -57,7 +57,7 @@ class APP_Authorization_Authorizer {
 
         $acl->allow(APP_Authorization_Roles::EMPLOYEE, 'profile', null);
         $acl->allow(APP_Authorization_Roles::EMPLOYEE, 'resume', null);
-        //$acl->allow(APP_Authorization_Roles::EMPLOYEE, 'employer', null);
+        $acl->allow(APP_Authorization_Roles::EMPLOYEE, 'employer', 'block');
         $acl->allow(APP_Authorization_Roles::EMPLOYEE, 'view', null);
         $acl->allow(APP_Authorization_Roles::EMPLOYEE, 'notification', null);
         $acl->allow(APP_Authorization_Roles::EMPLOYEE, 'change', null);
