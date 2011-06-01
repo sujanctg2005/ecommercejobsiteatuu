@@ -78,5 +78,19 @@ class Application_Model_JobsList
 
         return $this->_table->fetchOne($select);
     }
+
+    public function getListOfJobCategory()
+    {
+        $select = $this->_table->select();
+
+        $select->from(array('jc'=>'tbl_job_category'), 'JobCategory');
+
+        return $this->_table->fetchAll($select);
+    }
+
+    public function getJobSearchResult($sql)
+    {
+        return $this->_table->fetchAll($sql);
+    }
 }
 
