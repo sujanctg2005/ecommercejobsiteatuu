@@ -11,9 +11,19 @@ class JobpostController extends Zend_Controller_Action
     {
     	
         $request = $this->getRequest();
-        
-        $application_Model_Jobvacancy = new Application_Model_Jobvacancy();   	
-        $entries = $application_Model_Jobvacancy->findAllJobPost();
+     
+       $application_Model_UserInfo = new Application_Model_UserInfo();
+        if (Zend_Auth::getInstance()->hasIdentity()) {
+            $val = Zend_Auth::getInstance()->getStorage()->read()->Username;
+             
+             $application_Model_UserInfo->setUsername($val);
+             $application_Model_UserInfo->findUserInfo();
+           
+        }
+       
+        $application_Model_Jobvacancy = new Application_Model_Jobvacancy();  
+        $application_Model_Jobvacancy->setEmployeerID($application_Model_UserInfo->getUserId())	;
+        $entries = $application_Model_Jobvacancy->findJobPostByEmplyerID();
         $this->view->postjoblist=$entries;
       
         $this->view->assign('editpost', $request->getBaseURL()."/jobpost/edit-post");
@@ -50,7 +60,7 @@ class JobpostController extends Zend_Controller_Action
         $this->view->assign('postform', 
         $request->getBaseURL() . "/jobpost/postform");
         $this->view->assign('findemployer', $request->getBaseURL() . "/employer/findemployer");
-        $this->view->assign('postjob', 
+        $this->view->assign('postjobs', 
         $request->getBaseURL() . "/jobpost/postjob");
         $this->assignViewformAction($request);
     }
@@ -58,7 +68,18 @@ class JobpostController extends Zend_Controller_Action
     public function postjobAction()
     {
         $request = $this->getRequest();
+        $application_Model_UserInfo = new Application_Model_UserInfo();
+        if (Zend_Auth::getInstance()->hasIdentity()) {
+            $val = Zend_Auth::getInstance()->getStorage()->read()->Username;
+             
+             $application_Model_UserInfo->setUsername($val);
+             $application_Model_UserInfo->findUserInfo();
+           
+        }
+       
+        
         $application_Model_Jobvacancy = new Application_Model_Jobvacancy();
+        $application_Model_Jobvacancy->setEmployeerID($application_Model_UserInfo->getUserId())	;
         $application_Model_Jobvacancy->setJobTitle(
         $request->getParam("txtJobTitle"));
         $application_Model_Jobvacancy->setNoOfVacancy(
@@ -67,7 +88,7 @@ class JobpostController extends Zend_Controller_Action
         $request->getParam("cboJobCategory"));
        // $application_Model_Jobvacancy->setJobPostDate( $request->getParam("cboYear"). "-" . $request->getParam("cboMonth") . "-" .$request->getParam("cboDay"));
         $application_Model_Jobvacancy->setApplicationDeadline( $request->getParam("cboYear"). "-" . $request->getParam("cboMonth") . "-" .$request->getParam("cboDay"));
-        $application_Model_Jobvacancy->setEmployeerID(1);
+       // $application_Model_Jobvacancy->setEmployeerID(1);
         $application_Model_Jobvacancy->setDesignation(
         $request->getParam("txtDesignation"));
         $application_Model_Jobvacancy->setCompanyName(
@@ -99,6 +120,7 @@ class JobpostController extends Zend_Controller_Action
         $request->getParam("txtOtherBenefits"));
         
         $application_Model_Jobvacancy->insertJobVacancey();
+       
         $this->view->assign('paymentform', 
         $request->getBaseURL() . "/jobpost/paymentform");
         $this->view->assign('viewpostjob', 
@@ -194,7 +216,7 @@ class JobpostController extends Zend_Controller_Action
         $application_Model_Jobvacancy->setBenifits(
         $request->getParam("txtOtherBenefits"));
         
-       // $application_Model_Jobvacancy->editJobVacancey();
+       $application_Model_Jobvacancy->editJobVacancey();
         $this->view->assign('paymentform', 
         $request->getBaseURL() . "/jobpost/paymentform");
         $this->view->assign('viewpostjob', 
