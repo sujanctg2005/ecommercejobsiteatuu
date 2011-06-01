@@ -379,15 +379,15 @@ class Application_Model_Jobvacancy
         $registry = Zend_Registry::getInstance();
         $DB = $registry['DB'];
        
-        $sql = "SELECT * FROM `tbl_job`".$this->getJobID();
+        $sql = "SELECT * FROM `tbl_job` where JobID =".$this->getJobID();
         $result = $DB->fetchRow($sql);
         $this->puplateObject($result);
     }
- public function findAllJobPost()
+ public function findJobPostByEmplyerID()
     {
         $registry = Zend_Registry::getInstance();
         $DB = $registry['DB'];
-        $sql = "SELECT * FROM `tbl_job`";
+        $sql = "SELECT * FROM `tbl_job` where EmployeerID=".$this->getEmployeerID();
         $result = $DB->fetchAll($sql);
         return $this->puplateObjectList($result);
     }
@@ -396,7 +396,7 @@ class Application_Model_Jobvacancy
         $data = array('JobTitle' => $this->getJobTitle(), 
         'NoOfVacancy' => $this->getNoOfVacancy(), 
         'JobCategoryID' => $this->getJobCategoryID(), 
-        'JobPostDate' =>"date()",
+        'JobPostDate' =>new Zend_Db_Expr("CURDATE()"),
         'ApplicationDeadline' => $this->getApplicationDeadline(), 
         'EmployeerID' => $this->getEmployeerID(), 
         'Designation' => $this->getDesignation(), 
