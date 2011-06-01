@@ -82,7 +82,12 @@ function gethref($controller, $action) {
             </div>";
         ?>
             <div id="content" class ="content">
-                <div id="myjobportal" class="myjobportal">My Job Portal</div>
+                <?php
+                if($role == APP_Authorization_Roles::EMPLOYEE)
+                echo "<div id='myjobportal' class='myjobportal'>My Job Portal</div>";
+                    else if($role == APP_Authorization_Roles::EMPLOYER)
+                        echo "<div id='myjobportal' class='myjobportal'>My Job Portal</div>";
+                ?>
                 <div id ="leftsidebar" class ="leftsidebar">
 <?php
                 if (Zend_Auth::getInstance()->hasIdentity()) {
