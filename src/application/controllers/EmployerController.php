@@ -155,6 +155,10 @@ class EmployerController extends Zend_Controller_Action
                 getPaginationControl($employerhandler->getListOfEmployers(),
                         $this->getRequest()->getParam('page'));
     }
+
+    public function blockAction(){
+        
+    }
 }
 
 
