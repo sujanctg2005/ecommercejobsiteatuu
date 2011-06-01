@@ -67,7 +67,22 @@ function gethref($controller, $action) {
 
             </div>
             <div class="maincontent2"> <img src="<?php echo $basepath ?>/images/top.gif"/> </div>
+            <?php 
+                if($role == APP_Authorization_Roles::EMPLOYEE)
+            echo "<div class='maincontent2'>
+                <img src='$basepath/images/background_employee.jpg'/> </div>
+            </div>";
+                else if($role == APP_Authorization_Roles::EMPLOYER)
+                    echo "<div class='maincontent2'>
+                <img src='$basepath/images/background_employer.jpg'/> </div>
+            </div>";
+                 else if($role == APP_Authorization_Roles::GUEST)
+            echo "<div class='maincontent2'>
+                <img src='$basepath/images/background_main.jpg'/> </div>
+            </div>";
+        ?>
             <div id="content" class ="content">
+                <div id="myjobportal" class="myjobportal">My Job Portal</div>
                 <div id ="leftsidebar" class ="leftsidebar">
 <?php
                 if (Zend_Auth::getInstance()->hasIdentity()) {

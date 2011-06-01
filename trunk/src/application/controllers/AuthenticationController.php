@@ -33,7 +33,6 @@ class AuthenticationController extends Zend_Controller_Action
          {
 
             $data = $this->getRequest()->getParams();
-            echo Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper')->md5encrypt('testing');
             if($form->isValid($data))
             {
                 //authenticate the user
