@@ -1,87 +1,66 @@
+<title>Employer Home </title>
+<script type="text/javascript">
+var url;
+ function updatStatus(_url){
+url=_url;
+loadXMLDoc();
+	 
+return true;
+	 }
 
+</script>
+<script type="text/javascript">
+function loadXMLDoc()
+{
+var xmlhttp;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    //document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+    }
+  }
+xmlhttp.open("GET",url,true);
+xmlhttp.send();
+}
+</script>
 
 <?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/EmployerCSS.css'); ?>
-
-<title>Employer Home </title>
-
-
 	</head>
-	<body id="sys_background">
-		<div id="outer">
-			<div id="sys_banner" >
-
-
-				<h1><a id="sys_heading" href="./">Employer Home</a></h1>
-			</div>
-			<div id="menu">
-				<ul class='sys_navigation'>
-
-
-
-													<li class="first"><a href=<?php echo$this->escape($this->home)?> title="Home">Home</a></li>
-                                                    	<li><a href=<?php echo$this->escape($this->postjob)?> title="Post Job">Post Job</a></li>
-
-                                                        <li><a href=<?php echo$this->escape($this->searchcv)?> title="Search Cv">Search CV</a></li>
-
-
-													<li><a href=<?php echo$this->escape($this->servicecharge)?> title="Service Charge">Service charge</a></li>
-
-
-
-
-
-													<li><a href=<?php echo$this->escape($this->contact)?> title="Menu">Service Benifits</a></li>
-
-
-
-
-
-													<li><a href=<?php echo$this->escape($this->contact)?> title="Contacts">Contacts</a></li>
-
-
-
-
-
-													<li><a href=<?php echo$this->escape($this->contact)?> title="Other">Other</a></li>
-
-
-
-
-
-													
-
-
-
-
-
-
-
-
-
-
-									</ul>
-			</div>
-			<div id="content">
-				    <div style="width: 100%; padding: 0px; margin: 0px" class="layout_1-column">
-
-        <div id="layout_row1">
+	
         
-       	
-<table width="90%" border="0" align="center" cellpadding="0" cellspacing="0" class="BDJPageBorder">
-  	<tr>
-    <td style="padding-left:34px; padding-right:34px; padding-top:34px;" align="center">
-	<!--######################################################################################-->
-	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
-		<tr>
+ <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="BDJPageBorder">
+  <tr>
+    <td style="padding-left:0px; padding-right:0px;">
+    
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="0px"  valign="top" style="padding-top:30px;">
+    
+    
+	
+</td>
+
+
+          <td valign="top">
+	   <table width="100%" border="0" cellspacing="0" cellpadding="0" id="tblSet4">
+			<tr>
 		<td colspan="2" style="padding-bottom:20px;">
-		<div align="center" style="width:90%" class="BDJFormTitle">SERVICES FOR EMPLOYERS </div>		
+		<div align="center" style="width:100%" class="BDJFormTitle">SERVICES FOR EMPLOYERS </div>		
 		</td>
  <?php  $datas = $this->service;?> 
               
 		</tr>
-		
 		<tr>
-		<td height="400" align="center" valign="top" style="width:50%">
+		<td height="300" align="center" valign="top" style="width:70%">
 		<table width="90%" border="0" cellspacing="0" cellpadding="0" id="tblSet1">
         	<tr> 
             <td class="headLeft">&nbsp;</td>
@@ -134,8 +113,8 @@
 
 				
 				<td style="width:20%; text-align:center">
-				<a href="<?php echo$this->seervicpayment?>/id/<?php echo$datas[0]->getServiceId()?>"></a>		
-				<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+				<a href=""></a>		
+				<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" onsubmit="updatStatus('<?php echo$this->seervicpayment?>/id/<?php echo$datas[0]->getServiceId()?>');">
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="hosted_button_id" value="3BRZC8QBYMN7A">
 <input type="image" src="https://www.sandbox.paypal.com/WEBSCR-640-20110429-1/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
@@ -149,24 +128,25 @@
 				</tr>
 			</table>
 			</td>
-            <td class="bodyRight">&nbsp;</td>
+            
 
             </tr>
 			
-            <tr> 
-            <td class="footerLeft"><img src="images/pix.gif" width="6" height="5" /></td>
-            <td class="footerMiddle"><img src="images/pix.gif" width="1" height="1"></td>
-            <td class="footerRight"><img src="images/pix.gif" width="6" height="5" /></td>
-            </tr>
-        </table>		
+            
+        </table>
+        	
 		</td>
+		</tr>
 		
-		<td align="center" valign="top" style="width:50%">
-		<table width="90%" border="0" cellspacing="0" cellpadding="0" id="tblSet1" >
-
+	<tr>
+		<td height="300" align="center" valign="top" style="width:70%">
+		<table width="90%" border="0" cellspacing="0" cellpadding="0" id="tblSet1">
+		
+		
         	<tr> 
             <td class="headLeft">&nbsp;</td>
-            <td class="head">&nbsp;&nbsp;<a name="2"></a>Hot Job Announcement</td>
+            <td class="head">&nbsp;<a name="3"></a>Online CV Bank Access</td>
+
             <td class="headRight">&nbsp;</td>
             </tr>
             
@@ -174,38 +154,38 @@
             <td class="bodyLeft">&nbsp;</td>
             <td style="height:210px; padding-top:20px;" valign="top">
 			<div>
-
+			Online CV Bank Access gives you instant direct access to the largest database of professionals in Jobportal.			
+			</div>
+			<div style="padding-top:10px; height:295px">	
 			<UL>
 
-                    <LI><strong>Job Announcements</strong> (with company logo) 
-                      displayed at the <strong>homepage</strong> for max. 10 days 
-                      (with 30 days display facility at category section)</LI>
-                                      <LI><strong>Special Job notification</strong> to prospective 
-                      qualified candidates through e-mail</LI>
-
-                  </UL></div>
-
-			
+				<LI>No Intermediary to Contact Candidates</LI>
+				<LI>You can directly contact the prospective candidates who meet your job requirements.</LI>
+				<LI>Search for the right candidates by Professional group, Age group, years of experience, Educational or Professional qualification, Specific job sector/industry, Special skills or open 'key words'</LI>
+			</UL>
+            		 
+			</div>
 			</td>
             <td class="bodyRight">&nbsp;</td>
+
             </tr>
             
 			<tr class="body"> 
             <td class="bodyLeft">&nbsp;</td>
             <td align="center">
 			<table border="0" width="100%" cellpadding="0" cellspacing="0">
-
 				<tr>
-				<td style="width:60%; text-align:left">				
-				<!--For each job position : Tk. -->
-                <font class="BDJNoticeVerdana11Red"><?php echo$datas[1]->getServiceFee()?> KR for each Job Position : </font>
-                       				
+				<td style="width:50%; text-align:center">
+				<font class="BDJNoticeVerdana11Red">
+				<?php echo$datas[2]->getServiceFee()?> Kr for one year
+				</font>
+
 				
-             
-				</td>
+                
+                </td>
 				
-				<td style="width:10%; text-align:center">
-			<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+				<td style="width:20%; text-align:center">
+				<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" onsubmit="updatStatus('<?php echo$this->seervicpayment?>/id/<?php echo$datas[2]->getServiceId()?>');">
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
 ">
@@ -226,10 +206,13 @@
 
             <td class="footerRight"><img src="images/pix.gif" width="6" height="5" /></td>
             </tr>
-        </table>								
+        </table>						
+		</td>
+		<td align="center" valign="top">
+	   		
 		</td>
 		</tr>
-
+			
 		<tr style="padding-top:20px;">
 		
 		
@@ -278,7 +261,7 @@
                 </td>
 				
 				<td style="width:20%; text-align:center">
-				<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+				<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" onsubmit="updatStatus('<?php echo$this->seervicpayment?>/id/<?php echo$datas[2]->getServiceId()?>');">
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
 ">
@@ -305,34 +288,30 @@
 	   		
 		</td>
 		</tr>
+		
+		
+                </table>
+                <br>
+                <br>
+                <br>
+	  
+            
 
-			
-	</table>	 
-	</td>
-  	</tr>
-  	
-	<tr>
-    <td height="50" align="center" valign="bottom" class="BDJCopyright"></td>
-  	</tr>
-</table>
+		 
+         	          
+		 	
+              
+		  
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+ 
+
    
-       
-        
+</table>
+
+ 
      
-            
-            
-            
-        </div>
-        
-        
-    </div>
-			</div>
-            <div id="footer-wrap">
-			<div id='sys_footer' class='sys_footer'>Designed by <a href='http://www.freecsstemplates.org' target='_blank'>xxxxxxxxxxxxxxxxxxxx</a></div>
-
-
-
-
-            </div>
-        </div>
-    </body>
