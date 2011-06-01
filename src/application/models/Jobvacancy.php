@@ -378,7 +378,8 @@ class Application_Model_Jobvacancy
     {
         $registry = Zend_Registry::getInstance();
         $DB = $registry['DB'];
-        $sql = "SELECT * FROM `tbl_job`";
+       
+        $sql = "SELECT * FROM `tbl_job`".$this->getJobID();
         $result = $DB->fetchRow($sql);
         $this->puplateObject($result);
     }
