@@ -14,6 +14,22 @@ class Application_Model_DbTable_EmployeeProfile extends Zend_Db_Table_Abstract {
         }
         return false;
     }
+
+    public function checkAvailable($password)
+    {
+        $oldPassword = Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper')
+                    ->md5encrypt($data['Password']);
+        $currentPassword = Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper')
+                    ->md5encrypt($password);
+        $select = "select '". $oldPassword ."' from tbl_user_info where Password = '". $currentPassword . "'";
+        var_dump($select);
+        exit;
+        $result = $this->getAdapter()->fetchOne($select);
+        if($result){
+            return true;
+        }
+        return false;
+    }
     
     public function addEmployee($Username, $Password, $Name, $DOB, $Gender,
             $MaritialStatus, $Nationality, $Religion, $CurrentAddress,
