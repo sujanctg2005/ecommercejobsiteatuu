@@ -33,7 +33,7 @@ class Application_Form_EmployeeChangePassword extends Zend_Form
                 ->addFilter('StringTrim')
                 ->addValidator(
                             new Zend_Validate_Identical(Zend_Controller_Front::getInstance()
-                                    ->getRequest()->getParam('Password')));
+                                    ->getRequest()->getParam('NewPassword')));
 
         $Submit = new Zend_Form_Element_Submit('Submit');
         $Submit->setAttrib('UserID', 'submitbutton');
