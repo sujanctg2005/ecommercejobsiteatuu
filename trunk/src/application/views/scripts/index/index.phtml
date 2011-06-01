@@ -7,9 +7,9 @@
         <img src="images/background_main.jpg" alt="" />
     </div>
     <div class="search" >
-        <form action="#">
-            <input type="button" value="Search" onClick="">
-            <input type="text" class="" value="Put the key" onclick="if(this.value==this.defaultValue) this.value='';"/>
+        <form name="form1" action="search/quickjobsearch" method="post" >
+            <input id="search" type="text" class="" value=""/>
+            <input type="submit" value="Search">
         </form>
     </div>
     <div id="blocks">
@@ -45,7 +45,9 @@
         </div>
         <div class ="block">
             <img src="images/sign_me_in.gif" alt="" width="214" height="29" /><br />
-            <p class="signup"><?php echo $this->login; ?> </p>
+            <p class="signup">
+            <?php echo $this->login; ?>
+            </p>
         </div>
          
 </div>

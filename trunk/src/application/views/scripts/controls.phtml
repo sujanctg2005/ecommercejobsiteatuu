@@ -13,11 +13,11 @@
 <?php if (isset($this->previous)): ?>
   <a href="<?php echo $this->url(array('page' => $this->previous)); ?>">
     &lt Previous
-  </a> |
+  </a>
 <?php else: ?>
-  <span class="disabled">&lt; Previous</span> |
+  <span class="disabled">&lt; Previous</span>
 <?php endif; ?>
-
+<?php echo "$this->current/$this->pageCount" ?>
 <!-- Next page link -->
 <?php if (isset($this->next)): ?>
   <a href="<?php echo $this->url(array('page' => $this->next)); ?>">
