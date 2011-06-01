@@ -9,9 +9,6 @@ class Application_Form_EmployeeQualification extends Zend_Form
         $this->setAction("");
         $this->setAttrib('enctype', 'multipart/form-data');
 
-        $UserID = new Zend_Form_Element_Hidden("UserID");
-        $UserID->addFilter('Int');
-
         // First Level Of Education
         $LOE = new Zend_Form_Element_Select('LevelOfEducation');
         $LOE->setLabel('Level Of Education:')
@@ -37,7 +34,7 @@ class Application_Form_EmployeeQualification extends Zend_Form
                 ->addFilter('StringTrim')
                 ->addValidator('NotEmpty');
 
-        $InstitutionName = new Zend_Form_Element_Text('IN');
+        $InstitutionName = new Zend_Form_Element_Text('InstitutionName');
         $InstitutionName->setLabel('Institution Name:')
                 ->setRequired(true)
                 ->addFilter('StripTags')
@@ -93,7 +90,7 @@ class Application_Form_EmployeeQualification extends Zend_Form
                 ->addFilter('StringTrim')
                 ->addValidator('NotEmpty');
 
-        $SecondInstitutionName = new Zend_Form_Element_Text('SecondIN');
+        $SecondInstitutionName = new Zend_Form_Element_Text('SecondInstitutionName');
         $SecondInstitutionName->setLabel('Institution Name:')
                 ->setRequired(true)
                 ->addFilter('StripTags')
@@ -125,6 +122,7 @@ class Application_Form_EmployeeQualification extends Zend_Form
 
         //Professional Experience Qualification\
         $qualificationID = $this->createElement('hidden', 'qualificationID');
+        $qualificationID->addFilter('Int');
 
         $Organization = new Zend_Form_Element_Text('Organization');
         $Organization->setLabel('Organization:')
@@ -141,7 +139,6 @@ class Application_Form_EmployeeQualification extends Zend_Form
                 ->addFilter('StripTags')
                 ->addFilter('StringTrim')
                 ->setMultiOptions(range(1950,2020));
-
 
         $ToDate = new Zend_Form_Element_Select('ToDate');
         $ToDate->setLabel('To Date:')
@@ -179,13 +176,76 @@ class Application_Form_EmployeeQualification extends Zend_Form
         $Submit = new Zend_Form_Element_Submit('Submit');
         $Submit->setAttrib('UserID', 'submitbutton');
 
-        $this->addElements(array($UserID, $LOE, $Degree, $Major,
+        $this->addElements(array($LOE, $Degree, $Major,
             $InstitutionName, $Grade, $YearOfPassing, $Duration,
             $SecondLOE, $SecondDegree, $SecondMajor,
             $SecondInstitutionName, $SecondGrade, $SecondYearOfPassing,
             $SecondDuration, $Organization, $OrganizationAddress,
             $FromDate, $ToDate, $SecondOrganization, $SecondOrganizationAddress,
             $SecondFromDate, $SecondToDate, $Submit));
+
+        //first level
+        $this->addDisplayGroup(array(
+            'LevelOfEducation',
+            'DegreeTitle',
+            'Major',
+            'InstitutionName',
+            'Grade',
+            'YearOfPassing',
+            'Duration'
+        ), 'contact1', array('legend' => 'Academic Qualification 1'));
+        $contact1 = $this->getDisplayGroup('contact1');
+        $contact1->setDecorators(array(
+                    'FormElements',
+                    'Fieldset',
+                    array('HtmlTag',array('tag'=>'div','style'=>'width:100%;;float:center;padding-bottom:10px;'))
+        ));
+
+        //second level
+        $this->addDisplayGroup(array(
+            'SecondLevelOfEducation',
+            'SecondDegreeTitle',
+            'SecondMajor',
+            'SecondInstitutionName',
+            'SecondGrade',
+            'SecondYearOfPassing',
+            'SecondDuration'
+        ), 'contact2', array('legend' => 'Academic Qualification 2'));
+        $contact2 = $this->getDisplayGroup('contact2');
+        $contact2->setDecorators(array(
+                    'FormElements',
+                    'Fieldset',
+                    array('HtmlTag',array('tag'=>'div','style'=>'width:100%;;float:center;padding-bottom:20px;'))
+        ));
+
+        //First Professional Qualification
+        $this->addDisplayGroup(array(
+            'Organization',
+            'OrganizationAddress',
+            'FromDate',
+            'ToDate'
+        ), 'contact3', array('legend' => 'Professional Qualification 1'));
+        $contact3 = $this->getDisplayGroup('contact3');
+        $contact3->setDecorators(array(
+                    'FormElements',
+                    'Fieldset',
+                    array('HtmlTag',array('tag'=>'div','style'=>'width:100%;;float:center;padding-bottom:10px;'))
+        ));
+
+        //Second Professional Qualification
+        $this->addDisplayGroup(array(
+            'SecondOrganization',
+            'SecondOrganizationAddress',
+            'SecondFromDate',
+            'SecondToDate',
+            'Submit'
+        ), 'contact4', array('legend' => 'Professional Qualification 2'));
+        $contact4 = $this->getDisplayGroup('contact4');
+        $contact4->setDecorators(array(
+                    'FormElements',
+                    'Fieldset',
+                    array('HtmlTag',array('tag'=>'div','style'=>'width:100%;;float:center;padding-bottom:10px;'))
+        ));
     }
 }
 

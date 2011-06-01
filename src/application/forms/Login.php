@@ -26,20 +26,20 @@ class Application_Form_Login extends Zend_Form
                 ->addValidator('stringLength',false,array('min'=>6))
                 ->setRequired(true);
 
+        $rememberMe = new Zend_Form_Element_CheckBox('rememberme');
+        $rememberMe->setLabel('Remember Me')
+                    ->setAttrib('checked',false);
+                
         $submit = $this->createElement('submit', 'login', array('label'=>'Login'));
 
         $this->addElement($username)
              ->addElement($password)
+             ->addElement($rememberMe)
              ->addElement($submit)
              ->addElement($usertype) ;
 
-        $this->addDisplayGroup(array($usertype, $username, $password, $submit),'login1');
-
-        $login = $this->getDisplayGroup('login1');
-
-        $login->setDecorators(array('FormElements'));
+        //$this->addDisplayGroup(array($usertype, $username, $password, $rememberMe, $submit),'login1');
+        //$login = $this->getDisplayGroup('login1');
     }
-
-
 }
 

@@ -1,11 +1,10 @@
 <?php
-//require_once('class.upload.php');
 class Application_Form_EmployeeProfileForm extends Zend_Form {
 
     public function init() {
         
         $this->setName("EmployeeProfile");
-        $this->setAction("");
+        $this->setAction('');
         $this->setAttrib('enctype', 'multipart/form-data');
 
         $Username = new Zend_Form_Element_Text('Username');
@@ -141,11 +140,63 @@ class Application_Form_EmployeeProfileForm extends Zend_Form {
                 ->addValidator('Count', false, 1)
                 ->addValidator('Size', false, 1024000)
                 ->addValidator('Extension', false, 'jpeg,jpg,png,gif,bmp');
+
+        $captcha = new Zend_Form_Element_Captcha(
+                'captcha', 
+                array('label' => 'Please Verify:',
+                'captcha' => array( 
+                'captcha' => 'Image',
+                'wordLen' => 6,
+                'timeout' => 300,
+                'font' => APPLICATION_PATH.'/../public/Captcha/GILSANUB.TTF',
+                'imgDir' => APPLICATION_PATH.'/../public/Captcha',
+                'imgUrl' => 'http://localhost/ecom/public/captcha/',
+              )));
       
         $Submit = new Zend_Form_Element_Submit('Submit');
         $Submit->setAttrib('UserID', 'submitbutton');
 
-        $this->addElements(array($Username, $Password, $Repassword, $Name, $DOB, $Gender, $MaritialStatus, $Nationality, $Religion, $CurrentAddress, $PermanentAddress, $HomePhone, $Mobile, $OfficePhone, $Email, $AlternativeEmail, $ImagePath, $Submit));
+        $this->addElements(array($Username, $Password, $Repassword, $Name, $DOB,
+            $Gender, $MaritialStatus, $Nationality, $Religion, $CurrentAddress,
+            $PermanentAddress, $HomePhone, $Mobile, $OfficePhone, $Email,
+            $AlternativeEmail, $ImagePath, $captcha, $Submit));
+
+        $this->addDisplayGroup(array(
+            'Username',
+            'Password',
+            'Repassword'
+        ), 'login', array('legend' => 'User Login Info'));
+        $login = $this->getDisplayGroup('login');
+        $login ->setDecorators(array(
+                    'FormElements',
+                    'Fieldset',
+                    array('HtmlTag',array('tag'=>'div','style'=>'width:50%;;float:center;padding-bottom:10px;'))
+        ));
+
+        $this->addDisplayGroup(array(
+            'Name',
+            'DateOfBirth',
+            'Gender',
+            'MaritialStatus',
+            'Nationality',
+            'Religion',
+            'CurrentAddress',
+            'PermanentAddress',
+            'HomePhone',
+            'Mobile',
+            'OfficePhone',
+            'Email',
+            'AlternativeEmail',
+            'ImagePath',
+            'captcha',
+            'Submit'
+        ), 'profile', array('legend' => 'User Profile', 'class' => 'userprofile'));
+        $profile = $this->getDisplayGroup('profile');
+        $profile->setDecorators(array(
+                    'FormElements',
+                    'Fieldset',
+                    array('HtmlTag',array('tag'=>'div','style'=>'width:50%;;float:center;padding-bottom:10px;'))
+        ));
     }
 }
 
