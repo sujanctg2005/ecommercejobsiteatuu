@@ -19,39 +19,39 @@ class ChangeController extends Zend_Controller_Action
         $form->setUserName(
         Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper')->getUserName());
         $form->Submit->setLabel('Submit');
+        $form->setMethod("post");
         $this->view->form = $form;
 
-//        if(ispost())
-//        {
-//            $data -> get from the request;
-//            check if the password exist otherwise set error message
-//            update table
-//
-//        }
-
-
+        $employeeInfo = new Application_Model_DbTable_EmployeeProfile();
+        $UserID = Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper')->getUserID();
         if ($this->getRequest()->isPost()) {
-            echo "testing";
             $formData = $this->getRequest()->getPost();
-            $employeeInfo = new Application_Model_DbTable_EmployeeProfile();
+
+            $OldPassword = $formData['OldPassword'];
+            $NewPassword = $formData['NewPassword'];
+            $RePassword = $formData['Repassword'];
 
             if ($form->isValid($formData)) {
-                echo "testing";
-                if($employeeInfo->checkAvailable($formData['OldPassword']))
+            $md5oldPassword = Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper')
+                    ->md5encrypt($OldPassword);
+
+            $md5newPassword = Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper')
+                    ->md5encrypt($NewPassword);
+
+                if($employeeInfo->checkAvailable($md5oldPassword))
                 {
-                    
+                    $updatePassword = $employeeInfo->updatePassword($UserID,
+                            $md5newPassword);
+                    $this->_helper->redirector('index');
                 }
-            }
             else
             {
-                $this->view->errorMessage = $formData['OldPassword'] ." doesn't match. Please try again.";
+                $this->view->errorMessage = "Old password doesn't match. Please try again.";
                 $form->populate($formData);
-                $form->getElement('OldPassword')->setValue('');
+                //$form->getElement('OldPassword')->setValue('');
                 return;
+                }
             }
-                $OldPassword = $form->getValue('OldPassword');
-                $NewPassword = $form->getValue('NewPassword');
-                $RePassword = $form->getValue('RePassword');
             }
         }
 }

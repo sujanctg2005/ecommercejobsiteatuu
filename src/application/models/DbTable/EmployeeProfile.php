@@ -15,20 +15,23 @@ class Application_Model_DbTable_EmployeeProfile extends Zend_Db_Table_Abstract {
         return false;
     }
 
-    public function checkAvailable($password)
+    public function checkAvailable($OldPassword)
     {
-        $oldPassword = Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper')
-                    ->md5encrypt($data['Password']);
-        $currentPassword = Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper')
-                    ->md5encrypt($password);
-        $select = "select '". $oldPassword ."' from tbl_user_info where Password = '". $currentPassword . "'";
-        var_dump($select);
-        exit;
+        $select = "select 1 from tbl_user_info where Password = '". $OldPassword . "'";
+        
         $result = $this->getAdapter()->fetchOne($select);
         if($result){
             return true;
         }
         return false;
+    }
+
+    public function updatePassword($UserID, $NewPassword){
+        $table = Zend_Db_Table_Abstract::getDefaultAdapter();
+        $newPassword = array(
+            'Password' => $NewPassword
+        );
+        $table->update('tbl_user_info', $newPassword, 'UserID = '. $UserID);
     }
     
     public function addEmployee($Username, $Password, $Name, $DOB, $Gender,
@@ -95,7 +98,7 @@ class Application_Model_DbTable_EmployeeProfile extends Zend_Db_Table_Abstract {
             'AlternativeEmail' => $AlternativeEmail,
             'ImagePath' => $ImagePath
         );
-        $this->update($data, 'UserID = '. (int)$UserID);
+        $table->update($data, 'UserID = '. (int)$UserID);
     }
 }
 
