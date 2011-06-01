@@ -29,7 +29,7 @@ require_once 'Zend/Db/Adapter/Pdo/Mysql.php';
 	 
 	$params = array('host' =>'localhost',
 	                    'username'  =>'root',
-	                    'password'  =>'rupesh1mb',
+	                    'password'  =>'',
 	                    'dbname'    =>'db_jobs'
 	                   );
 	$DB = new Zend_Db_Adapter_Pdo_Mysql($params);
