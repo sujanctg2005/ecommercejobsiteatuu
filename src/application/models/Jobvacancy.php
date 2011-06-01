@@ -24,6 +24,23 @@ class Application_Model_Jobvacancy
     private $minimumSalaryRange;
     private $maximumSalaryRange;
     private $benifits;
+	 // sujan
+    private $totalJob;
+    /**
+     * @return the $totalJob
+     */
+    public function getTotalJob ()
+    {
+        return $this->totalJob;
+    }
+    /**
+     * @param field_type $totalJob
+     */
+    public function setTotalJob ($totalJob)
+    {
+        $this->totalJob = $totalJob;
+    }
+    // end sujan
     /**
      * @return the $jobID
      */
@@ -374,6 +391,59 @@ class Application_Model_Jobvacancy
         $DB->delete('tbl_job_requirement', 
         'JobRequirementID = ' . $this->getJobRequirementID());
     }
+	
+	    // sujan
+    public function summaryJob ()
+    {
+        $registry = Zend_Registry::getInstance();
+        $DB = $registry['DB'];
+        $sql = "SELECT e.CompanyName CompanyName, count( JobID ) totalJob
+						FROM tbl_job j, tbl_employer e
+						WHERE j.EmployeerID = e.UserID
+						GROUP BY e.CompanyName";
+        $result = $DB->fetchAll($sql);
+        return $result;
+    }
+    public function monthlySummaryJob ()
+    {
+        $registry = Zend_Registry::getInstance();
+        $DB = $registry['DB'];
+        $sql = "SELECT  MONTHNAME( JobPostDate ) month, count( JobID ) totalJob
+FROM tbl_job j, tbl_employer e
+WHERE j.EmployeerID = e.UserID
+GROUP BY  MONTHNAME( JobPostDate )   order by MONTH(JobPostDate)";
+        $result = $DB->fetchAll($sql);
+        return $result;
+    }
+    public function pupolateJobSummery ($result)
+    {
+        $registry = Zend_Registry::getInstance();
+        $DB = $registry['DB'];
+        $entries = array();
+        foreach ($result as $row) {
+            $entry = new Application_Model_Jobvacancy();
+            $entry->setJobID($row->CompanyName);
+            $entry->setJobTitle($row->totalJob);
+            $entries[] = $entry;
+        }
+        return $entries;
+    }
+    
+ public function getPaymentStatus ()
+    {
+        $registry = Zend_Registry::getInstance();
+        $DB = $registry['DB'];
+        $sql = "Select e.`CompanyName`, charge.ServiceId, charge.ServiceType, charge.ServiceFee, serv.Status  from  `tbl_service_charge` charge,
+ `tbl_employerpaymentstatus` serv , tbl_employer e
+ where charge.ServiceId = serv.ServiceId and e.`UserID`=serv.`EmployerId`";
+        $result = $DB->fetchAll($sql);
+        return $result;
+    }
+    
+    
+    
+    
+    // end sujan
     public function findJobVacanceyById()
     {
         $registry = Zend_Registry::getInstance();
