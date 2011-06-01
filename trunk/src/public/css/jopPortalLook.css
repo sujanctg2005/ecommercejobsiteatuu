@@ -18,6 +18,13 @@ a {
     text-decoration: none;
 }
 
+.inline {
+  display: inline;
+  /* or */
+  float: left;
+  margin-right: 5px;
+}
+
 /* Table */
 th {
     text-align: right;

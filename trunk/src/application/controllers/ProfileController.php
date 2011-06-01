@@ -18,7 +18,16 @@ class ProfileController extends Zend_Controller_Action {
 
         if ($this->getRequest()->isPost()) {
             $formData = $this->getRequest()->getPost();
+            $employeeInfo = new Application_Model_DbTable_EmployeeProfile();
             if ($form->isValid($formData)) {
+                if($employeeInfo->checkUnique($formData['Username']))
+                {
+                    $this->view->errorMessage = $formData['Username'] ." not available, Please choose another.";
+                    $form->populate($formData);
+                    $form->getElement('Username')->setValue('');
+                    return;
+                }
+                $data = $form->getValues();
                 $Username = $form->getValue('Username');
                 $Password = $form->getValue('Password');
                 $Name = $form->getValue('Name');
@@ -38,7 +47,7 @@ class ProfileController extends Zend_Controller_Action {
                 $AlternativeEmail = $form->getValue('AlternativeEmail');
                 $ImagePath = Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper')->
                         returnImage($_FILES['ImagePath'],$this->view->baseUrl());
-                $employeeInfo = new Application_Model_DbTable_EmployeeProfile();
+                
                 $addEmployee = $employeeInfo->addEmployee($Username, $Password, $Name, $DOB, $Gender, $MaritialStatus, $Nationality, $Religion, $CurrentAddress, $PermanentAddress, $HomePhone, $Mobile, $OfficePhone, $Email, $AlternativeEmail, $ImagePath);
 
                 //authenticate the user
@@ -57,7 +66,6 @@ class ProfileController extends Zend_Controller_Action {
 
                 if ($authenticate->isValid()) {
                     $userInfo = $authAdapter->getResultRowObject(null, 'password');
-                    print_r($userInfo);
                     $authStorage = Zend_Auth::getInstance()->getStorage();
                     $authStorage->write($userInfo);
 

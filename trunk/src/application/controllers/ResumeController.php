@@ -62,7 +62,6 @@ class ResumeController extends Zend_Controller_Action
             $EmployeeID = $actionhelper->getUserID();
             if ($EmployeeID > 0) {
                 $EmployeeInfo = new Application_Model_DbTable_EmployeeProfile();
-                
                 $form->populate($data[0]);
             }
         }

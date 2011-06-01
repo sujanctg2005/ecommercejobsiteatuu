@@ -3,6 +3,17 @@
 class Application_Model_DbTable_EmployeeProfile extends Zend_Db_Table_Abstract {
 
     protected $_name = 'tbl_employee';
+    protected $_employeeinfo = 'tbl_user_info';
+
+    public function checkUnique($username)
+    {
+        $select = "select Username from tbl_user_info where Username = '". $username . "'";
+        $result = $this->getAdapter()->fetchOne($select);
+        if($result){
+            return true;
+        }
+        return false;
+    }
     
     public function addEmployee($Username, $Password, $Name, $DOB, $Gender,
             $MaritialStatus, $Nationality, $Religion, $CurrentAddress,
@@ -19,8 +30,8 @@ class Application_Model_DbTable_EmployeeProfile extends Zend_Db_Table_Abstract {
             'CreatedOn' => $CurDate,
             'LastUpdatedOn' => $CurDate
         );
-        
         $table->insert('tbl_user_info',$employeeLoginInfo);
+        
         $UserID = $table->fetchOne('select last_insert_id()');
         $modifiedDOB = new Zend_Db_Expr("str_to_date('$DOB','%m/%d/%Y')");
         $employeeInfo = array(
