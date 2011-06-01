@@ -48,13 +48,7 @@ class EmployerController extends Zend_Controller_Action
     public function createemployeeAction ()
     {
         $request = $this->getRequest();
-       /* if($request->getParam("txtPassword") !=  $request->getParam("txtConfirmPassword")
-         && $request->getParam("txtPassword") != "" && $request->getParam("txtConfirmPassword") !=""){
-        	$this->view->assign('wrongPassword', "Password is not Match");
-        	 $this->view->assign('create', 
-        $request->getBaseURL() . "/employer/registerform");
-        }
-        else{*/
+        
         $application_Model_Employer = new Application_Model_Employer();
        // $application_Model_Employer->setUserId(2);
         $application_Model_Employer->setUsername(
@@ -88,7 +82,6 @@ class EmployerController extends Zend_Controller_Action
         $request->getParam("txtBillingAddress"));
         $application_Model_Employer->setCityId($request->getParam("cboCity"));
         $application_Model_Employer->insertEmployer();
-        
         $this->_redirect('/jobpost/index');
         $this->view->assign('action', $request->getBaseURL() . "/jobpost/index");
         $this->view->assign('company', 
@@ -112,7 +105,7 @@ class EmployerController extends Zend_Controller_Action
         $request = $this->getRequest();
         $application_Model_Employer->setUserId(1);
         $application_Model_Employer->setUsername("Mesfin Mamuye");
-        $application_Model_Employer->findEmployerId();
+       $application_Model_Employer->findEmployerId();
         $this->view->assign('action', 
         $request->getBaseURL() . "/employer/editemployee");
         $this->view->username = $application_Model_Employer;
