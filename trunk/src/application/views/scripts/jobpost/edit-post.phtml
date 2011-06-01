@@ -1,42 +1,28 @@
-
 <?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/EmployerCSS.css'); ?>
 <title>Employer Home </title>
 
 
 	</head>
-	
-        
-     <table width="90%" border="0" align="center" cellpadding="0" cellspacing="0" class="BDJPageBorder">
-	<tr>
+	    
+     
+    <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="BDJPageBorder">
+  <tr>
     <td style="padding-left:0px; padding-right:0px;">
-	
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" id="tblSet4">
-        <tr>
-        <td width="0px" valign="top" style="padding-top:30px;">
-            
- 
-	
-		</td>
-        <td valign="top">
-             
-		<table width="100%" border="0" cellspacing="0" cellpadding="0">
-        	
-        </table>
-		
-        <!------------------------
-		JOBPOSTING STEP 01 STARTS:
-		-------------------------->
-        <table width="100%" border="0" cellspacing="0" cellpadding="0" id="tblSet4">
-			<FORM name="frmJobPostingStep01" id="frmJobPostingStep01" method="post" action=<?php echo$this->escape($this->modify)?>>
-				<!----------------------------------
-				'READING JOB POSTING STEP 02 INPUT:
-				'---------------------------------->	
-				<INPUT type="hidden" name="jobId" id="cboAgeFrom" value=<?php echo$this->editjoblist->getJobID()?>/>
-				<INPUT type="hidden" name="requirmentId" id="cboAgeTo" value=<?php echo$this->editjoblist->setJobRequirementID()?>/>
-				
+    
+      
+        
+        <td width="600" valign="top">  
+       
+       
+        
+			<FORM name="frmJobPostingStep01" id="frmJobPostingStep01" method="post" action=<?php echo$this->escape($this->postjobs)?>>
+				<!--INPUT type="hidden" name="chkHideSalary" id="chkHideSalary" value=""/-->	
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" id="tblSet4">
 				<tr>
-
-				<td class="headLeft">&nbsp;</td>
+                <td class="headLeft"><INPUT type="hidden" name="jobId" id="cboAgeFrom" value=<?php echo$this->editjoblist->getJobID()?>/></td>
+                <td class="headLeft"><INPUT type="hidden" name="requirmentId" id="cboAgeTo" value=<?php echo$this->editjoblist->getJobRequirementID()?>/></td>
+                
+				
 				<td height="33" colspan="2" class="head">Job Requirements</td>
 				<td class="headRight">&nbsp;</td>
 				</tr>
@@ -720,7 +706,6 @@
 	        <td style="padding-top:2px; padding-bottom:2px;">
 			<TEXTAREA name="txtEducation" id="txtEducation" class="BDJtextBox" onKeyUp="countLetter(this.id , 500 , 'CADD_sp1' , 'Educational Qualification' , 1)" onChange="countLetter(this.id , 500 , 'CADD_sp1' , 'Educational Qualification' , 1 )" style="width:100%; height:80px;">
 			<?php echo$this->editjoblist->getEducationalQualificationalID()?></TEXTAREA>
-			<SPAN id="CADD_sp1" name="CADD_sp1" class="BDJValues"></SPAN>
 			</td>
 	        <td class="bodyRight">&nbsp;</td>
 
@@ -762,9 +747,7 @@
 			</td>
 			<td class="bodyRight">&nbsp;</td>
 			</tr>
-				    	    <td class="bodyRight">&nbsp;</td>
-	        </tr>
-						
+				    	  						
 			<tr class="body">
         	<td class="bodyLeft">&nbsp;</td>
         	<td>			
@@ -1082,15 +1065,14 @@
 				<td class="footerRight"><img src="images/pix.gif" width="6" height="5"/></td>
 
 				</tr>
-			</FORM>
+			
         </table>
+        </FORM>
 
         </td>
         </tr>
         </table>
-        </td>
-        </tr>
-        </table>
+       
         
      
-           
+         
