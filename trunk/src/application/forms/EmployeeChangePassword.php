@@ -17,7 +17,7 @@ class Application_Form_EmployeeChangePassword extends Zend_Form
                 ->setRequired(true)
                 ->addFilter('StripTags')
                 ->addFilter('StringTrim')
-                ->addValidator('');
+                ->addValidator('NotEmpty');
 
         $NewPassword = new Zend_Form_Element_Password('NewPassword');
         $NewPassword->setLabel('New-Password:')
