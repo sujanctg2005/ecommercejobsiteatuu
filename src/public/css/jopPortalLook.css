@@ -8,9 +8,10 @@ body,html {
     background-repeat:repeat-x;
 }
 h1 {
-    font-size: 1.4em;
-    color: maroon;
+    font-size: 12px;
+    color: #0099ff;
     text-decoration: underline;
+    
 }
 a {
     color: #000000;
@@ -72,14 +73,14 @@ border: 0px solid black;
 
 .header{
     text-align: left;
-    background-color: chocolate;
+    background-color: #3399ff;
     color: white;
     right: 1px;
 }
 
 .value{
     text-align: left;
-    background-color: #9ECE2A;
+    background-color: #99ff99;
     color: black;
 }
 
@@ -169,13 +170,36 @@ padding-left: 0px;
     position: relative;
     width: 15%;
     margin-left: 200px;
-    top: 10px;
+    
+    
 }
-
+.centertext{
+    position: relative;
+    text-align: justify;
+    
+    border-right-color: #0099cc;
+    border-left-color: #0099cc;
+    border-bottom-color: #0099cc;
+    border-top-color: #0099cc;
+}
 .leftsidebar td
 {
     
 
+}
+
+.myjobportal{
+
+    font-size: 12px;
+    color: #00cc00;
+    margin-left: 200px;
+    font-family: Verdana,sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-bottom: 5px;
+    
+    
 }
 
 .maincontent
@@ -183,17 +207,16 @@ padding-left: 0px;
     float: left;
     position: relative;
     border: 0px solid;
-    padding: 0px;
-    
+    padding-bottom: 3px;
+    width: 54%;
 
 }
 
 .maincontent2
 {
-
     float: left;
     position: relative;
-    padding-top: 5px;
+    padding-top: 2px;
     margin-left: 186px;
 
 }
@@ -238,6 +261,7 @@ padding-left: 0px;
 }
 .feedback{
     color: #A1A2A6;
+    font-size: 8px;
 }
 
 #blocks{
