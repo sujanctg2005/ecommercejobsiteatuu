@@ -1,10 +1,12 @@
 <?php
 class JobpostController extends Zend_Controller_Action
 {
+    protected $_customactionhelper;
 
     public function init()
     {
         /* Initialize action controller here */
+	$this->_customactionhelper = Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper');
     }
 
     public function indexAction()
@@ -13,16 +15,12 @@ class JobpostController extends Zend_Controller_Action
         $request = $this->getRequest();
      
        $application_Model_UserInfo = new Application_Model_UserInfo();
-        if (Zend_Auth::getInstance()->hasIdentity()) {
-            $val = Zend_Auth::getInstance()->getStorage()->read()->Username;
-             
-             $application_Model_UserInfo->setUsername($val);
-             $application_Model_UserInfo->findUserInfo();
-           
-        }
-       
+
+       $application_Model_UserInfo->setUsername($this->_customactionhelper->getUserName());
+       $application_Model_UserInfo->findUserInfo();
+
         $application_Model_Jobvacancy = new Application_Model_Jobvacancy();  
-        $application_Model_Jobvacancy->setEmployeerID($application_Model_UserInfo->getUserId())	;
+        $application_Model_Jobvacancy->setEmployeerID($this->_customactionhelper->getUserID());
         $entries = $application_Model_Jobvacancy->findJobPostByEmplyerID();
         $this->view->postjoblist=$entries;
       
@@ -69,17 +67,12 @@ class JobpostController extends Zend_Controller_Action
     {
         $request = $this->getRequest();
         $application_Model_UserInfo = new Application_Model_UserInfo();
-        if (Zend_Auth::getInstance()->hasIdentity()) {
-            $val = Zend_Auth::getInstance()->getStorage()->read()->Username;
-             
-             $application_Model_UserInfo->setUsername($val);
-             $application_Model_UserInfo->findUserInfo();
-           
-        }
-       
+
+        $application_Model_UserInfo->setUsername($this->_customactionhelper->getUserName());
+        $application_Model_UserInfo->findUserInfo();
         
         $application_Model_Jobvacancy = new Application_Model_Jobvacancy();
-        $application_Model_Jobvacancy->setEmployeerID($application_Model_UserInfo->getUserId())	;
+        $application_Model_Jobvacancy->setEmployeerID($this->_customactionhelper->getUserID())	;
         $application_Model_Jobvacancy->setJobTitle(
         $request->getParam("txtJobTitle"));
         $application_Model_Jobvacancy->setNoOfVacancy(

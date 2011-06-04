@@ -1,4 +1,4 @@
-<head>
+<!--<head>
 
 <title>Employer Home </title>
 <?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/EmployerCSS.css'); ?>
@@ -14,8 +14,8 @@
        
         <tr>
           <td rowspan="5" align="center" valign="top"> 
-            <!--### Form table start ###-->
-            <FORM name="frmDefault" id="frmDefault" method="post" action= <?php echo$this->escape($this->login)?> > <!--https://bdjobs.sslcert11.com/corporate/corporate_submit.asp-->
+            ### Form table start ###
+            <FORM name="frmDefault" id="frmDefault" method="post" action= <?php echo$this->escape($this->login)?> > https://bdjobs.sslcert11.com/corporate/corporate_submit.asp
 
               <table width="90%" border="0" cellspacing="0" cellpadding="0" id="tblSet2">
                 <tr> 
@@ -35,29 +35,7 @@
                       Bank Access</span></div>
                     <br> <span class="BDJFormTitle">Company Log In</span><br> 
                     <img src="images/pix_gray.gif" width="100%" height="1" vspace="5"><br> 
-                    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="padding-top:5px;">
-                      
-                      <tr> 
-                        <td height="35" align="right" class="BDJtabLinkNormal">User 
-                          Name</td>
-
-                        <td align="right"><INPUT type="text" name="NAME" id="NAME" size="20" maxlength="40" class="BDJtextBox" style="width:130px;"></td>
-                      </tr>
-                      <tr> 
-                        <td height="35" align="right" class="BDJtabLinkNormal">Password</td>
-                        <td align="right"><INPUT type="password" name="PASS" id="PASS" size="20" class="BDJtextBox" style="width:130px;"></td>
-                      </tr>
-                                          <tr> 
-                        <td height="22" colspan="2" align="right"><div align="right" style="margin-top:5px;"> 
-                            <INPUT type="submit" name="Login" value="Login" width="79" height="23">
-
-                          </div></td>
-                      </tr>
-                      <tr> 
-                        <td height="22" colspan="2" align="right"><a href="http://www.bdjobs.com/corporate/password" class="BDJForgotVerdana12">Forgot 
-                          your company password?</a></td>
-                      </tr>
-                    </table>
+                    
                     <img src="images/pix_gray.gif" width="100%" height="1" vspace="5"><br> 
                     <br> <div align="center"> 
                       <span> <a href=<?php echo$this->escape($this->create)?>>Create New Account</a></span>
@@ -79,24 +57,17 @@
          
          
         </tr>
-       
-
-        
-        
-         
-       
-
-      
-       
-        
       </table>
 </td>
   </tr>
   <tr>
     <td height="50" align="center" valign="bottom" class="BDJCopyright"></td>
   </tr>
-</table>
-</div>
-</div>
+</table>-->
+<!--</div>
+</div>-->
+<h1>Company Login</h1>
+<div>Welcome to the section for Employers at portaljobs Log into your Account to get the following online recruitment services:<br> &nbsp;</div>
+<div><?php echo $this->login; ?></div>
     </body>
 </html>

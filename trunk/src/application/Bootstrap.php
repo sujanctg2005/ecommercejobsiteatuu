@@ -23,6 +23,17 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
         Zend_Mail::setDefaultTransport($mailTransport);
     }
 
+    protected function _initDBSettings()
+    {
+        $dbConfig = $this->getOption('resources');
+        $params = $dbConfig['db']['params']; 
+	$DB = new Zend_Db_Adapter_Pdo_Mysql($params);
+
+	$DB->setFetchMode(Zend_Db::FETCH_OBJ);
+	Zend_Registry::set('DB',$DB);
+
+    }
+
     protected function _initNavigation()
     {
         $actionhelper = Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper');
@@ -38,11 +49,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
                 $actionhelper->getNavigationRootNodeName());
 
         $navigation = new Zend_Navigation($config);
-
-//        var_dump($view);
-      // exit;
-        //$this->
-      //  $view->shownavigation = false;
         $view->navigation($navigation);
     }
 }

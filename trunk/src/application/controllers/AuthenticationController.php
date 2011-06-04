@@ -14,7 +14,6 @@ class AuthenticationController extends Zend_Controller_Action
 
     public function loginAction()
     {
-
         $redirector = Zend_Controller_Action_HelperBroker::getStaticHelper('Redirector');
         if(Zend_Auth::getInstance()->hasIdentity())
         {	
@@ -31,10 +30,15 @@ class AuthenticationController extends Zend_Controller_Action
 
          if($this->getRequest()->isPost())
          {
-
             $data = $this->getRequest()->getParams();
             if($form->isValid($data))
             {
+                if(APP_Authentication_Authenticator::authenticateUser($data['username'], $data['password']))
+                {
+                    $this->_redirect(array('controller' => 'index', 'action' => 'index'));
+                }
+                else
+                    $this->view->errors = 'The username or password is incorrect.';
                 //authenticate the user
                 $authAdapter = new Zend_Auth_Adapter_DbTable(Zend_Db_Table::getDefaultAdapter());
 
@@ -72,8 +76,8 @@ class AuthenticationController extends Zend_Controller_Action
 
     public function logoutAction()
     {
-        // action body
-        Zend_Auth::getInstance()->clearIdentity();
+        APP_Authentication_Authenticator::logout();
+       // Zend_Auth::getInstance()->clearIdentity();
         return $this->_redirect(array('controller'=>'index','action'=>'index'));
     }
 }

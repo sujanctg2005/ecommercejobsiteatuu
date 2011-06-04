@@ -47,4 +47,10 @@ class JobsController extends Zend_Controller_Action
                         $this->getRequest()->getParam('page'));
 
     }
+
+    public function applyJobAction()
+    {
+
+
+    }
 }
