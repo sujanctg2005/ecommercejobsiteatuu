@@ -53,6 +53,7 @@
           <dbTableFile dbTableName="EmployeeProfile"/>
         </dbTableDirectory>
         <modelFile modelName="JobsList"/>
+        <modelFile modelName="UserInfo"/>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>
       <viewsDirectory>
