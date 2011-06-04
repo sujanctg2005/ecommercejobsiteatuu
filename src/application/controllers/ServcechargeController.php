@@ -26,9 +26,17 @@ class ServcechargeController extends Zend_Controller_Action
     public function servicepaymentAction()
     {
      $request = $this->getRequest();
+     $application_Model_UserInfo = new Application_Model_UserInfo();
+        if (Zend_Auth::getInstance()->hasIdentity()) {
+            $val = Zend_Auth::getInstance()->getStorage()->read()->Username;
+             
+             $application_Model_UserInfo->setUsername($val);
+             $application_Model_UserInfo->findUserInfo();
+           
+        }
     $application_Model_Service = new Application_Model_Service(); 
     $application_Model_Service->setServiceId($request->getParam("id"));
-    $application_Model_Service->setUserId($request->getParam("id"));
+    $application_Model_Service->setUserId($application_Model_UserInfo->getUserId());
     $application_Model_Service->insertPayment();
     
     
