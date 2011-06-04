@@ -14,6 +14,14 @@ class EmployerController extends Zend_Controller_Action
         $this->view->assign('create', 
         $request->getBaseURL() . "/employer/registerform");
         $this->assignViewformAction($request);
+
+        $form = new Application_Form_Login();
+
+        $form->setAction($this->view->url(array('controller' => 'authentication', 'action' => 'login')));
+
+        $form->setMethod('post');
+
+        $this->view->login = $form;
     }
     public function assignViewformAction ($request)
     {

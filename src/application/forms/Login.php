@@ -34,7 +34,7 @@ class Application_Form_Login extends Zend_Form
 
         $this->addElement($username)
              ->addElement($password)
-             ->addElement($rememberMe)
+            // ->addElement($rememberMe)
              ->addElement($submit)
              ->addElement($usertype) ;
 

@@ -10,7 +10,43 @@ class IndexController extends Zend_Controller_Action {
     }
 
     public function indexAction() {
-
+        $val1 = 'images/HotJobs/advertising-agency-logo.gif';
+        $val2 = 'images/HotJobs/images (1).jpg';
+        $val3 = 'images/HotJobs/images (2).jpg';
+        $val4 = 'images/HotJobs/images (3).jpg';
+        $val5 = 'images/HotJobs/images (4).jpg';
+        $val6 = 'images/HotJobs/images (5).jpg';
+        $val7 = 'images/HotJobs/images (6).jpg';
+        $val8 = 'images/HotJobs/images (7).jpg';
+        $val9 = 'images/HotJobs/images (8).jpg';
+        $val10 = 'images/HotJobs/images (9).jpg';
+        $val = 'images/HotJobs/images (10).jpg';
+        $hotjobs = array(    
+            //array('imagepath'=>"$val1",'jobtitle'=>'This is title1','jobdescription'=>'this is description1', 'link'=>''),
+            //array('imagepath'=>"$val1",'jobtitle'=>'','jobdescription'=>'', 'link'=>''),
+            array('imagepath'=>"$val2",'jobtitle'=>'','jobdescription'=>'', 'link'=>''),
+            array('imagepath'=>"$val3",'jobtitle'=>'','jobdescription'=>'', 'link'=>''),
+            array('imagepath'=>"$val4",'jobtitle'=>'','jobdescription'=>'', 'link'=>''),
+            array('imagepath'=>"$val5",'jobtitle'=>'','jobdescription'=>'', 'link'=>''),
+            array('imagepath'=>"$val6",'jobtitle'=>'','jobdescription'=>'', 'link'=>'')
+//            array('imagepath'=>"$val2",'jobtitle'=>'','jobdescription'=>'', 'link'=>''),
+//            array('imagepath'=>"$val2",'jobtitle'=>'','jobdescription'=>'', 'link'=>'')
+//            array('imagepath'=>"$val3",'jobtitle'=>'This is title1','jobdescription'=>'this is description1', 'link'=>''),
+//            array('imagepath'=>"$val4",'jobtitle'=>'This is title1','jobdescription'=>'this is description1', 'link'=>''),
+//            array('imagepath'=>"$val5",'jobtitle'=>'This is title1','jobdescription'=>'this is description1', 'link'=>''),
+//            array('imagepath'=>"$val6",'jobtitle'=>'This is title1','jobdescription'=>'this is description1', 'link'=>''),
+//            array('imagepath'=>"$val7",'jobtitle'=>'This is title1','jobdescription'=>'this is description1', 'link'=>''),
+//            array('imagepath'=>"$val8",'jobtitle'=>'This is title1','jobdescription'=>'this is description1', 'link'=>''),
+//            array('imagepath'=>"$val9",'jobtitle'=>'This is title1','jobdescription'=>'this is description1', 'link'=>''),
+//            array('imagepath'=>"$val10",'jobtitle'=>'This is title1','jobdescription'=>'this is description1', 'link'=>'')
+//            array('imagepath'=>"$val",'jobtitle'=>'This is title1','jobdescription'=>'this is description1', 'link'=>''),
+//            array('imagepath'=>"$val",'jobtitle'=>'This is title1','jobdescription'=>'this is description1', 'link'=>''),
+//            array('imagepath'=>"$val",'jobtitle'=>'This is title1','jobdescription'=>'this is description1', 'link'=>''),
+//            array('imagepath'=>"$val",'jobtitle'=>'This is title1','jobdescription'=>'this is description1', 'link'=>''),
+//            array('imagepath'=>"$val",'jobtitle'=>'This is title1','jobdescription'=>'this is description1', 'link'=>'')
+            );
+        
+        $this->view->hotjobs = $hotjobs;
 
         $actionhelper = Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper');
         $role = $actionhelper->getRole();

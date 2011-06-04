@@ -368,7 +368,9 @@ class Application_Model_Employer
  public function puplateToArrayUser ()
     {
         $data = array('Username' => $this->getUsername(), 
-        'Password' => Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper')->md5encrypt($this->getPassword()));
+        'Password' => Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper')->md5encrypt($this->getPassword()),
+        'UserType' => 'Employer'
+                );
         return $data;
     }
     public function puplateToArray ($userId)
