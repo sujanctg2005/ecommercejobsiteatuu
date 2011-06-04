@@ -105,7 +105,7 @@ public function insertPayment ($result)
     }
  public function puplateToArray ()
     {   
-         //$this->setJobID(7);
+        
     	$data = array('EmployerId' =>$this->getUserId(),
          'ServiceId' => $this->getServiceId());
         return $data;
