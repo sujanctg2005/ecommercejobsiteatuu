@@ -107,7 +107,7 @@ xmlhttp.send();
 				
 				<td style="width:20%; text-align:center">
 				<a href=""></a>		
-				<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" onsubmit="updatStatus('<?php echo$this->seervicpayment?>/id/<?php echo$datas[0]->getServiceId()?>');">
+				<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" onsubmit="return updatStatus('<?php echo$this->seervicpayment?>/id/<?php echo$datas[0]->getServiceId()?>');">
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="hosted_button_id" value="3BRZC8QBYMN7A">
 <input type="image" src="https://www.sandbox.paypal.com/WEBSCR-640-20110429-1/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
@@ -138,8 +138,7 @@ xmlhttp.send();
 		
         	<tr> 
             <td class="headLeft">&nbsp;</td>
-            <td class="head">&nbsp;<a name="3"></a>Online CV Bank Access</td>
-
+            <td class="head">&nbsp;&nbsp;<a name="2"></a>Hot Job Announcement</td>
             <td class="headRight">&nbsp;</td>
             </tr>
             
@@ -147,17 +146,16 @@ xmlhttp.send();
             <td class="bodyLeft">&nbsp;</td>
             <td style="height:210px; padding-top:20px;" valign="top">
 			<div>
-			Online CV Bank Access gives you instant direct access to the largest database of professionals in Jobportal.			
-			</div>
-			<div style="padding-top:10px; height:295px">	
+
 			<UL>
 
-				<LI>No Intermediary to Contact Candidates</LI>
-				<LI>You can directly contact the prospective candidates who meet your job requirements.</LI>
-				<LI>Search for the right candidates by Professional group, Age group, years of experience, Educational or Professional qualification, Specific job sector/industry, Special skills or open 'key words'</LI>
-			</UL>
-            		 
-			</div>
+                    <LI><strong>Job Announcements</strong> (with company logo) 
+                      displayed at the <strong>homepage</strong> for max. 10 days 
+                      (with 30 days display facility at category section)</LI>
+                                      <LI><strong>Special Job notification</strong> to prospective 
+                      qualified candidates through e-mail</LI>
+
+                  </UL></div>
 			</td>
             <td class="bodyRight">&nbsp;</td>
 
@@ -223,7 +221,7 @@ xmlhttp.send();
             <td class="bodyLeft">&nbsp;</td>
             <td style="height:210px; padding-top:20px;" valign="top">
 			<div>
-			Online CV Bank Access gives you instant direct access to the largest database of professionals in Jobportal.			
+			Online ToBank Access gives you instant direct access to the largest database of professionals in Jobportal.			
 			</div>
 			<div style="padding-top:10px; height:295px">	
 			<UL>
