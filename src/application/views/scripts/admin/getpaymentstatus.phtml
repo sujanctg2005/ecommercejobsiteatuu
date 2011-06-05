@@ -1,0 +1,18 @@
+<?php
+
+$nbrows=count($this->postjoblist);
+
+if($nbrows>0){
+		
+		$jsonresult = json_encode($this->postjoblist);
+		if(isset( $_REQUEST['callback'])){
+			echo $_REQUEST['callback'].'({"total":"'.$nbrows.'","results":'.$jsonresult.'});';
+		}else{
+			echo '{"total":'.$nbrows.',"results":'.$jsonresult.'}';
+		}
+		
+	} else {
+		echo '({"total":"0", "results":""})';
+	}
+	
+?>

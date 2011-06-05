@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JobPortal::Admin Panel</title>
+   
+<?php
+echo $this->headLink()->prependStylesheet(
+$this->baseUrl() . '/js/ext-4.0.0/resources/css/ext-all.css');
+?>
+
+    <?php
+    echo $this->headLink()->prependStylesheet(
+    $this->baseUrl() . '/css/portal.css');
+    ?>
+    
+      <?php
+    $this->headScript()->appendFile($this->baseUrl() .
+     '/js/ext-4.0.0/ext-all.js')?>
+
+ 
+    <!-- shared example code -->
+    <?php
+    $this->headScript()->appendFile(
+    $this->baseUrl() . '/js/ext-4.0.0/examples/shared/examples.js')?>
+    
+     <?php
+    $this->headScript()->appendFile($this->baseUrl() . '/js/classes.js')?>
+    
+
+	     <?php
+    $this->headScript()->appendFile(
+    $this->baseUrl() . '/js/ext-4.0.0/examples/example-data.js')?>
+  
+	<?php
+$this->headScript()->appendFile($this->baseUrl() . '/js/portal.js')?>
+
+<?php
+$this->headScript()->appendFile(
+$this->baseUrl() . '/js/classes/GridPortlet.js?33');
+$this->headScript()->appendFile(
+$this->baseUrl() . '/js/classes/PaymentGridPortlet.js?')?>
+
+  <?php
+echo $this->headScript()?>
+
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+<script type="text/javascript">
+ 
+    
+        Ext.Loader.setPath('Ext.app', 'classes');
+
+        Ext.require([
+            'Ext.layout.container.*',
+            'Ext.resizer.Splitter',
+            'Ext.fx.target.Element',
+            'Ext.fx.target.Component',
+            'Ext.window.Window',
+            'Ext.app.Portlet',
+            'Ext.app.PortalColumn',
+            'Ext.app.PortalPanel',
+            'Ext.app.Portlet',
+            'Ext.app.PortalDropZone',
+            'Ext.app.GridPortlet',
+            'Ext.app.ChartPortlet'
+        ]);
+
+        Ext.onReady(function(){
+            Ext.create('Ext.app.Portal');
+            drawChatAjax();
+			drawLineChartAjax()
+			
+			
+        });
+		
+	
+    </script>
+
+<script type="text/javascript">
+
+
+function lineChart(stringData) {
+  var data = new google.visualization.DataTable();
+  data.addColumn('string', 'Month');
+  data.addColumn('number', 'Job Portal');
+ 
+
+  var jsonData = Ext.JSON.decode(stringData);
+  
+  data.addRows(jsonData.total);
+
+
+  for(var i=0; i<jsonData.total;i++){
+	 
+	  data.setValue(i, 0, jsonData.results[i].month);
+      data.setValue(i, 1, parseInt(jsonData.results[i].totalJob	));
+	  
+	  
+      }
+
+
+  var chart = new google.visualization.LineChart(document.getElementById('line_div'));
+  chart.draw(data, {width: 400, height: 240, title: 'Company Performance'});
+}
+
+
+
+	function drawChart(stringData) {
+		
+        
+		
+		var jsonData = Ext.JSON.decode(stringData);
+
+		
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'CompanyName');
+        data.addColumn('number', 'totalJob');
+        
+        data.addRows(jsonData.total);
+       
+    
+      for(var i=0; i<jsonData.total;i++){
+
+    	  data.setValue(i, 0, jsonData.results[i].CompanyName);
+          data.setValue(i, 1, parseInt(jsonData.results[i].totalJob	));
+    	  
+    	  
+          }
+  
+      
+
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, {width: 450, height: 300, title: 'Job Post'});
+
+
+		
+		
+	}
+ 
+	function drawChatAjax() {
+		
+		Ext.Ajax.request({
+			url : 'admin/jobspost' , 
+			//params : { removeCallback:	'true'},
+			method: 'GET',
+			success: function ( result, request) { 
+				
+				//textArea.value += result.responseText + "\n"; 
+				//Ext.MessageBox.alert('Success', 'Data return from the server: '+ result.responseText); 		
+				drawChart(result.responseText);
+			},
+			failure: function ( result, request) { 
+				Ext.MessageBox.alert('Failed', 'Successfully posted form: '+result.date); 
+			} 
+		});
+	}
+ function drawLineChartAjax(){
+
+	 Ext.Ajax.request({
+			url : 'admin/monthjobspost' , 
+			//params : { removeCallback:	'true'},
+			method: 'GET',
+			success: function ( result, request) { 
+				
+				//textArea.value += result.responseText + "\n"; 
+				//Ext.MessageBox.alert('Success', 'Data return from the server: '+ result.responseText); 		
+				lineChart(result.responseText);
+			},
+			failure: function ( result, request) { 
+				Ext.MessageBox.alert('Failed', 'Successfully posted form: '+result.date); 
+			} 
+		});
+	 }
+	
+</script>
+
+
+<script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+     
+     
+    </script>
+
+
+
+</head>
+<body>
+
+<span id="app-msg" style="display: none;"></span>
+</body>
+</html>
