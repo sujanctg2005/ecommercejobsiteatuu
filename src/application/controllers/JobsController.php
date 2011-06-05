@@ -21,10 +21,8 @@ class JobsController extends Zend_Controller_Action
         try
         {
         $jobcategoryid = $this->getRequest()->getParam('jobcatid');
-
         $data = $this->_jobsLoader
                 ->getJobsForCategory($jobcategoryid);
-
         $this->view->paginator = APP_Action_Helper_CustomActionHelper::
                 getPaginationControl($data,
                         $this->getRequest()->getParam('page'));

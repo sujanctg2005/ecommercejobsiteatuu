@@ -17,7 +17,7 @@ class Application_Model_JobsList
         $select->from(array('j'=>'tbl_job'),null)
                 ->join(
                         array('jc'=>'tbl_job_category'),
-                        'j.jobcategoryid=jc.jobcategoryid',
+                        'j.jobcategoryid=jc.jobcategory',
                         array('jc.jobcategoryid', 'jc.jobcategory',
                             'jobcount'=>'count(jc.jobcategoryid)')
                        )
@@ -32,9 +32,8 @@ class Application_Model_JobsList
         $query = $this->_table
                 ->select()
                 ->from('tbl_job')
-                ->where('jobcategoryid='.$categoryid);
+                ->where("jobcategoryid='".$categoryid."'");
 
-        //APP_Action_Helper_CustomActionHelper::getQueryProfileDump($query);
         return $this->_table->fetchAll($query);
     }
 
@@ -46,7 +45,7 @@ class Application_Model_JobsList
         $select->from(array('j'=>'tbl_job'))
                 ->join(
                         array('jc'=>'tbl_job_category'),
-                        'j.jobcategoryid=jc.jobcategoryid',
+                        'j.jobcategoryid=jc.jobcategory',
                         array('Job Category :)'=>'JobCategory')
                        )
                 ->join(array('emp'=>'tbl_employer'),

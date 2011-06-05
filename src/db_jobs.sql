@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 08, 2011 at 07:26 PM
+-- Generation Time: Jun 05, 2011 at 02:14 PM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -22,20 +22,64 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_academic_qualification`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_academic_qualification` (
+  `EmployeeID` int(11) NOT NULL,
+  `LevelOfEducation` varchar(20) NOT NULL,
+  `Degree` varchar(20) NOT NULL,
+  `Major` varchar(20) NOT NULL,
+  `InstitutionName` varchar(30) NOT NULL,
+  `Grade` float NOT NULL,
+  `YearOfPassing` int(11) NOT NULL,
+  `Duration` float NOT NULL,
+  `SecondLevelOfEducation` varchar(11) NOT NULL,
+  `SecondDegree` varchar(20) NOT NULL,
+  `SecondMajor` varchar(20) NOT NULL,
+  `SecondInstitutionName` varchar(30) NOT NULL,
+  `SecondGrade` char(1) NOT NULL,
+  `SecondYearOfPassing` int(11) NOT NULL,
+  `SecondDuration` float NOT NULL,
+  KEY `EmployeeID` (`EmployeeID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_academic_qualification`
+--
+
+INSERT INTO `tbl_academic_qualification` (`EmployeeID`, `LevelOfEducation`, `Degree`, `Major`, `InstitutionName`, `Grade`, `YearOfPassing`, `Duration`, `SecondLevelOfEducation`, `SecondDegree`, `SecondMajor`, `SecondInstitutionName`, `SecondGrade`, `SecondYearOfPassing`, `SecondDuration`) VALUES
+(94, 'Doctorial', 'Computer Science & E', 'asfkljsal', 'aklsfjlaskdjf', 4, 1950, 4, 'Doctorial', 'Computer Science & E', 'asklfj', 'askldfjksajdflk', '3', 1950, 4),
+(94, 'Doctorial', 'Computer Science & E', 'asfkljsal', 'aklsfjlaskdjf', 4, 1950, 4, 'Doctorial', 'Computer Science & E', 'asklfj', 'askldfjksajdflk', '3', 1950, 4),
+(94, 'Doctorial', 'Computer Science & E', 'asfkljsal', 'aklsfjlaskdjf', 4, 1950, 4, 'Doctorial', 'Computer Science & E', 'asklfj', 'askldfjksajdflk', '3', 1950, 4),
+(94, 'Doctorial', 'Computer Science & E', 'asfkljsal', 'aklsfjlaskdjf', 4, 1950, 4, 'Doctorial', 'Computer Science & E', 'asklfj', 'askldfjksajdflk', '3', 1950, 4),
+(75, 'Doctorial', 'Computer Science & E', 'Computer Science', 'Kathmandu University', 4, 1950, 4, 'Doctorial', 'BioMedical', 'Computer Science', 'Uppsala University', '4', 1950, 4);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_business_type`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_business_type` (
-  `BusinessTypeID` int(10) NOT NULL,
+  `BusinessTypeID` int(10) NOT NULL AUTO_INCREMENT,
   `BusinessType` varchar(20) NOT NULL,
   PRIMARY KEY (`BusinessTypeID`),
+  UNIQUE KEY `BusinessType_UNIQUE` (`BusinessType`),
+  UNIQUE KEY `BusinessType` (`BusinessType`),
+  UNIQUE KEY `BusinessType_2` (`BusinessType`),
   KEY `BusinessTypeID` (`BusinessTypeID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `tbl_business_type`
 --
 
+INSERT INTO `tbl_business_type` (`BusinessTypeID`, `BusinessType`) VALUES
+(1, 'accounting'),
+(3, 'Banks'),
+(2, 'Computer Science'),
+(4, 'Insurance');
 
 -- --------------------------------------------------------
 
@@ -48,13 +92,16 @@ CREATE TABLE IF NOT EXISTS `tbl_city` (
   `CityName` varchar(30) NOT NULL,
   `CountryID` int(10) NOT NULL,
   PRIMARY KEY (`CityID`),
+  UNIQUE KEY `CityName` (`CityName`),
   KEY `CountryID` (`CountryID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `tbl_city`
 --
 
+INSERT INTO `tbl_city` (`CityID`, `CityName`, `CountryID`) VALUES
+(1, 'Kathmandu', 1);
 
 -- --------------------------------------------------------
 
@@ -64,14 +111,24 @@ CREATE TABLE IF NOT EXISTS `tbl_city` (
 
 CREATE TABLE IF NOT EXISTS `tbl_country` (
   `CountryID` int(10) NOT NULL AUTO_INCREMENT,
-  `CompanyName` varchar(30) NOT NULL,
-  PRIMARY KEY (`CountryID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `CountryName` varchar(30) NOT NULL,
+  PRIMARY KEY (`CountryID`),
+  UNIQUE KEY `CompanyName` (`CountryName`),
+  UNIQUE KEY `CountryName` (`CountryName`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `tbl_country`
 --
 
+INSERT INTO `tbl_country` (`CountryID`, `CountryName`) VALUES
+(10, '1'),
+(2, 'Australia'),
+(5, 'Denmark'),
+(4, 'England'),
+(3, 'Finland'),
+(1, 'Nepal'),
+(6, 'Sweden');
 
 -- --------------------------------------------------------
 
@@ -84,7 +141,7 @@ CREATE TABLE IF NOT EXISTS `tbl_employee` (
   `Name` varchar(50) NOT NULL,
   `DateOfBirth` date NOT NULL,
   `Gender` varchar(5) NOT NULL,
-  `MaritialStatus` varchar(5) NOT NULL,
+  `MaritialStatus` varchar(10) NOT NULL,
   `Nationality` varchar(20) NOT NULL,
   `Religion` varchar(20) DEFAULT NULL,
   `CurrentAddress` varchar(50) NOT NULL,
@@ -104,7 +161,23 @@ CREATE TABLE IF NOT EXISTS `tbl_employee` (
 --
 
 INSERT INTO `tbl_employee` (`UserID`, `Name`, `DateOfBirth`, `Gender`, `MaritialStatus`, `Nationality`, `Religion`, `CurrentAddress`, `PermanentAddress`, `HomePhone`, `Mobile`, `OfficePhone`, `Email`, `AlternativeEmail`, `ImagePath`) VALUES
-(1, 'Amendra', '1985-07-09', 'Male', 'Unmar', 'Nepal', 'Hindu', 'Uppsala', 'Nepal', '3454', '0700257845', '34534534534', 'aminshrestha@gmail.com', '', 'lajsdfk');
+(75, 'Amendra Shrestha', '2011-05-31', 'Male', 'Single', 'Nepal', 'Hindu', 'Uppsala', 'Nepal', '9879879', '897', '98798', 'amendrashrestha@gmail.com', 'aminshrestha@gmail.com', '/ecom/public/../uploads/Image_0_16.gif'),
+(76, 'Suman Shrestha', '2011-05-31', 'Male', 'Single', 'Nepal', 'Hindu', 'Uppsala', 'Nepal', '9879879', '897', '98798', 'amendrashrestha@gmail.com', 'aminshrestha@gmail.com', '/ecom/public/../uploads/Image_0_15.gif'),
+(77, 'Testing', '2011-05-31', 'Male', 'Single', 'Nepal', 'Hindu', 'Uppsala', 'Nepal', '9879879', '897', '98798', 'amendrashrestha@gmail.com', 'aminshrestha@gmail.com', '/ecom/public/../uploads/Image_0_12.gif'),
+(79, 'Amendra Shrestha', '2011-05-31', 'Male', 'Single', 'Nepal', 'Hindu', 'Uppsala', 'Nepal', '9879879', '897', '98798', 'amendrashrestha@gmail.com', 'aminshrestha@gmail.com', '/ecom/public/../uploads/Image_0_7.gif'),
+(80, 'Amendra Shrestha', '2011-05-31', 'Male', 'Single', 'Nepal', 'Hindu', 'Uppsala', 'Nepal', '9879879', '897', '98798', 'amendrashrestha@gmail.com', 'aminshrestha@gmail.com', '/ecom/public/../uploads/Image_0_7.gif'),
+(82, 'Amendra Shrestha', '2011-05-31', 'Male', 'Single', 'Nepal', 'Hindu', 'Uppsala', 'Nepal', '9879879', '897', '98798', 'amendrashrestha@gmail.com', 'aminshrestha@gmail.com', '/ecom/public/../uploads/Image_0_7.gif'),
+(83, 'Amendra Shrestha', '2011-05-31', 'Male', 'Single', 'Nepal', 'Hindu', 'Uppsala', 'Nepal', '9879879', '897', '98798', 'amendrashrestha@gmail.com', 'aminshrestha@gmail.com', '/ecom/public/../uploads/Image_0_7.gif'),
+(84, 'Amendra Shrestha', '2011-05-31', 'Male', 'Single', 'Nepal', 'Hindu', 'Uppsala', 'Nepal', '9879879', '897', '98798', 'amendrashrestha@gmail.com', 'aminshrestha@gmail.com', '/ecom/public/../uploads/Image_0_7.gif'),
+(85, 'Amendra Shrestha', '2011-05-31', 'Male', 'Single', 'Nepal', 'Hindu', 'Uppsala', 'Nepal', '9879879', '897', '98798', 'amendrashrestha@gmail.com', 'aminshrestha@gmail.com', '/ecom/public/../uploads/Image_0_7.gif'),
+(86, 'Amendra Shrestha', '2011-05-31', 'Male', 'Single', 'Nepal', 'Hindu', 'Uppsala', 'Nepal', '9879879', '897', '98798', 'amendrashrestha@gmail.com', 'aminshrestha@gmail.com', '/ecom/public/../uploads/Image_0_7.gif'),
+(87, 'Amendra Shrestha', '2011-05-31', 'Male', 'Single', 'Nepal', 'Hindu', 'Uppsala', 'Nepal', '9879879', '897', '98798', 'amendrashrestha@gmail.com', 'aminshrestha@gmail.com', '/ecom/public/../uploads/Image_0_7.gif'),
+(88, 'Amendra Shrestha', '2011-05-31', 'Male', 'Single', 'Nepal', 'Hindu', 'Uppsala', 'Nepal', '9879879', '897', '98798', 'amendrashrestha@gmail.com', 'aminshrestha@gmail.com', '/ecom/public/../uploads/Image_0_7.gif'),
+(90, 'testing', '2011-05-31', 'Male', 'Single', 'lasjdfkl', 'kljasklfj', 'ljaslkfj', 'ljaslfkj', '87897987', '897897987', '897987987', 'aslfj@algjas.com', 'asjf@aslfj.com', '/ecom/public/../uploads/Image_0_20.gif'),
+(91, 'uppsala', '2011-05-31', 'Male', 'Single', 'Nepal', 'laskdfj', 'laskfjkl', 'lkasjdflk', '879879', '878978979', '7987897', 'aslfj@algjas.com', 'sw@laisf.com', '/ecom/public/../uploads/Image_0_21.gif'),
+(92, 'Ekta', '2011-06-23', 'Male', 'Single', 'Nepal', 'aslkfj', 'lasjl', 'lkajsf', '8787897', '987897897', '89789789', 'slakj@asl.com', 'sakfj@askfj.com', '/ecom/public/../uploads/Image_0_23.gif'),
+(93, 'aslkfjl', '2011-06-15', 'Male', 'Single', 'slkadfjkla', 'lajsldkfj', 'lkjasfd', 'lkjasf', '099809', '098098', '08098', 'lsajflk@gaklsjd.com', 'asjf@aslfj.com', '/ecom/public/../uploads/Image_0_24.gif'),
+(94, 'Suman Shresetha', '2011-05-13', 'Male', 'Single', 'askldfj', 'lkasjf', 'lkasjf', 'lkajsf', '98789', '98779', '798798', 'aslfj@algjas.com', 'asjf@aslfj.com', '/ecom/public/../uploads/Image_0_25.gif');
 
 -- --------------------------------------------------------
 
@@ -123,20 +196,50 @@ CREATE TABLE IF NOT EXISTS `tbl_employer` (
   `CompanyLogo` varchar(100) NOT NULL,
   `ContactPerson` varchar(30) NOT NULL,
   `ContactPersonDesignatation` varchar(20) NOT NULL,
-  `CountryID` int(10) NOT NULL,
-  `BusinessTypeID` varchar(10) NOT NULL,
+  `CountryID` varchar(30) NOT NULL,
+  `BusinessTypeID` varchar(30) NOT NULL,
   `BillingAddress` varchar(30) NOT NULL,
   `CityID` int(10) NOT NULL,
   PRIMARY KEY (`UserID`),
+  UNIQUE KEY `CountryID_2` (`CountryID`),
+  UNIQUE KEY `CountryID_3` (`CountryID`),
   KEY `UserID` (`UserID`),
   KEY `CountryID` (`CountryID`),
-  KEY `CityID` (`CityID`)
+  KEY `CityID` (`CityID`),
+  KEY `CountryID_4` (`CountryID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_employer`
 --
 
+INSERT INTO `tbl_employer` (`UserID`, `CompanyName`, `AlternativeCompanyName`, `CompanyAddress`, `CompanyPhone`, `CompanyEmail`, `CompanyURL`, `CompanyLogo`, `ContactPerson`, `ContactPersonDesignatation`, `CountryID`, `BusinessTypeID`, `BillingAddress`, `CityID`) VALUES
+(54, 'BAC', 'skdfj', 'laksjf', 'lkjasf', 'ljasf', 'lasdfj', 'lajsd', 'ljasf', 'ljasf', '1', 'lkdfjsdkl', 'lkasjfl', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_employerpaymentstatus`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_employerpaymentstatus` (
+  `ServicePaymentID` int(11) NOT NULL AUTO_INCREMENT,
+  `EmployerId` int(11) DEFAULT NULL,
+  `ServiceId` int(11) DEFAULT NULL,
+  `Status` varchar(100) DEFAULT '0',
+  PRIMARY KEY (`ServicePaymentID`),
+  KEY `Fk_serviceId` (`ServiceId`),
+  KEY `fk_employerId` (`EmployerId`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+
+--
+-- Dumping data for table `tbl_employerpaymentstatus`
+--
+
+INSERT INTO `tbl_employerpaymentstatus` (`ServicePaymentID`, `EmployerId`, `ServiceId`, `Status`) VALUES
+(1, NULL, NULL, NULL),
+(19, 10, 1, '0'),
+(18, 10, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -165,7 +268,7 @@ CREATE TABLE IF NOT EXISTS `tbl_job` (
   `JobID` int(10) NOT NULL AUTO_INCREMENT,
   `JobTitle` varchar(20) NOT NULL,
   `NoOfVacancy` int(100) NOT NULL,
-  `JobCategoryID` int(20) NOT NULL,
+  `JobCategoryID` varchar(30) NOT NULL,
   `JobPostDate` date NOT NULL,
   `ApplicationDeadline` datetime NOT NULL,
   `EmployeerID` int(10) NOT NULL,
@@ -175,12 +278,18 @@ CREATE TABLE IF NOT EXISTS `tbl_job` (
   PRIMARY KEY (`JobID`),
   KEY `JobCategoryID` (`JobCategoryID`),
   KEY `EmployeerID` (`EmployeerID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1226 ;
 
 --
 -- Dumping data for table `tbl_job`
 --
 
+INSERT INTO `tbl_job` (`JobID`, `JobTitle`, `NoOfVacancy`, `JobCategoryID`, `JobPostDate`, `ApplicationDeadline`, `EmployeerID`, `Designation`, `CompanyName`, `HeightCompanyName`) VALUES
+(2, 'Nurse', 2, 'Medical', '2011-05-10', '2011-05-27 11:26:08', 54, 'Doctor', 'BMC', 1),
+(123, 'kjkfh', 0, 'IT', '2011-05-18', '2011-05-12 04:16:48', 54, 'hkaim', 'ABC', 0),
+(1223, 'kjkfh', 1, 'IT', '2011-05-18', '2011-05-12 04:16:48', 54, 'hkaim', 'ABC', 0),
+(1224, 'bhj', 87, 'IT', '2011-07-19', '2011-07-19 00:00:00', 54, '', '', 0),
+(1225, 'ghkj', 7, 'Accounting', '2011-07-19', '2011-07-19 00:00:00', 54, 's', '', 0);
 
 -- --------------------------------------------------------
 
@@ -212,13 +321,21 @@ CREATE TABLE IF NOT EXISTS `tbl_job_application` (
 CREATE TABLE IF NOT EXISTS `tbl_job_category` (
   `JobCategoryID` int(10) NOT NULL AUTO_INCREMENT,
   `JobCategory` varchar(20) NOT NULL,
-  PRIMARY KEY (`JobCategoryID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  PRIMARY KEY (`JobCategoryID`),
+  UNIQUE KEY `JobCategory` (`JobCategory`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `tbl_job_category`
 --
 
+INSERT INTO `tbl_job_category` (`JobCategoryID`, `JobCategory`) VALUES
+(5, 'Accounting'),
+(6, 'Data Entry'),
+(4, 'Engineer'),
+(1, 'IT'),
+(3, 'Mechanics'),
+(2, 'Medical');
 
 -- --------------------------------------------------------
 
@@ -317,21 +434,27 @@ CREATE TABLE IF NOT EXISTS `tbl_profile_view_stats` (
 CREATE TABLE IF NOT EXISTS `tbl_qualification` (
   `QualificationID` int(10) NOT NULL AUTO_INCREMENT,
   `EmployeeID` int(10) NOT NULL,
-  `FromDate` date NOT NULL,
-  `ToDate` date DEFAULT NULL,
+  `FromDate` int(11) NOT NULL,
+  `ToDate` int(11) DEFAULT NULL,
   `Organization` varchar(20) NOT NULL,
   `OrganizationAddress` varchar(20) NOT NULL,
-  `OgranizationTypeID` int(10) NOT NULL,
-  `QualificationType` varchar(10) NOT NULL,
+  `SecondOrganization` varchar(20) DEFAULT NULL,
+  `SecondOrganizationAddress` varchar(20) DEFAULT NULL,
+  `SecondFromDate` int(11) DEFAULT NULL,
+  `SecondToDate` int(11) DEFAULT NULL,
   PRIMARY KEY (`QualificationID`),
-  KEY `EmployeeID` (`EmployeeID`),
-  KEY `OgranizationTypeID` (`OgranizationTypeID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  KEY `EmployeeID` (`EmployeeID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `tbl_qualification`
 --
 
+INSERT INTO `tbl_qualification` (`QualificationID`, `EmployeeID`, `FromDate`, `ToDate`, `Organization`, `OrganizationAddress`, `SecondOrganization`, `SecondOrganizationAddress`, `SecondFromDate`, `SecondToDate`) VALUES
+(1, 94, 1950, 1950, 'kalsjflk', 'lkajsfls', 'asfskflj', 'asfkasjf', 1950, 1950),
+(7, 94, 1950, 1950, 'kalsjflk', 'lkajsfls', 'asfskflj', 'asfkasjf', 1950, 1950),
+(8, 94, 1950, 1950, 'kalsjflk', 'lkajsfls', 'asfskflj', 'asfkasjf', 1950, 1950),
+(9, 75, 1950, 1950, 'D2Hawkeye Services P', 'Kathmandu', 'adsfadsf', 'dasfasdfadfs', 1950, 1950);
 
 -- --------------------------------------------------------
 
@@ -352,6 +475,30 @@ CREATE TABLE IF NOT EXISTS `tbl_qualification_expertise_association` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_service_charge`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_service_charge` (
+  `ServiceId` int(11) NOT NULL AUTO_INCREMENT,
+  `ServiceType` varchar(100) NOT NULL,
+  `ServiceFee` decimal(8,2) DEFAULT NULL,
+  `Description` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`ServiceId`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `tbl_service_charge`
+--
+
+INSERT INTO `tbl_service_charge` (`ServiceId`, `ServiceType`, `ServiceFee`, `Description`) VALUES
+(1, 'Online Job Posting/Announcement', '2000.00', '2000 Kr for each job postion at category/ classified section'),
+(2, 'Hot Job Announcement', '3000.00', '3000 Kr for each job postion at category/ classified section'),
+(3, 'Online CV Bank Access', '3000.00', '3000 Kr for each job postion at category/ classified section'),
+(4, 'Executive Search Service', '4000.00', '3000 Kr for each job postion at category/ classified section');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_user_info`
 --
 
@@ -364,18 +511,41 @@ CREATE TABLE IF NOT EXISTS `tbl_user_info` (
   `LastUpdatedOn` datetime NOT NULL,
   PRIMARY KEY (`UserID`),
   UNIQUE KEY `Username` (`Username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=95 ;
 
 --
 -- Dumping data for table `tbl_user_info`
 --
 
 INSERT INTO `tbl_user_info` (`UserID`, `Username`, `Password`, `UserType`, `CreatedOn`, `LastUpdatedOn`) VALUES
-(1, 'amendra', 'amendra', 'employee', '2011-05-07 03:33:00', '2011-05-07 03:33:04');
+(54, 'amendra', '39vfYkFNsAEl. ', 'Employer', '2011-05-15 00:00:00', '2011-05-15 00:00:00'),
+(75, 'amendrashrestha', '39vfYkFNsAEl. ', 'Employee', '2011-05-29 00:00:00', '2011-05-29 00:00:00'),
+(76, 'SumanShrestha', 'b5cZlrMSZkmm2', 'Employee', '2011-05-29 00:00:00', '2011-05-29 00:00:00'),
+(77, 'Testing', 'd4rBwtAKocqwA', 'Employee', '2011-05-29 00:00:00', '2011-05-29 00:00:00'),
+(79, 'testing1234', 'aelMTl885So/w', 'Employee', '2011-05-29 00:00:00', '2011-05-29 00:00:00'),
+(80, 'testing9089', 'aelMTl885So/w', 'Employee', '2011-05-29 00:00:00', '2011-05-29 00:00:00'),
+(82, 'amendra8687678', '39vfYkFNsAEl.', 'Employee', '2011-05-29 00:00:00', '2011-05-29 00:00:00'),
+(83, 'lasjflksjaf97897', '39vfYkFNsAEl.', 'Employee', '2011-05-29 00:00:00', '2011-05-29 00:00:00'),
+(84, 'updatebaba', 'd4rBwtAKocqwA', 'Employee', '2011-05-29 00:00:00', '2011-05-29 00:00:00'),
+(85, 'amendra3', 'd4rBwtAKocqwA', 'Employee', '2011-05-30 00:00:00', '2011-05-30 00:00:00'),
+(86, 'Tension', 'd4rBwtAKocqwA', 'Employee', '2011-05-30 00:00:00', '2011-05-30 00:00:00'),
+(87, 'alsifjlasjdflkj', 'd4rBwtAKocqwA', 'Employee', '2011-05-30 00:00:00', '2011-05-30 00:00:00'),
+(88, 'askfjklasflkjl', 'd4rBwtAKocqwA', 'Employee', '2011-05-30 00:00:00', '2011-05-30 00:00:00'),
+(90, 'testing789', 'd4rBwtAKocqwA', 'Employee', '2011-05-31 00:00:00', '2011-05-31 00:00:00'),
+(91, 'Uppsala', 'd4rBwtAKocqwA', 'Employee', '2011-05-31 00:00:00', '2011-05-31 00:00:00'),
+(92, 'ektashrestha', 'd4rBwtAKocqwA', 'Employee', '2011-06-01 00:00:00', '2011-06-01 00:00:00'),
+(93, 'Captcha', 'd4rBwtAKocqwA', 'Employee', '2011-06-01 00:00:00', '2011-06-01 00:00:00'),
+(94, 'sumandai', 'd4rBwtAKocqwA', 'Employee', '2011-06-01 00:00:00', '2011-06-01 00:00:00');
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `tbl_academic_qualification`
+--
+ALTER TABLE `tbl_academic_qualification`
+  ADD CONSTRAINT `tbl_academic_qualification_ibfk_1` FOREIGN KEY (`EmployeeID`) REFERENCES `tbl_user_info` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tbl_city`
@@ -394,15 +564,14 @@ ALTER TABLE `tbl_employee`
 --
 ALTER TABLE `tbl_employer`
   ADD CONSTRAINT `tbl_employer_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `tbl_user_info` (`UserID`),
-  ADD CONSTRAINT `tbl_employer_ibfk_2` FOREIGN KEY (`CountryID`) REFERENCES `tbl_country` (`CountryID`),
-  ADD CONSTRAINT `tbl_employer_ibfk_3` FOREIGN KEY (`CityID`) REFERENCES `tbl_city` (`CityID`);
+  ADD CONSTRAINT `tbl_employer_ibfk_2` FOREIGN KEY (`CountryID`) REFERENCES `tbl_country` (`CountryName`);
 
 --
 -- Constraints for table `tbl_job`
 --
 ALTER TABLE `tbl_job`
-  ADD CONSTRAINT `tbl_job_ibfk_1` FOREIGN KEY (`EmployeerID`) REFERENCES `tbl_employer` (`UserID`),
-  ADD CONSTRAINT `tbl_job_ibfk_2` FOREIGN KEY (`JobCategoryID`) REFERENCES `tbl_job_category` (`JobCategoryID`);
+  ADD CONSTRAINT `tbl_job_ibfk_2` FOREIGN KEY (`JobCategoryID`) REFERENCES `tbl_job_category` (`JobCategory`),
+  ADD CONSTRAINT `tbl_job_ibfk_1` FOREIGN KEY (`EmployeerID`) REFERENCES `tbl_employer` (`UserID`);
 
 --
 -- Constraints for table `tbl_job_application`
@@ -436,5 +605,4 @@ ALTER TABLE `tbl_profile_view_stats`
 -- Constraints for table `tbl_qualification`
 --
 ALTER TABLE `tbl_qualification`
-  ADD CONSTRAINT `tbl_qualification_ibfk_1` FOREIGN KEY (`EmployeeID`) REFERENCES `tbl_employee` (`UserID`),
-  ADD CONSTRAINT `tbl_qualification_ibfk_2` FOREIGN KEY (`OgranizationTypeID`) REFERENCES `tbl_business_type` (`BusinessTypeID`);
+  ADD CONSTRAINT `tbl_qualification_ibfk_1` FOREIGN KEY (`EmployeeID`) REFERENCES `tbl_employee` (`UserID`);
