@@ -56,6 +56,9 @@ class IndexController extends Zend_Controller_Action {
         } else if ($actionhelper->getRole() == APP_Authorization_Roles::EMPLOYER) {
             //echo 'here2';
             $redirector->gotoUrl('/jobpost/index/');
+        } else if ($actionhelper->getRole() == APP_Authorization_Roles::ADMIN) {
+            //echo 'here2';
+            $redirector->gotoUrl('/admin');
         }
         
         $test = new Application_Model_JobsList();
