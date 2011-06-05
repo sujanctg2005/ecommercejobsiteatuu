@@ -49,6 +49,7 @@ class APP_Authorization_Authorizer {
 		$acl->allow(APP_Authorization_Roles::GUEST, 'employer','index');
 		$acl->allow(APP_Authorization_Roles::GUEST, 'employer','createemployee');
         $acl->allow(APP_Authorization_Roles::GUEST, 'profile','create');
+        $acl->allow(APP_Authorization_Roles::GUEST, 'admin',null);
 
         $acl->allow(APP_Authorization_Roles::EMPLOYER, 'employer', null);
 		$acl->allow(APP_Authorization_Roles::EMPLOYER, 'searchcv', null);
