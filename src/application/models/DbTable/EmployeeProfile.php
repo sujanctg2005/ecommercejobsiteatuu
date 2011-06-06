@@ -44,7 +44,7 @@ class Application_Model_DbTable_EmployeeProfile extends Zend_Db_Table_Abstract {
         $CurDate = $table->fetchOne('select curdate()');
         $employeeLoginInfo = array(
             'Username' => $Username,
-            'Password' => Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper')->md5encrypt($password),
+            'Password' => Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper')->md5encrypt($Password),
             'UserType' => 'Employee',
             'CreatedOn' => $CurDate,
             'LastUpdatedOn' => $CurDate

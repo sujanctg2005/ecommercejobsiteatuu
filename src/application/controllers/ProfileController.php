@@ -47,7 +47,7 @@ class ProfileController extends Zend_Controller_Action {
                 $AlternativeEmail = $form->getValue('AlternativeEmail');
                 $ImagePath = Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper')->
                         returnImage($_FILES['ImagePath'],$this->view->baseUrl());
-                
+
                 $addEmployee = $employeeInfo->addEmployee($Username, $Password, $Name, $DOB, $Gender, $MaritialStatus, $Nationality, $Religion, $CurrentAddress, $PermanentAddress, $HomePhone, $Mobile, $OfficePhone, $Email, $AlternativeEmail, $ImagePath);
 
                 //authenticate the user
@@ -59,7 +59,7 @@ class ProfileController extends Zend_Controller_Action {
                         ->setCredentialColumn("password");
 
                 $authAdapter->setIdentity($Username)
-                        ->setCredential(Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper')->md5encrypt($password));
+                        ->setCredential(Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper')->md5encrypt($Password));
 
                 $authenticate = Zend_Auth::getInstance()
                                 ->authenticate($authAdapter);
