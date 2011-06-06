@@ -1,0 +1,39 @@
+<div id="view-content">
+    <h1>Search Result</h1>
+    <?php
+    $basepath = Zend_Controller_Front::getInstance()->getBaseUrl();
+    echo "<a href='$basepath/search/jobsearch'>Search Again</a>"; ?>
+    <table class="grid">
+        
+        <?php
+         
+        $format ="<tr>
+                    <td><a href='$basepath/jobs/jobdetail/jobid/%d'>%s</a></td>
+                    <td>%s</td>
+                    <td>%s</td>
+                    <td>%s</td>
+               </tr>";
+        if (count($this->paginator) == 0)
+            echo "Your search didnot matched any jobs";
+        else {
+            echo "
+                <tr class ='gridheader'>
+            <td>Job Title</td>
+            <td>Company Name</td>
+            <td>No of Vacancy</td>
+            <td>Application Deadline</td>
+        </tr>
+                ";
+            foreach ($this->paginator as $job) {
+                printf($format, $job['JobID'], $job['JobTitle'],$job['CompanyName'], $job['NoOfVacancy'], $job['ApplicationDeadline'] );
+            }
+        }
+        ?>
+        <tr><td>
+                <div class ="pagingcontrol">
+            <?php
+    if($this->paginator->getTotalItemCount() > $this->paginator->getItemCountPerPage())
+        echo $this->paginationControl($this->paginator, 'Elastic', 'controls.phtml', array('first'=>'hoem')); ?>
+                </div> </td></tr>
+    </table>
+</div>
