@@ -67,7 +67,7 @@ class Application_Model_Jobvacancy
      */
     public function getJobCategoryID ()
     {
-        return $this->jobCategoryID;
+        return 1; //$this->jobCategoryID;
     }
     /**
      * @return the $jobPostDate
@@ -228,7 +228,7 @@ class Application_Model_Jobvacancy
      */
     public function setJobCategoryID ($jobCategoryID)
     {
-        $this->jobCategoryID = $jobCategoryID;
+        $this->jobCategoryID = 1;//$jobCategoryID;
     }
     /**
      * @param field_type $jobPostDate
