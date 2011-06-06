@@ -50,7 +50,9 @@ class Application_Model_JobsList
                        )
                 ->join(array('emp'=>'tbl_employer'),
                         'j.employeerid = emp.userid')
-                ->where('jobid='.$jobid)
+                ->joinLeft(array('req'=>'tbl_job_requirement'),
+                        'j.jobid=req.jobid')
+                ->where('j.jobid='.$jobid)
                 ->order('jobpostdate');
 
         return $this->_table->fetchAll($select);
@@ -90,6 +92,48 @@ class Application_Model_JobsList
     public function getJobSearchResult($sql)
     {
         return $this->_table->fetchAll($sql);
+    }
+
+    public function applyForJob($jobid, $employeeid)
+    {
+        $result = $this->_table->fetchOne(
+                "select 1 from tbl_job_application where jobid='$jobid'
+                and employeeid ='$employeeid'");
+
+        if(!$result)
+        {
+            $this->_table->insert('tbl_job_application',
+                    array(
+                        'jobid'=>$jobid,
+                        'employeeid'=>$employeeid,
+                        'ApplicationDate'=>new Zend_Db_Expr("CURDATE()")
+                        ));
+            return true;
+        }
+
+        return false;
+    }
+
+        public function getJobHistory($employeeid)
+    {
+        $sql ="SELECT
+                    T1.JobID,
+                    T2.JobTitle,
+                    T2.CompanyName,
+                    T1.ApplicationDate,
+                    T2.JobPostDate
+                    
+            FROM tbl_job_application T1, tbl_job T2, tbl_employer T3
+                where T1.jobid = T2.jobid and T2.employeerid = T3.userid
+                and T1.employeeid =$employeeid";
+        $result = $this->_table->fetchAll($sql);
+        return $result;
+    }
+
+    public function removeJobApplication($jobid, $employeeid)
+    {
+        $this->_table->delete('tbl_job_application',
+                "jobid=$jobid and employeeid = $employeeid");
     }
 }
 

@@ -1,0 +1,35 @@
+<h1>Jobs History</h1>
+    <?php
+    if($this->jobhistory)
+    {
+        $basepath = Zend_Controller_Front::getInstance()->getBaseUrl();
+       echo "<table border='1' cellpadding='3'>";
+       echo "<tr class='header'>
+<td>Job Title</td>
+<td>Company Name</td>
+<td>Job Application Date</td>
+<td>Job Post Date</td>
+<td></td>
+</tr>";
+       $format = "<td class='value'>%s</td>";
+       foreach($this->jobhistory as $job)
+       {
+           echo "<tr class='header'>";
+           foreach ($job as $k => $v)
+            {
+               if(strtolower($k) == 'jobid')
+                   continue;
+                printf($format, $v);
+            }
+           echo "<td class='value'><a class ='errors' href='?delete=" . $job['JobID'] . "'>delete</a></td>";
+           echo '</tr>';
+       }
+       echo "";
+       echo "</table>";
+    }
+    else
+    {
+        echo 'No any job applications';
+    }
+
+    ?>

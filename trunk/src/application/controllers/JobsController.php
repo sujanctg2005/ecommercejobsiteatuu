@@ -33,8 +33,10 @@ class JobsController extends Zend_Controller_Action
 
     public function jobdetailAction()
     {
+        $jobid = $this->getRequest()->getParam('jobid');
+        $this->view->jobid = $jobid;
         $this->view->jobdetail = $this->_jobsLoader
-                ->getJobDetail($this->getRequest()->getParam('jobid'));
+                ->getJobDetail($jobid);
     }
 
     public function jobsbyemployerAction()
@@ -46,9 +48,52 @@ class JobsController extends Zend_Controller_Action
 
     }
 
-    public function applyJobAction()
+    public function applyjobAction()
     {
+        $jobid = $this->_request->getPost('jobid');
 
+        $actionhelper = Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper');
+        $employeeid = $actionhelper->getUserID();
 
+        $role = $actionhelper->getRole();
+
+        if($role == APP_Authorization_Roles::EMPLOYEE)
+        {
+            $result = $this->_jobsLoader->applyForJob($jobid, $employeeid);
+            if($result)
+                $this->_redirect('jobs/jobhistory');
+            else
+            {
+                echo "<div class='errors'>You have already applied for this post earlier.</div>";
+
+            }
+        }
+        else if($role == APP_Authorization_Roles::GUEST)
+        {
+            echo "<h1 class = 'errors'>Please login to apply for the job</h1>";
+
+            $form = new Application_Form_Login();
+
+            $form->setAction($this->view->url(array('controller' => 'authentication', 'action' => 'login')));
+
+            $form->setMethod('post');
+
+            echo $form;
+        }
     }
+
+    public function jobhistoryAction()
+    {  
+        $actionhelper = Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper');
+        $employeeid = $actionhelper->getUserID();
+        $value = $this->_request->getParam('delete');
+        if($value)
+        {
+            $this->_jobsLoader->removeJobApplication($value, $employeeid);
+        }
+        $result = $this->_jobsLoader->getJobHistory($employeeid);
+        $this->view->jobhistory = $result;
+    }
+
+
 }

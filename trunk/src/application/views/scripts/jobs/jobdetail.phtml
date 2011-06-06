@@ -1,8 +1,9 @@
 
 <div id="view-content">
-
+    <h1>Job Description</h1>
     <?php
-        echo '<form method="post" action=""><table border="1" cellpadding="3">';
+        $basepath = Zend_Controller_Front::getInstance()->getBaseUrl();
+        echo "<form method='post' action='$basepath/jobs/applyjob'><table border='1' cellpadding='3'>";
        $format = "<tr class='header'><td>%s:</td><td class='value'>%s</td></tr>";
 
        foreach($this->jobdetail as $kjob => $vjob)
@@ -12,7 +13,9 @@
                 printf($format, $k, $v);
            }
        }
-       echo "</table><input type ='submit' value='submit'></input></form>";
-
+       echo "</table>
+           <input type ='submit' value='submit'></input>
+           <input id='jobid' name='jobid' type ='hidden' value ='$this->jobid'>
+           </form>";
     ?>
 </div>
