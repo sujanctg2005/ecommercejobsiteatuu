@@ -33,7 +33,7 @@ Zend_Controller_Action_Helper_Abstract {
         $imageUpload = new Upload($srcfile);
                 $imageUpload->file_new_name_body = "Image_0";
                 $imageUpload->image_resize = true;
-                $imageUpload->image_convert = gif;
+                $imageUpload->image_convert = 'gif';
                 $imageUpload->image_x = 135;
                 $imageUpload->image_ratio_y = true;
                 $imageUpload->Process(APPLICATION_PATH . "/../uploads");
