@@ -79,9 +79,7 @@ class Application_Model_DbTable_EmployeeProfile extends Zend_Db_Table_Abstract {
             $PermanentAddress, $HomePhone, $Mobile, $OfficePhone, $Email,
             $AlternativeEmail, $ImagePath) {
         $table = Zend_Db_Table_Abstract::getDefaultAdapter();
-        $modifiedDOB = new Zend_Db_Expr("str_to_date('$DOB','%m/%d/%Y')");
-        echo $modifiedDOB;
-        
+        $modifiedDOB = new Zend_Db_Expr("str_to_date('$DOB','%m/%d/%Y')");        
         $data = array(
            'Name' => $Name,
             'DateOfBirth' => $modifiedDOB,
@@ -98,7 +96,7 @@ class Application_Model_DbTable_EmployeeProfile extends Zend_Db_Table_Abstract {
             'AlternativeEmail' => $AlternativeEmail,
             'ImagePath' => $ImagePath
         );
-        $table->update($data, 'UserID = '. (int)$UserID);
+        $table->update('tbl_employee', $data, 'UserID = '. $UserID);
     }
 }
 
