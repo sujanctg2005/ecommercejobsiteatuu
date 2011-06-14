@@ -3,7 +3,10 @@ class EmployerController extends Zend_Controller_Action
 {
     public function init ()
     {
+      
         /* Initialize action controller here */
+	$this->_customactionhelper = Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper');
+    
     }
     public function indexAction ()
     {
@@ -98,7 +101,18 @@ class EmployerController extends Zend_Controller_Action
        // }
     }
     public function findemployerAction ()
-    { 
+    {  
+      $request = $this->getRequest();
+     
+       $application_Model_UserInfo = new Application_Model_UserInfo();
+        if (Zend_Auth::getInstance()->hasIdentity()) {
+            $val = Zend_Auth::getInstance()->getStorage()->read()->Username;
+             
+             $application_Model_UserInfo->setUsername($val);
+             $application_Model_UserInfo->findUserInfo();
+           
+        }
+       
         $application_Model_LuCountry = new Application_Model_LuCountry();
         $entries = $application_Model_LuCountry->findAllCountry();
         $this->view->country = $entries;
@@ -110,10 +124,9 @@ class EmployerController extends Zend_Controller_Action
         $entries = $application_Model_LuCountry->findCityByCountryId();
         $this->view->city = $entries;
     	$application_Model_Employer = new Application_Model_Employer();
-        $request = $this->getRequest();
-        $application_Model_Employer->setUserId(1);
-        $application_Model_Employer->setUsername("Mesfin Mamuye");
-       $application_Model_Employer->findEmployerId();
+        $application_Model_Employer->setUserId($application_Model_UserInfo->getUserID());
+        $application_Model_Employer->setUsername($application_Model_UserInfo->getUsername());
+        $application_Model_Employer->findEmployerId();
         $this->view->assign('action', 
         $request->getBaseURL() . "/employer/editemployee");
         $this->view->username = $application_Model_Employer;
