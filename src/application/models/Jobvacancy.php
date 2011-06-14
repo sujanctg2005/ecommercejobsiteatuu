@@ -509,9 +509,9 @@ GROUP BY  MONTHNAME( JobPostDate )   order by MONTH(JobPostDate)";
         $this->setCompanyName($row->CompanyName);
         $this->setHideCompanyName($row->HeightCompanyName);
         
-        $sql = "SELECT * FROM `tbl_job_requirement` where JobID='".$this->getJobID()."'";
-        $rows = $DB->fetchRow($sql);
-         //$this->setJobRequirementID($rows->JobRequirementID);
+        //$sql = "SELECT * FROM `tbl_job_requirement` where JobID='".$this->getJobID()."'";
+       // $rows = $DB->fetchRow($sql);
+         /*//$this->setJobRequirementID($rows->JobRequirementID);
         $this->setjobID($rows->JobID);
         $this->setGender($rows->Gender);
         $this->setMinimumAgeLimit($rows->MinimumAgeLimit);
@@ -525,7 +525,7 @@ GROUP BY  MONTHNAME( JobPostDate )   order by MONTH(JobPostDate)";
         $this->setAdditionalJobRequirement($rows->AdditionalJobRequirement);
         $this->setMinimumSalaryRange($rows->MinimumSalaryRange);
         $this->setMaximumSalaryRange($rows->MaximumSalaryRange);
-        $this->setBenifits($rows->Benifits);
+        $this->setBenifits($rows->Benifits);*/
     }
     public function puplateObjectList ($result)
     {   
@@ -544,7 +544,7 @@ GROUP BY  MONTHNAME( JobPostDate )   order by MONTH(JobPostDate)";
             $entry->setDesignation($row->Designation);
             $entry->setCompanyName($row->CompanyName);
             $entry->setHideCompanyName($row->HeightCompanyName);
-            $sql = "SELECT * FROM `tbl_job_requirement` where JobID='".$entry->getJobID()."'";
+           /* $sql = "SELECT * FROM `tbl_job_requirement` where JobID='".$entry->getJobID()."'";
             $rows = $DB->fetchRow($sql);
             $entry->setJobRequirementID($rows->JobRequirementID);
             $entry->setjobID($rows->JobID);
@@ -560,7 +560,7 @@ GROUP BY  MONTHNAME( JobPostDate )   order by MONTH(JobPostDate)";
             $entry->setAdditionalJobRequirement($rows->AdditionalJobRequirement);
             $entry->setMinimumSalaryRange($rows->MinimumSalaryRange);
             $entry->setMaximumSalaryRange($rows->MaximumSalaryRange);
-            $entry->setBenifits($rows->Benifits);
+            $entry->setBenifits($rows->Benifits);*/
             $entries[] = $entry;
         }
         return $entries;
