@@ -1,9 +1,9 @@
- -- phpMyAdmin SQL Dump
+-- phpMyAdmin SQL Dump
 -- version 3.3.9
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 05, 2011 at 02:14 PM
+-- Generation Time: Jun 14, 2011 at 07:21 PM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -53,7 +53,8 @@ INSERT INTO `tbl_academic_qualification` (`EmployeeID`, `LevelOfEducation`, `Deg
 (94, 'Doctorial', 'Computer Science & E', 'asfkljsal', 'aklsfjlaskdjf', 4, 1950, 4, 'Doctorial', 'Computer Science & E', 'asklfj', 'askldfjksajdflk', '3', 1950, 4),
 (94, 'Doctorial', 'Computer Science & E', 'asfkljsal', 'aklsfjlaskdjf', 4, 1950, 4, 'Doctorial', 'Computer Science & E', 'asklfj', 'askldfjksajdflk', '3', 1950, 4),
 (94, 'Doctorial', 'Computer Science & E', 'asfkljsal', 'aklsfjlaskdjf', 4, 1950, 4, 'Doctorial', 'Computer Science & E', 'asklfj', 'askldfjksajdflk', '3', 1950, 4),
-(75, 'Doctorial', 'Computer Science & E', 'Computer Science', 'Kathmandu University', 4, 1950, 4, 'Doctorial', 'BioMedical', 'Computer Science', 'Uppsala University', '4', 1950, 4);
+(75, 'Doctorial', 'Computer Science & E', 'Computer Science', 'Kathmandu University', 4, 1950, 4, 'Doctorial', 'BioMedical', 'Computer Science', 'Uppsala University', '4', 1950, 4),
+(95, 'Doctorial', 'Computer Science & E', 'english', 'inst1111111', 3, 1950, 3, 'Doctorial', 'Computer Science & E', 'nepali', 'inst2', '4', 1950, 3);
 
 -- --------------------------------------------------------
 
@@ -161,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `tbl_employee` (
 --
 
 INSERT INTO `tbl_employee` (`UserID`, `Name`, `DateOfBirth`, `Gender`, `MaritialStatus`, `Nationality`, `Religion`, `CurrentAddress`, `PermanentAddress`, `HomePhone`, `Mobile`, `OfficePhone`, `Email`, `AlternativeEmail`, `ImagePath`) VALUES
-(75, 'Amendra Shrestha', '2011-05-31', 'Male', 'Single', 'Nepal', 'Hindu', 'Uppsala', 'Nepal', '9879879', '897', '98798', 'amendrashrestha@gmail.com', 'aminshrestha@gmail.com', '/ecom/public/../uploads/Image_0_16.gif'),
+(75, 'Amendra Shrestha', '2011-05-31', 'Male', 'Single', 'Nepal', 'Hindu', 'Uppsala', 'Nepal', '9879879', '897', '98798', 'amendrashrestha@gmail.com', 'aminshrestha@gmail.com', '/ecom/public/../uploads/Image_0.gif'),
 (76, 'Suman Shrestha', '2011-05-31', 'Male', 'Single', 'Nepal', 'Hindu', 'Uppsala', 'Nepal', '9879879', '897', '98798', 'amendrashrestha@gmail.com', 'aminshrestha@gmail.com', '/ecom/public/../uploads/Image_0_15.gif'),
 (77, 'Testing', '2011-05-31', 'Male', 'Single', 'Nepal', 'Hindu', 'Uppsala', 'Nepal', '9879879', '897', '98798', 'amendrashrestha@gmail.com', 'aminshrestha@gmail.com', '/ecom/public/../uploads/Image_0_12.gif'),
 (79, 'Amendra Shrestha', '2011-05-31', 'Male', 'Single', 'Nepal', 'Hindu', 'Uppsala', 'Nepal', '9879879', '897', '98798', 'amendrashrestha@gmail.com', 'aminshrestha@gmail.com', '/ecom/public/../uploads/Image_0_7.gif'),
@@ -177,7 +178,13 @@ INSERT INTO `tbl_employee` (`UserID`, `Name`, `DateOfBirth`, `Gender`, `Maritial
 (91, 'uppsala', '2011-05-31', 'Male', 'Single', 'Nepal', 'laskdfj', 'laskfjkl', 'lkasjdflk', '879879', '878978979', '7987897', 'aslfj@algjas.com', 'sw@laisf.com', '/ecom/public/../uploads/Image_0_21.gif'),
 (92, 'Ekta', '2011-06-23', 'Male', 'Single', 'Nepal', 'aslkfj', 'lasjl', 'lkajsf', '8787897', '987897897', '89789789', 'slakj@asl.com', 'sakfj@askfj.com', '/ecom/public/../uploads/Image_0_23.gif'),
 (93, 'aslkfjl', '2011-06-15', 'Male', 'Single', 'slkadfjkla', 'lajsldkfj', 'lkjasfd', 'lkjasf', '099809', '098098', '08098', 'lsajflk@gaklsjd.com', 'asjf@aslfj.com', '/ecom/public/../uploads/Image_0_24.gif'),
-(94, 'Suman Shresetha', '2011-05-13', 'Male', 'Single', 'askldfj', 'lkasjf', 'lkasjf', 'lkajsf', '98789', '98779', '798798', 'aslfj@algjas.com', 'asjf@aslfj.com', '/ecom/public/../uploads/Image_0_25.gif');
+(94, 'Suman Shresetha', '2011-05-13', 'Male', 'Single', 'askldfj', 'lkasjf', 'lkasjf', 'lkajsf', '98789', '98779', '798798', 'aslfj@algjas.com', 'asjf@aslfj.com', '/ecom/public/../uploads/Image_0_25.gif'),
+(95, 'asdf', '2011-06-15', 'Male', 'Single', 'asdfadsf', 'asdf', 'asdf', 'asdf', '332222', '23233223', '232323', 'asdf@ssdf.com', 'sdfs@sdf.com', '/jjjjjj/public/../uploads/Image_0.gif'),
+(96, 'adsf', '2011-06-01', 'Male', 'Single', 'adsf', 'asdfadsf', 'asdfasdf', 'asdf', '23332', '32323', '32232', '323232@sdf.com', 'asdf@asdlf.com', '/jjjjjj/public/../uploads/Image_0_2.gif'),
+(97, 'adsf', '2011-06-16', 'Male', 'Single', 'asdf', 'asdfasdf', 'asdf', 'asdfa', '222222', '222222', '222222', 'asdf@dsdsf.com', 'asldf@asdlf.com', '/jjjjjj/public/../uploads/Image_0_2.gif'),
+(98, 'asdf', '2011-06-08', 'Male', 'Single', 'asdf', 'asdfasdf', 'asdfasdf', 'asdfasdf', '222', '2222', '222', 'asdf@com.com', 'asdf@dfsf.com', '/jjjjjj/public/../uploads/Image_0_3.gif'),
+(99, 'asdf', '2011-05-03', 'Male', 'Single', 'asdf', 'asdf', 'asdf', 'asdf', '2', '2222', '222', 'asdf@com.com', 'asdf@dsf.com', '/jjjjjj/public/../uploads/Image_0_3.gif'),
+(100, 'asdf', '2011-05-03', 'Male', 'Single', 'asdf', 'asdf', 'asdf', 'asdf', '2', '2222', '222', 'asdf@com.com', 'asdf@dsf.com', '/jjjjjj/public/../uploads/Image_0_3.gif');
 
 -- --------------------------------------------------------
 
@@ -214,7 +221,8 @@ CREATE TABLE IF NOT EXISTS `tbl_employer` (
 --
 
 INSERT INTO `tbl_employer` (`UserID`, `CompanyName`, `AlternativeCompanyName`, `CompanyAddress`, `CompanyPhone`, `CompanyEmail`, `CompanyURL`, `CompanyLogo`, `ContactPerson`, `ContactPersonDesignatation`, `CountryID`, `BusinessTypeID`, `BillingAddress`, `CityID`) VALUES
-(54, 'BAC', 'skdfj', 'laksjf', 'lkjasf', 'ljasf', 'lasdfj', 'lajsd', 'ljasf', 'ljasf', '1', 'lkdfjsdkl', 'lkasjfl', 1);
+(54, 'BAC', 'skdfj', 'laksjf', 'lkjasf', 'ljasf', 'lasdfj', 'lajsd', 'ljasf', 'ljasf', '1', 'lkdfjsdkl', 'lkasjfl', 1),
+(101, 'mesfin', 'mesfin', 'asdf', '2332332', 'asdf@dsf.com', 'www.hotmail.com', 'logo', 'mesfin', 'mesfin', 'Denmark', 'Banks', 'asdf', 1);
 
 -- --------------------------------------------------------
 
@@ -305,12 +313,14 @@ CREATE TABLE IF NOT EXISTS `tbl_job_application` (
   PRIMARY KEY (`JobApplicationID`),
   KEY `JobID` (`JobID`),
   KEY `EmployeeID` (`EmployeeID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `tbl_job_application`
 --
 
+INSERT INTO `tbl_job_application` (`JobApplicationID`, `JobID`, `EmployeeID`, `ApplicationDate`) VALUES
+(10, 123, 95, '2011-06-06');
 
 -- --------------------------------------------------------
 
@@ -323,7 +333,7 @@ CREATE TABLE IF NOT EXISTS `tbl_job_category` (
   `JobCategory` varchar(20) NOT NULL,
   PRIMARY KEY (`JobCategoryID`),
   UNIQUE KEY `JobCategory` (`JobCategory`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `tbl_job_category`
@@ -350,7 +360,7 @@ CREATE TABLE IF NOT EXISTS `tbl_job_requirement` (
   `MinimumAgeLimit` int(2) NOT NULL,
   `MaximumAgeLimit` int(2) NOT NULL,
   `JobType` varchar(20) NOT NULL,
-  `EducationalQualificationalID` int(10) NOT NULL,
+  `EducationalQualificationalID` char(100) NOT NULL,
   `Experience` int(2) NOT NULL,
   `JobResponsibility` varchar(20) NOT NULL,
   `AdditionalJobRequirement` varchar(20) NOT NULL,
@@ -358,8 +368,7 @@ CREATE TABLE IF NOT EXISTS `tbl_job_requirement` (
   `MaximumSalaryRange` int(10) NOT NULL,
   `Benifits` varchar(10) NOT NULL,
   PRIMARY KEY (`JobRequirementID`),
-  KEY `JobID` (`JobID`),
-  KEY `EducationalQualificationalID` (`EducationalQualificationalID`)
+  KEY `JobID` (`JobID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
@@ -444,7 +453,7 @@ CREATE TABLE IF NOT EXISTS `tbl_qualification` (
   `SecondToDate` int(11) DEFAULT NULL,
   PRIMARY KEY (`QualificationID`),
   KEY `EmployeeID` (`EmployeeID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `tbl_qualification`
@@ -454,7 +463,8 @@ INSERT INTO `tbl_qualification` (`QualificationID`, `EmployeeID`, `FromDate`, `T
 (1, 94, 1950, 1950, 'kalsjflk', 'lkajsfls', 'asfskflj', 'asfkasjf', 1950, 1950),
 (7, 94, 1950, 1950, 'kalsjflk', 'lkajsfls', 'asfskflj', 'asfkasjf', 1950, 1950),
 (8, 94, 1950, 1950, 'kalsjflk', 'lkajsfls', 'asfskflj', 'asfkasjf', 1950, 1950),
-(9, 75, 1950, 1950, 'D2Hawkeye Services P', 'Kathmandu', 'adsfadsf', 'dasfasdfadfs', 1950, 1950);
+(9, 75, 1950, 1950, 'D2Hawkeye Services P', 'Kathmandu', 'adsfadsf', 'dasfasdfadfs', 1950, 1950),
+(10, 95, 1950, 1950, '', '', '', '', 1950, 1950);
 
 -- --------------------------------------------------------
 
@@ -491,10 +501,10 @@ CREATE TABLE IF NOT EXISTS `tbl_service_charge` (
 --
 
 INSERT INTO `tbl_service_charge` (`ServiceId`, `ServiceType`, `ServiceFee`, `Description`) VALUES
-(1, 'Online Job Posting/Announcement', '2000.00', '2000 Kr for each job postion at category/ classified section'),
-(2, 'Hot Job Announcement', '3000.00', '3000 Kr for each job postion at category/ classified section'),
-(3, 'Online CV Bank Access', '3000.00', '3000 Kr for each job postion at category/ classified section'),
-(4, 'Executive Search Service', '4000.00', '3000 Kr for each job postion at category/ classified section');
+(1, 'Online Job Posting/Announcement', 2000.00, '2000 Kr for each job postion at category/ classified section'),
+(2, 'Hot Job Announcement', 3000.00, '3000 Kr for each job postion at category/ classified section'),
+(3, 'Online CV Bank Access', 3000.00, '3000 Kr for each job postion at category/ classified section'),
+(4, 'Executive Search Service', 4000.00, '3000 Kr for each job postion at category/ classified section');
 
 -- --------------------------------------------------------
 
@@ -511,13 +521,14 @@ CREATE TABLE IF NOT EXISTS `tbl_user_info` (
   `LastUpdatedOn` datetime NOT NULL,
   PRIMARY KEY (`UserID`),
   UNIQUE KEY `Username` (`Username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=95 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=102 ;
 
 --
 -- Dumping data for table `tbl_user_info`
 --
 
 INSERT INTO `tbl_user_info` (`UserID`, `Username`, `Password`, `UserType`, `CreatedOn`, `LastUpdatedOn`) VALUES
+(23, 'rupesh', 'ffki0V4oJ6TBc', 'admin', '2011-06-05 17:11:50', '2011-06-05 17:11:53'),
 (54, 'amendra', '39vfYkFNsAEl. ', 'Employer', '2011-05-15 00:00:00', '2011-05-15 00:00:00'),
 (75, 'amendrashrestha', '39vfYkFNsAEl. ', 'Employee', '2011-05-29 00:00:00', '2011-05-29 00:00:00'),
 (76, 'SumanShrestha', 'b5cZlrMSZkmm2', 'Employee', '2011-05-29 00:00:00', '2011-05-29 00:00:00'),
@@ -535,7 +546,14 @@ INSERT INTO `tbl_user_info` (`UserID`, `Username`, `Password`, `UserType`, `Crea
 (91, 'Uppsala', 'd4rBwtAKocqwA', 'Employee', '2011-05-31 00:00:00', '2011-05-31 00:00:00'),
 (92, 'ektashrestha', 'd4rBwtAKocqwA', 'Employee', '2011-06-01 00:00:00', '2011-06-01 00:00:00'),
 (93, 'Captcha', 'd4rBwtAKocqwA', 'Employee', '2011-06-01 00:00:00', '2011-06-01 00:00:00'),
-(94, 'sumandai', 'd4rBwtAKocqwA', 'Employee', '2011-06-01 00:00:00', '2011-06-01 00:00:00');
+(94, 'sumandai', 'd4rBwtAKocqwA', 'Employee', '2011-06-01 00:00:00', '2011-06-01 00:00:00'),
+(95, 'twotwo', 'ffki0V4oJ6TBc', 'Employee', '2011-06-05 00:00:00', '2011-06-05 00:00:00'),
+(96, 'computer', 'd4rBwtAKocqwA', 'Employee', '2011-06-05 00:00:00', '2011-06-05 00:00:00'),
+(97, 'testing22', 'd4rBwtAKocqwA', 'Employee', '2011-06-06 00:00:00', '2011-06-06 00:00:00'),
+(98, 'asdfasdfasdf', 'd4rBwtAKocqwA', 'Employee', '2011-06-06 00:00:00', '2011-06-06 00:00:00'),
+(99, 'amendrafinal', 'ffki0V4oJ6TBc', 'Employee', '2011-06-06 00:00:00', '2011-06-06 00:00:00'),
+(100, 'amendrafinal1', 'ffki0V4oJ6TBc', 'Employee', '2011-06-06 00:00:00', '2011-06-06 00:00:00'),
+(101, 'mesfin', 'e5CD/foRZVu52', 'Employer', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 --
 -- Constraints for dumped tables
@@ -570,8 +588,8 @@ ALTER TABLE `tbl_employer`
 -- Constraints for table `tbl_job`
 --
 ALTER TABLE `tbl_job`
-  ADD CONSTRAINT `tbl_job_ibfk_2` FOREIGN KEY (`JobCategoryID`) REFERENCES `tbl_job_category` (`JobCategory`),
-  ADD CONSTRAINT `tbl_job_ibfk_1` FOREIGN KEY (`EmployeerID`) REFERENCES `tbl_employer` (`UserID`);
+  ADD CONSTRAINT `tbl_job_ibfk_1` FOREIGN KEY (`EmployeerID`) REFERENCES `tbl_employer` (`UserID`),
+  ADD CONSTRAINT `tbl_job_ibfk_2` FOREIGN KEY (`JobCategoryID`) REFERENCES `tbl_job_category` (`JobCategory`);
 
 --
 -- Constraints for table `tbl_job_application`
@@ -584,8 +602,7 @@ ALTER TABLE `tbl_job_application`
 -- Constraints for table `tbl_job_requirement`
 --
 ALTER TABLE `tbl_job_requirement`
-  ADD CONSTRAINT `tbl_job_requirement_ibfk_1` FOREIGN KEY (`JobID`) REFERENCES `tbl_job` (`JobID`),
-  ADD CONSTRAINT `tbl_job_requirement_ibfk_2` FOREIGN KEY (`EducationalQualificationalID`) REFERENCES `tbl_qualification` (`QualificationID`);
+  ADD CONSTRAINT `tbl_job_requirement_ibfk_1` FOREIGN KEY (`JobID`) REFERENCES `tbl_job` (`JobID`);
 
 --
 -- Constraints for table `tbl_job_requirement_detail`

@@ -150,7 +150,7 @@ class Application_Form_EmployeeProfileForm extends Zend_Form {
                 'timeout' => 300,
                 'font' => APPLICATION_PATH.'/../public/Captcha/GILSANUB.TTF',
                 'imgDir' => APPLICATION_PATH.'/../public/Captcha',
-                'imgUrl' => 'http://localhost/jjjjjj/public/Captcha/',
+                'imgUrl' => 'http://localhost/ecom/public/Captcha/',
               )));
       
         $Submit = new Zend_Form_Element_Submit('Submit');
