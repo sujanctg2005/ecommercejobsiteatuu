@@ -360,7 +360,7 @@ class Application_Model_Employer
         $DB = $registry['DB'];
          $sql = "SELECT * FROM `tbl_employer` where UserID=".$this->getUserId();
          $result = $DB->fetchRow($sql);
-     
+
         $this->puplateObject($result);
         
        

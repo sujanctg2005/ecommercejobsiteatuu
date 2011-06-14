@@ -52,9 +52,9 @@ class APP_Authorization_Authorizer {
         $acl->allow(APP_Authorization_Roles::GUEST, 'admin',null);
 
         $acl->allow(APP_Authorization_Roles::EMPLOYER, 'employer', null);
-		$acl->allow(APP_Authorization_Roles::EMPLOYER, 'searchcv', null);
-		$acl->allow(APP_Authorization_Roles::EMPLOYER, 'servcecharge', null);
-		$acl->allow(APP_Authorization_Roles::EMPLOYER, 'jobpost', null);
+        $acl->allow(APP_Authorization_Roles::EMPLOYER, 'searchcv', null);
+        $acl->allow(APP_Authorization_Roles::EMPLOYER, 'servcecharge', null);
+        $acl->allow(APP_Authorization_Roles::EMPLOYER, 'jobpost', null);
 
         $acl->allow(APP_Authorization_Roles::EMPLOYEE, 'profile', null);
         $acl->allow(APP_Authorization_Roles::EMPLOYEE, 'resume', null);

@@ -274,7 +274,7 @@ public function findResumeByEmployeeId()
         $entries = array();
         foreach ($result as $row) {
             $entry = new Application_Model_SearchResume();
-            $entry->setQualificationType($row->QualificationType);
+            //$entry->setQualificationType($row->QualificationType);
             $entry->setQualificattionId($row->QualificationID);
             $entry->setFromDate($row->FromDate);
              $entry->setToDate($row->ToDate);
