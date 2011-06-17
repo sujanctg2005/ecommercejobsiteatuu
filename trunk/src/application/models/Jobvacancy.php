@@ -370,7 +370,7 @@ class Application_Model_Jobvacancy
         $DB = $registry['DB'];
         // $DB->insert('tbl_job', $this->puplateToArray());
         $DB->insert('tbl_job', $this->puplateToArray());
-        $id = $DB->lastInsertId();
+         $id = $DB->lastInsertId();
         $this->setJobID($id);
         $DB->insert('tbl_job_requirement', $this->puplateRequirmentToArray());
     }
@@ -378,9 +378,9 @@ class Application_Model_Jobvacancy
     {
         $registry = Zend_Registry::getInstance();
         $DB = $registry['DB'];
-        $where[] = "JobID =".$this->getJobID();
+        $where[] = "JobID ='".$this->getJobID()."'";
         $DB->update('tbl_job', $this->puplateToArray(), $where);
-       $where[] = "JobRequirementID =".$this->getJobRequirementID();
+       $where[] = "JobRequirementID ='".$this->getJobRequirementID()."'";
         $DB->update('tbl_job_requirement', $this->puplateRequirmentToArray(),$where);
     }
     public function deleteJobVacancey ()
@@ -465,7 +465,7 @@ GROUP BY  MONTHNAME( JobPostDate )   order by MONTH(JobPostDate)";
     {
         $data = array('JobTitle' => $this->getJobTitle(), 
         'NoOfVacancy' => $this->getNoOfVacancy(), 
-        'JobCategoryID' => $this->getJobCategoryID(), 
+        'JobCategoryID' => "Accounting", 
         'JobPostDate' =>new Zend_Db_Expr("CURDATE()"),
         'ApplicationDeadline' => $this->getApplicationDeadline(), 
         'EmployeerID' => $this->getEmployeerID(), 
@@ -483,9 +483,9 @@ GROUP BY  MONTHNAME( JobPostDate )   order by MONTH(JobPostDate)";
         'MinimumAgeLimit' => $this->getMinimumAgeLimit(),  
         'MaximumAgeLimit' => $this->getMaximumAgeLimit(), 
         'JobType' => $this->getJobType(), 
-        'EducationalQualificational' => $this->getEducationalQualificationalID(), 
-        'MinimumExperience' => $this->getMinexperience(), 
-        'MaximumExperience' => $this->getMixexperience(), 
+        'EducationalQualificationalID' => $this->getEducationalQualificationalID(), 
+       // 'MinimumExperience' => $this->getMinexperience(), 
+       // 'MaximumExperience' => $this->getMixexperience(), 
         'JobResponsibility' => $this->getJobResponsibility(), 
         'AdditionalJobRequirement' => $this->getAdditionalJobRequirement(), 
         'MinimumSalaryRange' => $this->getMinimumSalaryRange(), 
@@ -498,7 +498,7 @@ GROUP BY  MONTHNAME( JobPostDate )   order by MONTH(JobPostDate)";
          $registry = Zend_Registry::getInstance();
         $DB = $registry['DB'];
     	$row = $result;
-    	$this->setJobID($row->JobID);
+    	//$this->setJobID($row->JobID);
         $this->setJobTitle($row->JobTitle);
         $this->setNoOfVacancy($row->NoOfVacancy);
         $this->setJobCategoryID($row->JobCategoryID);
@@ -509,23 +509,24 @@ GROUP BY  MONTHNAME( JobPostDate )   order by MONTH(JobPostDate)";
         $this->setCompanyName($row->CompanyName);
         $this->setHideCompanyName($row->HeightCompanyName);
         
-        //$sql = "SELECT * FROM `tbl_job_requirement` where JobID='".$this->getJobID()."'";
-       // $rows = $DB->fetchRow($sql);
-         /*//$this->setJobRequirementID($rows->JobRequirementID);
-        $this->setjobID($rows->JobID);
+        $sql = "SELECT * FROM `db_jobs`.`tbl_job_requirement` where JobID=".$this->getJobID();
+        $rows = $DB->fetchRow($sql);
+        $this->setJobRequirementID($rows->JobRequirementID);
+        $this->setJobID($rows->JobID);
+        
         $this->setGender($rows->Gender);
         $this->setMinimumAgeLimit($rows->MinimumAgeLimit);
         $this->setMaximumAgeLimit($rows->MaximumAgeLimit);
         $this->setJobType($rows->JobType);
         $this->setEducationalQualificationalID(
-        $rows->EducationalQualificational);
-        $this->setMinexperience($rows->MinimumExperience);
-        $this->setMixexperience($rows->MaximumExperience);
+        $rows->EducationalQualificationalID);
+       // $this->setMinexperience($rows->MinimumExperience);
+       // $this->setMixexperience($rows->MaximumExperience);
         $this->setJobResponsibility($rows->JobResponsibility);
         $this->setAdditionalJobRequirement($rows->AdditionalJobRequirement);
         $this->setMinimumSalaryRange($rows->MinimumSalaryRange);
         $this->setMaximumSalaryRange($rows->MaximumSalaryRange);
-        $this->setBenifits($rows->Benifits);*/
+        $this->setBenifits($rows->Benifits);
     }
     public function puplateObjectList ($result)
     {   
