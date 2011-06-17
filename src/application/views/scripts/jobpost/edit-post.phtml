@@ -15,12 +15,13 @@
        
        
         
-			<FORM name="frmJobPostingStep01" id="frmJobPostingStep01" method="post" action=<?php echo$this->escape($this->postjobs)?>>
+			<FORM name="frmJobPostingStep01" id="frmJobPostingStep01" method="post" action=<?php echo$this->escape($this->modify)?>>
 				<!--INPUT type="hidden" name="chkHideSalary" id="chkHideSalary" value=""/-->	
 			<table width="100%" border="0" cellspacing="0" cellpadding="0" id="tblSet4">
-				<tr>
-                <td class="headLeft"><INPUT type="hidden" name="jobId" id="cboAgeFrom" value=<?php echo$this->editjoblist->getJobID()?>/></td>
-                <td class="headLeft"><INPUT type="hidden" name="requirmentId" id="cboAgeTo" value=<?php echo$this->editjoblist->getJobRequirementID()?>/></td>
+				<tr> 
+				        <?php $datas = $this->jobId;?>                                                                   
+                <td class="headLeft"><INPUT type="hidden" name="jobId" id="jobId" value=<?php echo $this->escape($datas)?>/></td>
+                <td class="headLeft"><INPUT type="hidden" name="requirmentId" id="requirmentId" value=<?php echo$this->editjoblist->getJobRequirementID()?>/></td>
                 
 				
 				<td height="33" colspan="2" class="head">Job Requirements</td>
@@ -643,7 +644,7 @@
 
 								
 			</SELECT>
-			<SPAN class="BDJRedArial11px">[Leave this field as it is if don’t want to mention age.]</SPAN>			
+				
 			</td>
         	<td class="bodyRight">&nbsp;</td>
         	</tr>			
