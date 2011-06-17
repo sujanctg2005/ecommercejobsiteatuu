@@ -15,12 +15,16 @@ class JobpostController extends Zend_Controller_Action
         $request = $this->getRequest();
      
        $application_Model_UserInfo = new Application_Model_UserInfo();
-
-       $application_Model_UserInfo->setUsername($this->_customactionhelper->getUserName());
-       $application_Model_UserInfo->findUserInfo();
-
+        if (Zend_Auth::getInstance()->hasIdentity()) {
+            $val = Zend_Auth::getInstance()->getStorage()->read()->Username;
+             
+             $application_Model_UserInfo->setUsername($val);
+             $application_Model_UserInfo->findUserInfo();
+           
+        }
+       
         $application_Model_Jobvacancy = new Application_Model_Jobvacancy();  
-        $application_Model_Jobvacancy->setEmployeerID($this->_customactionhelper->getUserID());
+        $application_Model_Jobvacancy->setEmployeerID($application_Model_UserInfo->getUserId())	;
         $entries = $application_Model_Jobvacancy->findJobPostByEmplyerID();
         $this->view->postjoblist=$entries;
       
@@ -35,6 +39,9 @@ class JobpostController extends Zend_Controller_Action
 
     public function assignViewformAction ($request)
     {
+    	
+        $this->view->assign('changepassword', 
+        $request->getBaseURL() . "/jobpost/changepasswordAction");
         $this->view->assign('postjob', 
         $request->getBaseURL() . "/jobpost/postform");
         $this->view->assign('searchcv', 
@@ -65,14 +72,19 @@ class JobpostController extends Zend_Controller_Action
 
     public function postjobAction()
     {
-        $request = $this->getRequest();
+          $request = $this->getRequest();
         $application_Model_UserInfo = new Application_Model_UserInfo();
-
-        $application_Model_UserInfo->setUsername($this->_customactionhelper->getUserName());
-        $application_Model_UserInfo->findUserInfo();
+        if (Zend_Auth::getInstance()->hasIdentity()) {
+            $val = Zend_Auth::getInstance()->getStorage()->read()->Username;
+             
+             $application_Model_UserInfo->setUsername($val);
+             $application_Model_UserInfo->findUserInfo();
+           
+        }
+       
         
         $application_Model_Jobvacancy = new Application_Model_Jobvacancy();
-        $application_Model_Jobvacancy->setEmployeerID($this->_customactionhelper->getUserID())	;
+        $application_Model_Jobvacancy->setEmployeerID($application_Model_UserInfo->getUserId())	;
         $application_Model_Jobvacancy->setJobTitle(
         $request->getParam("txtJobTitle"));
         $application_Model_Jobvacancy->setNoOfVacancy(
@@ -144,6 +156,7 @@ class JobpostController extends Zend_Controller_Action
         $application_Model_Jobvacancy = new Application_Model_Jobvacancy(); 
         $application_Model_Jobvacancy->setJobID($request->getParam("edi"));
         $application_Model_Jobvacancy->findJobVacanceyById();
+        $this->view->assign('jobId', $request->getParam("edi") );
         $this->view->editjoblist=$application_Model_Jobvacancy;
         $this->view->assign('modify', $request->getBaseURL() . "/jobpost/modifyjob");
         $this->view->assign('postjob', $request->getBaseURL()."/jobpost/postform");
@@ -220,7 +233,48 @@ class JobpostController extends Zend_Controller_Action
         
     
     }
+      public function changepasswordAction(){
+		$form = new Application_Form_EmployeeChangePassword();
+        $form->setUserName(
+        Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper')->getUserName());
+        $form->Submit->setLabel('Submit');
+        $form->setMethod("post");
+        $this->view->form = $form;
 
+        $employeeInfo = new Application_Model_DbTable_EmployeeProfile();
+        $UserID = Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper')->getUserID();
+        if ($this->getRequest()->isPost()) {
+            $formData = $this->getRequest()->getPost();
+
+            $OldPassword = $formData['OldPassword'];
+            $NewPassword = $formData['NewPassword'];
+            $RePassword = $formData['Repassword'];
+
+            if ($form->isValid($formData)) {
+            $md5oldPassword = Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper')
+                    ->md5encrypt($OldPassword);
+
+            $md5newPassword = Zend_Controller_Action_HelperBroker::getExistingHelper('CustomActionHelper')
+                    ->md5encrypt($NewPassword);
+
+                if($employeeInfo->checkAvailable($md5oldPassword))
+                {
+                    $updatePassword = $employeeInfo->updatePassword($UserID,
+                            $md5newPassword);
+                    $this->_helper->redirector('index');
+                }
+            else
+            {
+                $this->view->errorMessage = "Old password doesn't match. Please try again.";
+                $form->populate($formData);
+                //$form->getElement('OldPassword')->setValue('');
+                return;
+                }
+            }
+            }
+}
+    	
+   
 
 }
 
